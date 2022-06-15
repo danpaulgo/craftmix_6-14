@@ -1,0 +1,332 @@
+
+
+<style>
+  .header-icon svg {
+    width: 33px; 
+    transition: none;
+  }
+  
+  .mobile-header-nav .header-logo {
+  	flex: 0 0 160px;  
+  }
+  
+  .mobile-header-links {
+  	display: flex;
+    flex-direction:column;
+    padding: 30px;
+  }
+  
+  .mobile-header-links a {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--orange-color);
+  }
+  
+  .mobile-header-nav {
+    background-color: var(--orange-color);
+    width: 100%;
+    height: 76px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+  
+  .mobile-header-nav .left, .mobile-header-nav .right {
+  	flex: 0 0 30px;s
+  }
+  
+  #mobile-menu-close {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000000;
+  }
+  
+  .mobile-menu-links {
+    position: fixed;
+  	width: 100%;  
+    height: 100%;
+    padding-top:60px;
+    background-color: var(--blue-color);
+    top:0;
+    left:0;
+    transform: translateX(-100%);
+    z-index: 100000;
+    transition: 0.5s;
+  }
+  
+  .mobile-menu-links.open {
+    transform: translateX(0);
+  }
+  
+  .header-announcement {
+   	width: 100%;
+	height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 700;
+    
+    background-color: var(--orange-color);
+    position: relative;
+  }
+  
+  .header-announcement p {
+    margin-bottom: 0;
+    color: white !important;
+  }
+  .header-announcement a {
+  	text-decoration: underline;
+  }
+  
+  .header-announcement.up {
+  	display: none;
+  }
+  
+  .close-announcement {
+    cursor: pointer;
+   	color: white;
+    background-color: var(--orange-color);
+    position: absolute;
+    top:0;
+    right: 12px;
+    font-size: 18px;
+    font-weight: 800;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-container {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: 0.6s;
+  }
+  
+  .header-nav {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: -100px;
+    padding: 0 6vw;
+  }
+  
+  #shopify-section-header {
+   	z-index: 100; 
+    {% if template == 'page.social-landing'%}position: absolute; {% endif %}
+  }
+  
+  .header-container.up {
+   	transform: translateY(-100%);
+  }
+  
+  .header-nav.scrolling {
+/*     background-color: var(--blue-color); */
+  }
+  
+  .header-nav .header-logo {
+   	width: 200px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 8px;
+    transition: 0.2s;
+  }
+  
+  .header-nav .header-logo:hover {
+   	transform: translateX(-50%) rotate(5deg);
+  }
+  
+  .header-nav .header-logo img{
+   	width: 100%;
+  }
+  
+  .header-nav .header-links {
+   	flex: 0 0 350px; 
+    display: flex;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    color: var(--orange-color);
+	font-weight: 700;
+  }
+  
+  .header-icon img {
+   	height: 33px;
+    width: auto;
+  }
+  
+  .header-links.right {
+   	justify-content: flex-end;
+    position: absolute;
+    right: 6vw;
+  }
+  
+  .header-links.right a {
+   	margin-left: 30px;
+  }
+  
+  .header-links.left a {
+   	margin-right: 36px;
+  }
+  
+  .shopify-section--header {
+   	position: sticky;
+    top: 0;
+  }
+  
+  @media (max-width: 1023px) {
+    {% if template == 'page.social-landing'%}
+    #shopify-section-header {
+    	position: sticky;
+    }
+    {% endif %}
+    .header-container.up {
+	/* transform: unset; */
+  	}
+    .header-container {
+       transition: 0s; 
+    }
+    .header-announcement {
+      width: 100%;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      line-height: 1.1;
+      text-align: center;
+      padding: 8px 30px;
+      font-weight: 600;
+      background-color: var( --yellow-color);
+      position: relative;
+	}
+    
+    .header-announcement p {
+      color: var(--orange-color); 
+    }
+    
+      .close-announcement {
+        color: var(--orange-color);
+        background-color: var(--yellow-color);
+        height: 42px;
+      }
+  }
+</style>
+
+<div class='header-container' id='header-container'>
+
+{%- unless section.settings.announcement == blank or template == 'page.social-landing' -%}
+<div class='header-announcement {% if template == 'page.social-landing'%}desktop-only{% endif %}'>
+  	{{ section.settings.announcement }}
+  	<div class='close-announcement'>
+      ✕
+    </div>
+</div>
+{%- endunless -%}
+
+<div id='header-nav' class='header-nav desktop-only'>
+  <div class='header-links left'>
+    {% for link in linklists[section.settings.menu].links %}
+    	{% unless forloop.index0 > 0 and template == 'page.social-landing' %}
+    	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}'>{{ link.title }}</a>
+    	{% endunless %}
+    {% endfor %}
+  </div>
+  <div class='header-logo'>
+    <a href='{% if template == 'page.social-landing'%}#top{% else %}/{% endif %}'><img src='{{ 'craftmix.svg' | asset_url }}'/></a>
+  </div>
+  <div class='header-links right' {% if template == 'page.social-landing'%}style='display:none'{% endif %}>
+    <a href="{{ routes.account_url }}" class='header-icon'>
+       <img src='{{ 'account.svg' | asset_url }}'/>
+    </a>
+    <a href="{{ routes.cart_url }}" class="header-icon" {% if settings.cart_type == 'drawer' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endif %}>
+       {% render 'cart-number' with cart.item_count %}
+    </a>
+  </div>
+</div>
+  
+<div id='mobile-header-nav' class='mobile-header-nav mobile-only'>
+	<div class='left' id='mobile-menu-toggle'>
+      <img src='{{ 'mobile-bars.svg' | asset_url }}'/>
+  	</div>
+    <div class='header-logo'>
+      <a href='/'><img src='{{ 'mobile-logo.svg' | asset_url }}'/></a>
+    </div>
+  	<div class='right'>
+      <a href="{{ routes.cart_url }}" class="header-icon" {% if settings.cart_type == 'drawer' %}data-action="open-drawer" data-drawer-id="sidebar-cart" aria-expanded="false" aria-label="{{ 'header.navigation.open_cart' | t }}"{% endif %}>
+          {% render 'cart-number-blue' with cart.item_count %}
+      </a>
+  	</div>
+</div>
+
+<div class='mobile-menu-links mobile-only'>
+  <div id='mobile-menu-close'>
+    {% render 'icon' with 'close' %}
+  </div>
+  <div class='mobile-header-links'>
+    {% for link in linklists[section.settings.mobilemenu].links %}
+    	<a href='{{ link.url }}'>{{ link.title }}</a>
+    {% endfor %}
+    <a href="{{ routes.account_url }}">Account</a>
+  </div>
+</div>
+  
+</div>
+  
+<script>
+  $('.close-announcement').click(function() {
+   	$('.header-announcement').css('display', 'none')
+  })
+  
+  $('#mobile-menu-toggle').click(function() {
+   	$('.mobile-menu-links').toggleClass('open', true)
+  })
+  
+  $('#mobile-menu-close').click(function() {
+   	$('.mobile-menu-links').toggleClass('open', false)
+  })
+</script>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "shopify-section--header",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Image"
+    },
+    {
+      "type": "richtext",
+      "id": "announcement",
+      "label": "Announcement",
+      "info": "Text for announcement bar"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "mobilemenu",
+      "label": "Mobile Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

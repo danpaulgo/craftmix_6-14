@@ -1,0 +1,100 @@
+<div class='clink'>
+  <div class='clink-container'>
+      <img data-src='{{ 'left-hand.png' | asset_url }}' class='hand Image--lazyLoad'/>
+      <img data-src='{{ 'right-hand.png' | asset_url }}' class='hand right Image--lazyLoad'/>
+  </div>
+</div>
+
+
+<script>
+  
+</script>
+
+<style>
+  .clink {
+   	width: 100%;
+    position: relative;
+    z-index:10;
+  }
+  
+  .clink-container {
+   	position: absolute;
+    z-index: 10;
+    top: -30vw; 
+    overflow: hidden;
+    height: 45vw;
+    width: 100%;
+  }
+  
+  .clink .hand {
+   	width: 60vw;
+    position:absolute;
+    top:0;
+    left:-8vw;
+    transition: transform 0.75s ease-in;
+    z-index: 10;
+  }
+  
+  .clink .hand.right {
+    top:0;
+    left:unset;
+    right: -8vw;
+    z-index: 9;
+  }
+  
+  
+  .clink.expanded .hand {
+   	transform: translateX(-300px); 
+  }
+  
+  .clink.expanded .hand.right {
+   	transform: translateX(300px); 
+  }
+  
+    @media (max-width: 1023px) {
+  .clink-container {
+    top: -33vw; 
+    height: 55vw;
+  }
+  
+  .clink .hand {
+   	width: 80vw;
+    left:-26vw;
+  }
+  
+  .clink .hand.right {
+    right: -26vw;
+  }
+  
+  
+  .clink.expanded .hand {
+   	transform: translateX(-300px); 
+  }
+  
+  .clink.expanded .hand.right {
+   	transform: translateX(300px); 
+  }
+
+  }
+
+</style>
+
+{% schema %}
+  {
+    "name": "Clink",
+    "settings": [],
+	"blocks": [],
+	"presets": [
+    {
+      "category": "Images",
+      "name": "Clink"
+    }
+  	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

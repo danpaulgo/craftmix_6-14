@@ -1,0 +1,129 @@
+{%- comment -%}
+Those are the option names for which we automatically detect swatch. For the color, we use them to display a swatch, while
+for size, we use it to display a size chart (if applicable)
+{%- endcomment -%}
+
+{% if template == 'page.social-landing'%}
+{% assign product = all_products['variety-12-pack']%}
+{% endif %}
+
+{%- assign color_label = 'color,colour,couleur,colore,farbe,색,色,färg,farve' | split: ',' -%}
+{%- assign size_label = 'size,taille,größe,tamanho,tamaño,koko,サイズ' | split: ',' -%}
+
+{%- assign size_chart_page = '' -%}
+{%- assign product_popovers = '' -%}
+{%- assign show_option_label = false -%}
+
+{%- assign selected_variant = product.selected_or_first_available_variant -%}
+{%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
+<div style="margin-bottom:20px;">{{ product.price | money }}</div>
+{%- assign alternate_1 = all_products[super_product.metafields.accentuate.alternate_pack_1] -%}
+{%- assign alternate_2 = all_products[super_product.metafields.accentuate.alternate_pack_2] -%}
+<div class='packs'>
+  <div class='pack-size {% if product.handle == 'variety-36-pack-msrp' %}active{% endif %}' {% if alternate_2.id == product.id %}onLoad="$(this).click()"{% endif %} onClick='$("#pack-12").hide();$("#pack-24").hide();$("#pack-36").show();'><div class='bubble'><span class='best-seller'>Best Seller</span>36 Pack</div></div>
+  <div class='pack-size {% if product.handle == 'variety-24-pack-msrp' %}active{% endif %}' onClick='$("#pack-12").hide();$("#pack-24").show();$("#pack-36").hide();'><div class='bubble'>24 Pack</div></div>
+  <div class='pack-size {% if product.handle == 'variety-pack-msrp' %}active{% endif %}' onClick='$("#pack-12").show();$("#pack-24").hide();$("#pack-36").hide();'><div class='bubble'>12 Pack</div></div>
+</div>
+<div class="product-options">
+    
+      <input type="hidden" name="id" data-productid="{{ product.id }}" data-sku="{{ product.variants[0].sku }}" value="{{ product.variants[0].id }}">
+		{% unless template == 'page.social-landing' or template == 'product.msrp' %}
+    <div class='product-options-type'>
+      <div class='label'>Flavor</div>
+      <div class='product-types'>
+        {% assign productsplit = product.title | split: ' ' %}
+        <span>{{ super_product.title }}</span>
+        <div class='others'>
+          
+          {% for link in linklists.product-pdp-links.links %}
+  <a {% if link.current %}style="display:none;"{% endif %} href="{{ link.url }}">{{ link.title }}</a>
+{% endfor %}
+
+          
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.26 16.93"><g id="b4e1ea09-4406-4a9a-b507-062bfdb3322a" data-name="Layer 2"><g id="a655b1e7-9d90-4385-9140-bd881b6a0234" data-name="ART"><polyline points="1.03 1.02 14.68 14.85 28.22 1.02" style="fill:none;stroke-miterlimit:10;stroke-width:2.90440928936005px"/></g></g></svg>
+      </div>
+    </div>
+    {% endunless %}
+    {% if showQty == 'no' and triple == 'yes'%}
+         <input type="hidden" name="quantity" value="3">
+    {% else %}
+    <div class='product-options-quantity' id='quantity'>
+      <div class='label'>Quantity</div>
+      <div class="ProductForm__QuantitySelector">
+        <div class="QuantitySelector QuantitySelector--medium">
+          {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%}
+
+          <span class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity">{% render 'icon' with 'minus' %}</span>
+          <input type="text" class="QuantitySelector__CurrentQuantity" pattern="[0-9]*" name="quantity" value="1">
+          <span class="QuantitySelector__Button Link Link--secondary" data-action="increase-quantity">{% render 'icon' with 'plus' %}</span>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+    	{% if template == 'page.social-landing'%}
+      <button type="submit" class="ProductForm__AddToCart atc" {% if selected_variant.available %}data-action="add-to-cart" {% if triple == 'yes' %}onclick='setTimeout(function(){ window.location = "/checkout" }, 100)'{% endif %}{% else %}disabled="disabled"{% endif %}>
+        {%- if selected_variant.available -%}
+          <span>Buy</span>
+        {%- else -%}
+          {{- 'product.form.sold_out' | t -}}
+        {%- endif -%}
+      </button>
+{% endif%}
+  </div>
+
+  {% render 'bsub-widget', triple: triple, product: product, base_price: base_price, show_base_price: show_base_price %}
+
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
+  ADD TO CART BUTTON
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+	{% unless template == 'page.social-landing'%}
+      <button type="submit" class="ProductForm__AddToCart atc" {% if selected_variant.available %}data-action="add-to-cart"{% else %}disabled="disabled"{% endif %} >
+        {%- if selected_variant.available -%}
+          <span>Buy</span>
+        {%- else -%}
+          {{- 'product.form.sold_out' | t -}}
+        {%- endif -%}
+      </button>
+{% endunless%}
+
+{% endform %}
+
+
+{% comment %}
+------------------------------------------------------------------------------
+Product Data. This must be outputted for all products (including home page).
+
+IMPORTANT: THIS CODE IS VITAL. DO NOT EDIT IT NOT REMOVE IT. MAKE SURE TO KEEP
+THE EXACT SAME ATTRIBUTES.
+------------------------------------------------------------------------------
+{% endcomment %}
+
+<script type="application/json" data-product-json>
+  {
+    "product": {{ product | json }},
+    "selected_variant_id": {{ selected_variant.id }}
+    {%- if section.settings.show_inventory_quantity -%}
+      ,"inventories": {
+        {%- for variant in product.variants -%}
+          {%- assign inventory_message = '' -%}
+
+          {%- if section.settings.inventory_quantity_threshold == 0 -%}
+            {%- capture inventory_message -%}{{- 'product.form.inventory_quantity_count' | t: count: variant.inventory_quantity -}}{%- endcapture -%}
+          {%- else -%}
+            {%- capture inventory_message -%}{{- 'product.form.low_inventory_quantity_count' | t: count: variant.inventory_quantity -}}{%- endcapture -%}
+          {%- endif -%}
+
+          "{{ variant.id }}": {
+            "inventory_management": {{ variant.inventory_management | json }},
+            "inventory_policy": {{ variant.inventory_policy | json }},
+            "inventory_quantity": {{ variant.inventory_quantity | json }},
+            "inventory_message": {{ inventory_message | json }}
+          }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      }
+    {%- endif -%}
+  }
+</script>

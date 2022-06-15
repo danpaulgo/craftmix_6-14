@@ -1,0 +1,67 @@
+<img src='{{ 'green-squiggle.svg' | asset_url }}' id='green-squiggle' class='driftDownwards'/>
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" class='sub-hero'>
+	<div class='left-sub-hero'>
+		<img class='Image--lazyLoad' data-src='{{ section.settings.hero_image | img_url: '1200x'}}' />
+  	</div>
+  	<div class='right-sub-hero'>
+		<h1 class='Heading sub-hero-header'>
+          {{ section.settings.hero_title }}
+      	</h1>
+      	<div class='sub-hero-info'>
+          {{ section.settings.info_box }}<br/><br/>
+          <a href='{{ section.settings.blog_link | link_url }}'>
+              {{ section.settings.blog_text }}
+          </a>
+      	</div>
+  	</div>
+</section>
+         
+
+{% schema %}
+{
+  "name": "Sub-Hero Section",
+  "class": "shopify-section--hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Title",
+	  "default": "What is Pre-Workout?"
+    },
+    {
+      "type": "textarea",
+      "id": "info_box",
+      "label": "Info Box Text",
+	  "default": "<b>Pre-workout</b> is a supplement, usually in powdered form, that is taken before physical activity or a workout to increase overall energy and performance.<br><br>Ingredients included in a pre-workout help to <b>boost energy</b>, increase <b>physical performance</b> and <b>prevent premature fatigue</b>."
+    },
+	{
+      "type": "text",
+      "id": "blog_text",
+      "label": "Blog link text",
+	  "default": "Learn more on the benefits of pre-workout for women here!"
+    },
+	{
+ 	   "type": "url",
+	   "id": "blog_link",
+   	   "label": "Bottom-line link"
+	},
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Image for hero"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Hero",
+      "name": "Sub-hero Section"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

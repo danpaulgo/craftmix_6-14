@@ -1,0 +1,75 @@
+<div class='social-landing' id='top' style='overflow-x: hidden'>
+{% section 'big-image-with-curve' %}
+{% section 'testimonials' %}
+{% section 'big-image-with-curve-2' %}
+{% if page.title == "Social Landing" %}
+  {% section 'product-template-insert' %}
+{% elsif page.title == "Sampler Pack Landing" %}
+  
+  {% section 'sampler-envelope-insert' %}
+{% endif %}
+
+{% section 'big-image-with-curve-4' %}
+{% section 'big-image-with-curve-3' %}
+{% section 'big-image-with-curve-5' %}
+</div>
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+   $([document.documentElement, document.body]).animate({
+        scrollTop: $("#shop-anchor").offset().top
+    }, 1000);
+    }, 1000);
+   $('[href="#shop"]').on('click', function(event) {
+   	event.preventDefault()
+    $([document.documentElement, document.body]).animate({
+        scrollTop: $("#shop-anchor").offset().top
+    }, 1000);
+  })
+  })
+</script>
+
+<style>
+.packs {
+  display:none!important;
+}
+  
+    .hero-button {
+   background-color: var(--green-color);
+   color: var(--blue-color);
+   padding: 18px 32px;
+   border-radius: 40px;
+   font-size: 20px;
+   font-weight: 700;
+  }
+  
+  @media (min-width: 1023px) {
+  .testimonials .title-image.desktop-only {
+    margin-bottom: 0; 
+  }
+	   .testimonial-blocks {
+    margin-top: 5%;
+    width: 83.33333%;
+    transform: scale(1.2) translateY(-10%);
+    transform-origin: center left;
+    margin-bottom: -5%;
+  }
+  
+  .testimonial:nth-child(2n) {
+    margin-top: 10%; 
+  }
+  }
+   @media (max-width: 1023px) { 
+      .social-landing .atc {
+          margin-top: 2px;
+          margin-bottom: -8px;
+          font-size: 14px;
+          padding: 8px 20px;
+      }
+     .hero-button.centered {
+		transform: translate(-50%, -20px);
+       margin-left: 50% !important;
+       width: max-content;
+     }
+   }
+</style>

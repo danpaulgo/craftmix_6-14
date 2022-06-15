@@ -1,0 +1,49 @@
+<div class="page">
+  <div class="page-container">
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.content }}</p>
+    <p id='customer-portal-additional'></p>
+  </div>
+</div>
+
+
+<style>
+  .page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--orange-color);
+    background-image: url({{ 'faq-background.svg' | asset_url }});
+    background-size: cover;
+  }
+  
+  h1 {
+    font-family: 'hornbill';
+    font-weight: 700;
+    font-size: 72px;
+    letter-spacing: -0.1rem;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  p, #customer-portal-root {
+    font-size: 18px; 
+  }
+  
+  #customer-portal-additional a {
+    text-decoration: underline; 
+  }
+  
+  .page-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 120px 30px;
+  }
+  
+  @media (max-width: 1023px) {
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+    }
+  }
+</style>

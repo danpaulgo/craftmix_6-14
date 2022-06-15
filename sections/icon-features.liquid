@@ -1,0 +1,95 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" class='icon-feature-section'>
+	<h2 class='Heading feature-title green'>
+      	{{ section.settings.section_title }}
+  	</h2>
+  	{%- assign blocks_size = section.blocks | size-%}
+  	<div class='icon-feature-blocks {% if  blocks_size > 4 %}large{% endif %}'>
+      	<img src='{{ 'green-wave.svg' | asset_url }}' class='green-wave' preserveAspectRatio='false'/>
+		<img src='{{ 'large-green-wave.svg' | asset_url }}' class='large-green-wave' preserveAspectRatio='false'/>
+      	<img src='{{ 'mobile-green-wave.svg' | asset_url }}' class='green-wave-mobile' preserveAspectRatio='false'/>
+      	<img src='{{ 'mobile-large-green-wave.svg' | asset_url }}' class='large-green-wave-mobile' preserveAspectRatio='false'/> 
+      	{%- assign n = 0 -%}
+      	<div class='left-features'>
+		{%- for block in section.blocks -%}
+          {%- assign m = n | modulo: 2 -%}
+          {% if m == 0%}
+  		  <div class='icon-feature-block'>
+            <img src={{ block.settings.feature_icon | img_url: '100x' }}>
+            <div>
+              {{ block.settings.feature_text }}
+            </div>
+	      </div>
+          {% endif %}
+      	  {%- assign n = n | plus: 1 -%}
+		{%- endfor -%}
+     	</div>
+      
+      	{%- assign n = 0 -%}
+      	<div class='right-features'>
+		{%- for block in section.blocks -%}
+          {%- assign m = n | minus: 1 | modulo: 2 -%}
+          {% if m == 0%}
+  		  <div class='icon-feature-block'>
+            <img src={{ block.settings.feature_icon | img_url: '100x' }}>
+            <div>
+              {{ block.settings.feature_text }}
+            </div>
+	      </div>
+          {% endif %}
+      	  {%- assign n = n | plus: 1 -%}
+		{%- endfor -%}
+     	</div>
+	</div>
+</section>
+
+{% schema %}
+{
+  "name": "Icon Feature Section",
+  "class": "shopify-section--feature",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Title",
+      "default": "Key Benefits"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "text",
+      "name": "Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text"
+        },
+		{
+          "type": "image_picker",
+          "id": "feature_icon",
+          "label": "Feature Icon"
+        }
+	  ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Section",
+      "name": "Icon Features Section",
+      "settings": {},
+      "blocks": [
+        {
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

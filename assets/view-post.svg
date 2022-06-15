@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 259.75 259.75">
+<defs>
+  <style>
+@font-face {
+  font-family: "Goldplay";
+  font-weight: 500;
+  src: url("Goldplay_Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Goldplay";
+  font-weight: 800;
+  src: url("Goldplay_SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Goldplay-SemiBold";
+  font-weight: 600;
+  src: url("Goldplay_SemiBold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Hornbill";
+  font-weight: 700;
+  src: url("hornbill.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "HornbillPersonalUse-Bold";
+  font-weight: 700;
+  src: url("hornbill.otf") format("opentype");
+}
+
+@font-face {
+  font-family: HornbillPersonalUse-Bold;
+  font-weight: 700;
+  src: url("hornbill.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Appetite";
+  src: url("Appetite.otf") format("opentype");
+}
+  </style>
+</defs>
+<g id="ab12ec18-02c9-48a9-9077-c9aa112e499e" data-name="Layer 2"><g id="ad4c16a0-af85-4341-ab0e-16ebe8a043ff" data-name="ART"><polygon points="259.75 129.88 231.8 146.04 253.42 170.02 221.84 176.72 234.95 206.23 202.83 202.83 206.22 234.95 176.72 221.84 170.02 253.42 146.04 231.8 129.88 259.75 113.71 231.8 89.73 253.42 83.03 221.84 53.52 234.95 56.92 202.83 24.8 206.22 37.91 176.72 6.33 170.02 27.95 146.04 0 129.88 27.95 113.71 6.33 89.73 37.91 83.03 24.8 53.52 56.92 56.92 53.52 24.8 83.03 37.91 89.73 6.33 113.71 27.95 129.88 0 146.04 27.95 170.02 6.33 176.72 37.91 206.23 24.8 202.83 56.92 234.95 53.52 221.84 83.03 253.42 89.73 231.8 113.71 259.75 129.88" style="fill:#00945e"/><text transform="translate(75.37 125.35)" style="font-size:46.739959716796875px;fill:#fff4eb;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.0042936193134518385em">V<tspan x="33.83" y="0" style="letter-spacing:-0.03190441212477352em">i</tspan><tspan x="45.8" y="0" style="letter-spacing:-0.02970014527528851em">e</tspan><tspan x="69.79" y="0" style="letter-spacing:-0.009997551540081289em">w</tspan><tspan style="letter-spacing:-0.023808171326902047em"><tspan x="5.82" y="45.12">P</tspan><tspan x="35.13" y="45.12" style="letter-spacing:-0.02440363677913259em">o</tspan><tspan x="60.91" y="45.12" style="letter-spacing:-0.008597685389223512em">s</tspan><tspan x="83.97" y="45.12" style="letter-spacing:-0.009997551540081289em">t</tspan></tspan></text></g></g></svg>

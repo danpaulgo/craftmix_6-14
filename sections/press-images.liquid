@@ -1,0 +1,224 @@
+<section class="press-section">
+  
+ <div id = "shamArray">
+  {% for block in section.blocks %}
+   <a class = "shamElement"> {{block.settings.quote}} </a>
+  {% endfor %}  
+  </div>
+ 
+  
+  <div class="press-title-container" id = "ptc">
+    <h3 id="pressQuote">{{ section.settings.title }}</h3>
+  </div>
+  <div class="press-image-container" id="pic">
+  {% for block in section.blocks %}
+    <a class="pressBlock" href='{{ block.settings.link }}' target='_blank' onmouseenter="pressUpdate('{{block.settings.quote}}')" onmouseleave="pressReset('{{section.settings.title}}')" id="{{ forloop.index0 | append: 'pressBlock'}}">
+      <img src="{{ block.settings.image | img_url: '300x' }}" />
+    </a>
+  {% endfor %}
+  </div>
+</section>
+
+<script>
+  var i = 0;
+  var clickToggle = true;
+  var quote;
+  var sectionTitle;
+  var quoteArr = [];
+  
+  $(".shamElement").each(function addQuote(){
+  	quoteArr.push($(this).text());
+    
+  });
+  
+  
+  
+  
+  function foo(){
+    
+    var index1 = (i % 4);
+    var index2 = ((i+1) % 4);
+    var index3 = ((i+2) % 4);
+    var index4 = ((i+3) % 4);
+    
+    $("#"+index1+ "pressBlock").css("opacity", "1");
+    $("#"+index2+ "pressBlock").css("opacity", "0.4");
+    $("#"+index3+ "pressBlock").css("opacity", "0.4");
+    $("#"+index4+ "pressBlock").css("opacity", "0.4");
+    
+    $("#ptc").html("<h3 id='pressQuote'>"+ quoteArr[index1] + "</h3>").delay(400);
+    
+    i++;
+  }
+   /*
+  var cycler = setInterval(foo, 1800);
+  
+  function change() {
+    if (!cycler) {
+      cycler = setInterval(foo, 1800);
+    }
+    else {
+      clearInterval(cycler);
+      cycler = null;
+    }
+  }
+ */
+  
+  
+  function fooReset(){
+    
+    var index1 = (i % 4);
+    var index2 = ((i+1) % 4);
+    var index3 = ((i+2) % 4);
+    var index4 = ((i+3) % 4);
+    
+    $("#"+index1+ "pressBlock").css("opacity", "0.4");
+    $("#"+index2+ "pressBlock").css("opacity", "0.4");
+    $("#"+index3+ "pressBlock").css("opacity", "0.4");
+    $("#"+index4+ "pressBlock").css("opacity", "0.4");
+    
+    $("#pic").css("opacity", 1);
+    
+  }
+   function fooResetReset(){
+    
+    var index1 = (i % 4);
+    var index2 = ((i+1) % 4);
+    var index3 = ((i+2) % 4);
+    var index4 = ((i+3) % 4);
+    
+    $("#"+index1+ "pressBlock").css("opacity", "1");
+    $("#"+index2+ "pressBlock").css("opacity", "1");
+    $("#"+index3+ "pressBlock").css("opacity", "1");
+    $("#"+index4+ "pressBlock").css("opacity", "1");
+    
+    $("#pic").css("opacity", 1);
+    
+  }
+  function pressClick(q, e) {
+    var event;
+    console.log(q);
+    
+   	
+    if(clickToggle) {
+      	//fooReset();
+    	$(".press-image-container img").css("opacity", "inherit");
+      	event = e;      	
+   	 	e.style.opacity = "1";
+    	quote = q;
+    	$("#ptc").html("<h3 id='pressQuote'>"+ quote + "</h3>");
+      	clickToggle = false;
+      	
+    }
+    
+    else {
+      if(q == quote){
+        
+        $("#ptc").html(sectionTitle);
+      	clickToggle = true;
+      }
+      else {
+        event = e;      	
+   	 	e.style.opacity = "1";
+    	quote = q;
+    	$("#ptc").html("<h3 id='pressQuote'>"+ quote + "</h3>");
+      	clickToggle = false;
+      }
+      //fooResetReset();
+      
+    }
+    
+    
+    //setTimeout(change(), 5400);
+    
+  }
+ 
+  function pressUpdate(q){
+    //clearInterval(cycler);
+    //fooReset();
+    if(clickToggle){
+    var quote = q;
+    
+    //$(this).children().css("opacity", "1");
+    sectionTitle = $("#ptc").html();
+    $("#ptc").html("<h3 id='pressQuote'>"+ quote + "</h3>").delay(400); 
+    }
+    //$("#pressQuote").fadeIn(500);
+  }
+  function pressReset(q){
+   //fooResetReset();
+   /* 
+    cycler = setInterval( function foo(){
+    var index1 = (i % 4);
+    var index2 = ((i+1) % 4);
+    var index3 = ((i+2) % 4);
+    var index4 = ((i+3) % 4);
+    
+    $("#"+index1+ "pressBlock").css("opacity", "1");
+    $("#"+index2+ "pressBlock").css("opacity", "0.4");
+    $("#"+index3+ "pressBlock").css("opacity", "0.4");
+    $("#"+index4+ "pressBlock").css("opacity", "0.4");
+    
+    $("#ptc").html("<h3 id='pressQuote'>"+ quoteArr[index1] + "</h3>").delay(400);
+    
+    i++;
+  }, 1800);
+  */console.log(clickToggle);
+    if(clickToggle){
+      var quote = q;
+    $("#ptc").html("<h3 id='pressQuote'>"+ quote + "</h3>").delay(400);
+    }
+    
+    
+  }
+</script>
+
+
+{% schema %}
+{
+  "name": "Press Section",
+  "class": "shopify-section--hero",
+  "settings": [
+    {
+      "id": "title",
+      "type": "text",
+      "label": "Section Title",
+      "default": "MARKE in the News"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "press-image",
+      "name": "Press Image",
+      "settings": [         
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Image"
+        },
+        {
+          "id": "link",
+          "type": "url",
+       		"label": "Link URL"
+        },
+		{
+			"id": "quote",
+			"type": "text",
+			"label": "Quote"
+		}
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Press Images",
+      "category": "Promotional",
+      "blocks": [
+        {
+          "type": "press-image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

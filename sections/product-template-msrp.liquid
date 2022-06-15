@@ -1,0 +1,1195 @@
+{%- capture section_settings -%}
+{
+  "enableHistoryState": true,
+  "templateSuffix": "",
+  "useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %}
+}
+{%- endcapture -%}
+
+{% assign base_price = product.price | times: 3 | money %}
+<section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' id='pack-36'>
+  <div class="Product__Wrapper">
+
+    <div class="Product__InfoWrapper" >
+      <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
+        <div class="Container">
+          <span style='display: none;'>{%- render 'product-meta', product: all_products['variety-36-pack-msrp'], show_price: 'no', show_options: true, show_description: true -%}</span>
+             <div class='product'>
+                <div class='product-hero'>
+                  <div class='product-info' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+                      <h1 class='product-title' >{{ product.title }}</h1>
+                      <div class='stars'>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg>
+                          <span class='count'>{{ product.metafields.accentuate.number_of_reviews_pdp }}</span>
+                      </div>
+                      <p class='product-subtitle'>{{ product.metafields.accentuate.subtitle }}</p>
+                      {%- render 'product-form-msrp', productPage: true, product: all_products['variety-36-pack-msrp'], super_product: all_products['variety-36-pack-msrp'], base_price: base_price -%} 
+                  </div>
+                  <div class='product-image'>
+                    <img src='{{ product.metafields.accentuate.main[0].src }}'/>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% assign base_price = product.price | times: 2 | money %}
+<section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' id='pack-24' style='display:none;'>
+  <div class="Product__Wrapper">
+
+    <div class="Product__InfoWrapper" >
+      <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
+        <div class="Container">
+          <span style='display: none;'>{%- render 'product-meta', product: all_products['variety-24-pack-msrp'], show_price: 'no', show_options: true, show_description: true -%}</span>
+             <div class='product'>
+                <div class='product-hero'>
+                  <div class='product-info' >
+                      <h1 class='product-title' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">{{ product.title }}</h1>
+                      <div class='stars' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg>
+                          <span class='count'>(928 reviews)</span>
+                      </div>
+                      <p class='product-subtitle' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">{{ product.metafields.accentuate.subtitle }}</p>
+                      {%- render 'product-form-msrp', productPage: true, product: all_products['variety-24-pack-msrp'], super_product: all_products['variety-36-pack-msrp'], base_price: base_price -%} 
+                  </div>
+                  <div class='product-image'>
+                    <img src='{{ product.metafields.accentuate.main[0].src }}'/>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% assign base_price = product.price | times: 1 | money %}
+<section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' id='pack-12' style='display:none;'>
+  <div class="Product__Wrapper">
+
+    <div class="Product__InfoWrapper" >
+      <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
+        <div class="Container">
+          <span style='display: none;'>{%- render 'product-meta', product: all_products['variety-pack-msrp'], show_price: 'no', show_options: true, show_description: true -%}</span>
+             <div class='product'>
+                <div class='product-hero'>
+                  <div class='product-info' >
+                      <h1 class='product-title' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">{{ product.title }}</h1>
+                      <div class='stars' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg>
+                          <span class='count'>(928 reviews)</span>
+                      </div>
+                      <p class='product-subtitle' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">{{ product.metafields.accentuate.subtitle }}</p>
+                      {%- render 'product-form-msrp', productPage: true, product: all_products['variety-pack-msrp'], super_product: all_products['variety-pack-msrp'], base_price: base_price, show_base_price: 'no' -%} 
+                  </div>
+                  <div class='product-image'>
+                    <img src='{{ product.metafields.accentuate.main[0].src }}'/>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<div class='product-directions'>
+  	<svg class='wave desktop-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920.02 169.96"><g id="a145197b-7c32-414f-8f85-87f115c0305b" data-name="Layer 2"><g id="adbee164-ba74-441b-92ef-5839c18177f8" data-name="BACKGROUND"><path d="M0,170c213.49,0,398.33-8.6,564.74-26.28C713,127.94,834.08,106.49,951.2,85.75,1189.29,43.59,1435.66,0,1920,0l0,170Z"/></g></g></svg>
+    <svg class='wave mobile-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 375.02 83.32"><g id="a948dc57-e638-41bb-af12-197a33f0784d" data-name="Layer 2"><g id="adadf8a6-0cb3-4650-90d9-48f3a838fe98" data-name="Background"><path d="M375,0V83.32H0V73.13c9.82-2,45-43.34,185.31-43.34C271.25,29.79,335.41,19,375,0Z"/></g></g></svg>
+    <svg class='bg mobile-only' id="b1ca6a41-358e-41de-871c-71c9e9ad9e43" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 380 650" preserveAspectRatio="xMidYMin slice"><defs><clipPath id="a08c7074-d367-4bb9-bba4-7c992242069f"><path d="M380.05,6.39l0,656.61H-.16V70.44C12.83,67.83,207.75,89.21,380.05,6.39Z" style="fill:none"/></clipPath></defs><g style="clip-path:url(#a08c7074-d367-4bb9-bba4-7c992242069f)"><path d="M450.27,365c-41.48,33.07-86.83,65.16-124.54,103,7.46,13.84,58.12,63.51,121.32,7.7C474.94,451,476.73,390.8,450.27,365Z" style="fill:#ff6b00"/><path d="M450.51,442.27c11.2-24.1,1.1-49.92-7.67-71.4-37.09,29.18-76.65,57.92-110.74,90.82C370,504.18,429.9,486.66,450.51,442.27Z" style="fill:#ffd600"/><path d="M367.29,36C365,34.33,357,27.61,355.58,25.65c-14,11.78-22.29,28.65-29.79,48.69a131.14,131.14,0,0,0-5.14,16.32c1.38-.11,10.17,4.69,12.7,5.5,7.77,2.49,15.39,5,23.29,6.43,1.89.35,3.76.61,5.63.8.34-3.39.8-6.71,1.43-9.83,1.89,2.23,6.95,9.12,7.83,10.14,12.16-.39,23.92-3.86,35.37-9a130.61,130.61,0,0,0,33-21.68c-.06-1.89.65-14.18,1.14-17.59,2.18,2.67,5.53,6,6.88,9.8a132.5,132.5,0,0,0,25.65-38.54C470,20.92,462.27,16.6,457.2,13.9c-2.78-1.48-5.61-2.94-8.47-4.3a26.74,26.74,0,0,1-1.7,7.7c-1.69-1.59-6.43-9.6-7.22-11.49a51.52,51.52,0,0,0-17.87-3.54c-19.22.12-37.8,5.86-54.88,15.57C367.29,21.28,368.44,33.44,367.29,36Z" style="fill:#fdbbcb"/><path d="M42.65,256.23C-1,229.48-45,198.89-91.64,177.11c-10.1,11.32-38.5,73.58,32.88,112.56C-27.26,306.87,27.93,288.71,42.65,256.23Z" style="fill:#ff6b00"/><path d="M-27.36,281.85c25.54,2.23,45.63-15.41,62.24-30.43-38.65-24-77.71-50.48-118.75-70.59C-110,229.12-74.39,277.74-27.36,281.85Z" style="fill:#ffd600"/><path d="M-28.22,563.41c-2.73-1.79-12.42-9.26-14.16-11.5-15.86,14.4-24.73,34.48-32.59,58.23a153.94,153.94,0,0,0-5.27,19.3c1.61-.19,12.09,5,15.09,5.85,9.19,2.55,18.2,5.1,27.49,6.45,2.22.33,4.43.55,6.62.68a115.27,115.27,0,0,1,1.22-11.54c2.31,2.52,8.53,10.33,9.6,11.49,14.19-1,27.78-5.59,40.92-12.13a152.36,152.36,0,0,0,37.61-26.83c-.16-2.2.12-16.59.54-20.59,2.67,3,6.73,6.75,8.48,11.14a155,155,0,0,0,28.22-46.18c-4.5-6.56-13.7-11.26-19.75-14.18-3.31-1.6-6.68-3.18-10.08-4.64A31.63,31.63,0,0,1,64.08,538c-2-1.78-7.95-10.92-8.95-13.1a60.09,60.09,0,0,0-21.05-3.32c-22.44,1-43.88,8.55-63.39,20.67C-28.89,546.29-27,560.44-28.22,563.41Z" style="fill:#00945e"/><rect x="5.77" y="504.35" width="25.24" height="8.7" transform="translate(505.69 655.84) rotate(108.87)" style="fill:#fffef9"/><rect x="-0.46" y="532.21" width="25.24" height="8.7" transform="translate(60.81 1071.05) rotate(176.1)" style="fill:#fffef9"/><rect x="30.54" y="491.64" width="25.24" height="8.7" transform="translate(-433.29 640.46) rotate(-101.89)" style="fill:#fffef9"/><rect x="-10.67" y="562.51" width="25.24" height="8.7" transform="translate(-302.96 88.99) rotate(-32.34)" style="fill:#fffef9"/></g></svg>
+  <div class='directions-container' data-aos='fade-up' data-aos-duration="1000" data-aos-offset='300' data-aos-anchor-placement="top-bottom">
+      <svg class='product-directions-title' id="b8dcd7bb-c672-4498-b653-bd499de6b88d" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 850 180"><text transform="translate(35.73 112.95) rotate(-6.68)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">I</text><text transform="matrix(1, -0.09, 0.09, 1, 65.12, 109.42)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">t</text><text transform="translate(105.26 105.68) rotate(-4.18)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">’</text><text transform="translate(119.63 104.34) rotate(-3.01)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">s</text><text transform="matrix(1, -0.02, 0.02, 1, 171.45, 101.77)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(195.29 100.49) rotate(1.7)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">A</text><text transform="translate(271.19 103) rotate(5.95)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">s</text><text transform="matrix(0.99, 0.15, -0.15, 0.99, 322.59, 108.6)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(346.48 111.8) rotate(10.47)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">E</text><text transform="translate(409.43 123.77) rotate(10.41)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">a</text><text transform="matrix(0.99, 0.13, -0.13, 0.99, 469.57, 134.94)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">s</text><text transform="matrix(1, 0.06, -0.06, 1, 523.29, 142.17)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">y</text><text transform="matrix(1, 0.01, -0.01, 1, 584.64, 145.58)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="matrix(1, -0.04, 0.04, 1, 611.75, 146.57)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">A</text><text transform="translate(691.05 143.22) rotate(-4.75)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">s</text><text transform="translate(742.46 138.8) rotate(-6.41)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="translate(770.16 135.75) rotate(-7.62)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="translate(797.91 132.1) rotate(-8.99)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text></svg>
+	  <object data='{{ product.metafields.accentuate.directions[0].src }}'></object>
+  </div>
+</div>
+
+<div class='product-whats-in {% if product.metafields.accentuate.variety %}variety{% endif %}'>
+  	<svg class='wave desktop-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920.02 169.96"><g id="a145197b-7c32-414f-8f85-87f115c0305b" data-name="Layer 2"><g id="adbee164-ba74-441b-92ef-5839c18177f8" data-name="BACKGROUND"><path d="M0,170c213.49,0,398.33-8.6,564.74-26.28C713,127.94,834.08,106.49,951.2,85.75,1189.29,43.59,1435.66,0,1920,0l0,170Z"/></g></g></svg>
+    <svg class='wave mobile-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 375 93.06"><g id="b96767c5-bf75-40d8-af0c-ccd41266c3ac" data-name="Layer 2"><g id="aa906b2d-dd4f-4df5-a932-33008809a632" data-name="Background"><path d="M0,93.06H375V.57S285.67-5.7,202.33,23.29C134,47.06,79.26,93.06,0,93.06Z"/></g></g></svg>
+    <div class='whats-in-left' data-aos='fade-up' data-aos-duration="1000" data-aos-delay='300' data-aos-offset='300'>
+	  <svg class='whats-in-title' id="f98b2945-4f4d-441e-860f-9c420da64c60" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810 320"><text transform="translate(25.58 177.97) rotate(-10.46)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">W</text><text transform="matrix(0.96, -0.28, 0.28, 0.96, 136.28, 155.19)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">h</text><text transform="translate(199.08 136.68) rotate(-13.01)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">a</text><text transform="translate(255.37 123.83) rotate(-8.79)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">t</text><text transform="translate(297.47 117.51) rotate(-5.88)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">’</text><text transform="translate(314.18 115.33) rotate(-3.67)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">s</text><text transform="translate(368.52 112.16) rotate(-1.25)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="matrix(1, 0.01, -0.01, 1, 395.49, 111.49)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">I</text><text transform="translate(428.85 111.16) rotate(3)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">n</text><text transform="translate(274.22 237.15) rotate(2.94)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">C</text><text transform="translate(348.23 241.26) rotate(7.46)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">r</text><text transform="translate(394.65 246.91) rotate(12.14)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">a</text><text transform="translate(453.06 259.78) rotate(15.72)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">f</text><text transform="matrix(0.96, 0.26, -0.26, 0.96, 502.23, 273.85)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">t</text><text transform="translate(547.11 287.89) rotate(9.43)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">m</text><text transform="translate(650.82 303.04) rotate(3.83)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">i</text><text transform="matrix(1, 0.02, -0.02, 1, 684.21, 305.48)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">x</text><text transform="translate(740.87 306.68) rotate(-1.89)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">?</text></svg>
+      <p>
+        {{ section.settings.whats_in }}
+      </p>
+      <svg class='whats-in-icons' xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 647.74 432.6"><defs><clipPath id="bdf9f1db-8715-4328-af8f-7f98bb16721b"><rect x="66.48" y="74.17" width="62.56" height="43.66" style="fill:none"/></clipPath></defs><g id="ba58eeec-090f-4475-a50a-533bff325397" data-name="Layer 2"><g id="f2dccb47-96c7-4259-ac03-afd88b44842f" data-name="ART"><path class='path' d="M25.92,62.78a77.62,77.62,0,1,1,132,76.39" style="fill:none;stroke:#f77722;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><text transform="translate(10.27 73.55) rotate(91.33)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">A</text><text transform="translate(10.87 102.08) rotate(77.93)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">l</text><text transform="translate(13.38 113.3) rotate(70.42)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">l</text><text transform="translate(17.51 124.4) rotate(63.23)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600"> </text><text transform="matrix(0.65, 0.76, -0.76, 0.65, 22.4, 135.48)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">N</text><text transform="translate(43.64 158.52) rotate(31.3)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">a</text><text transform="translate(64.14 170.19) rotate(17.83)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">t</text><text transform="translate(81.61 175.8) rotate(3.7)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">u</text><text transform="matrix(0.98, -0.18, 0.18, 0.98, 106.98, 176.58)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">r</text><text transform="translate(124.8 173.28) rotate(-24.02)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">a</text><text transform="translate(145.89 162.95) rotate(-35.78)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">l</text><polyline points="101.29 64.35 106.12 49.06 121.61 43.49" style="fill:none;stroke:#ff6b00;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><path d="M83.67,69a13.5,13.5,0,0,1-8.69.65A13.11,13.11,0,0,1,65.51,60a13.28,13.28,0,1,1,26.18-3.21" style="fill:#ff6b00"/><path d="M97.44,113.44c25.52,0,28.43-7.34,28.43-12.86s-5.42-10.27-5.42-10.27-8.88-6-8.88-16.66,8.88-16.47,8.88-16.47h-46S83.31,63,83.31,73.65s-8.89,16.66-8.89,16.66S69,95.05,69,100.58,71.91,113.44,97.44,113.44Z" style="fill:#e10600"/><g style="clip-path:url(#bdf9f1db-8715-4328-af8f-7f98bb16721b)"><path d="M97.44,113.44c25.52,0,28.43-7.34,28.43-12.86s-5.42-10.27-5.42-10.27-8.88-6-8.88-16.66,8.88-16.47,8.88-16.47h-46S83.31,63,83.31,73.65s-8.89,16.66-8.89,16.66S69,95.05,69,100.58,71.91,113.44,97.44,113.44Z" style="fill:#ff6b00"/></g><path class='path' d="M115.84,133.2H77.36s19.87-9.88,19.87-19.76C97.23,123.41,115.84,133.2,115.84,133.2Z" style="fill:#ff6b00"/><path class='path' d="M261.28,51.8a77.62,77.62,0,1,1,133.24,79.34" style="fill:none;stroke:#f77722;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><text transform="matrix(-0.2, 0.98, -0.98, -0.2, 244.24, 61.14)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">L</text><text transform="matrix(0.07, 1, -1, 0.07, 239.93, 83.28)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">o</text><text transform="translate(242.07 110.38) rotate(66.5)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">w</text><text transform="translate(256.67 139.48) rotate(51.97)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600"> </text><text transform="translate(263.59 149.17) rotate(39.06)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">C</text><text transform="matrix(0.93, 0.36, -0.36, 0.93, 287.3, 167.02)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">a</text><text transform="matrix(0.99, 0.16, -0.16, 0.99, 309.52, 174.71)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">l</text><text transform="translate(322.32 177.16) rotate(-3.04)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">o</text><text transform="matrix(0.95, -0.3, 0.3, 0.95, 348.43, 174.83)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">r</text><text transform="translate(364.58 169.32) rotate(-27.03)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">i</text><text transform="translate(376.08 163.79) rotate(-39.02)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">e</text><circle cx="300.74" cy="57.69" r="16.13" style="fill:#00945e"/><path d="M361.11,56.66H298.44c0,5.76-1.68,17.63,7,21.14s9.51-.65,11.55,8c2,8.25,5.71,8.12,12.77,8.1s10.8.15,12.76-8.1c2-8.61,2.85-4.45,11.55-8S361.11,62.42,361.11,56.66Z" style="fill:#ffd600"/><rect x="313.6" y="60.56" width="7.64" height="2.63" transform="matrix(0.66, 0.75, -0.75, 0.66, 155.86, -218.27)" style="fill:#fffef9"/><rect x="324.2" y="61.15" width="7.64" height="2.63" transform="translate(159.95 -226.06) rotate(49)" style="fill:#fffef9"/><rect x="319.37" y="67.83" width="7.64" height="2.63" transform="translate(587.4 -129.39) rotate(131)" style="fill:#fffef9"/><rect x="309.49" y="67.18" width="7.64" height="2.63" transform="translate(460.7 353.33) rotate(-129.69)" style="fill:#fffef9"/><rect x="351.01" y="60.56" width="7.64" height="2.63" transform="translate(108.53 -200.93) rotate(36.96)" style="fill:#fffef9"/><rect x="304.42" y="60.56" width="7.64" height="2.63" transform="translate(557.17 -130.13) rotate(131)" style="fill:#fffef9"/><rect x="349.07" y="67.18" width="7.64" height="2.63" transform="translate(553.99 366.46) rotate(-135)" style="fill:#fffef9"/><rect x="332.71" y="59.92" width="7.64" height="2.63" transform="translate(55.26 255.89) rotate(-45)" style="fill:#fffef9"/><rect x="341.47" y="61.35" width="7.64" height="2.63" transform="translate(458.85 394.72) rotate(-119.17)" style="fill:#fffef9"/><rect x="329.56" y="67.83" width="7.64" height="2.63" transform="translate(638.08 -82.78) rotate(141.78)" style="fill:#fffef9"/><rect x="340.12" y="67.83" width="7.64" height="2.63" transform="translate(538.24 361.23) rotate(-135)" style="fill:#fffef9"/><rect x="300.28" y="67.18" width="7.64" height="2.63" transform="translate(470.69 331.96) rotate(-135)" style="fill:#fffef9"/><rect x="327.47" y="81.18" width="4.61" height="43.36" style="fill:#ffd600"/><ellipse cx="329.78" cy="124.81" rx="20.22" ry="5.59" style="fill:#ffd600"/><path class='path' d="M486.49,64.32A77.62,77.62,0,1,1,615.38,143" style="fill:none;stroke:#f77722;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><text transform="translate(470.71 77.62) rotate(88.37)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">N</text><text transform="matrix(0.36, 0.93, -0.93, 0.36, 472.77, 109.17)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">o</text><text transform="translate(483.09 134.27) rotate(51.73)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">n</text><text transform="translate(499.93 154.29) rotate(36.34)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">-</text><text transform="translate(518.56 167.74) rotate(19.01)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">G</text><text transform="matrix(1, -0.05, 0.05, 1, 548.37, 177.33)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">M</text><text transform="translate(584.85 174.19) rotate(-25.79)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">O</text><polygon points="571.35 61.61 533.72 122.1 540.08 123.78 579.56 53.71 571.35 61.61" style="fill:#672f25"/><polygon points="579.2 45.94 583.73 46.53 586.06 38.74 582.02 37.69 579.2 45.94" style="fill:#672f25"/><polygon points="525.31 64.07 602.17 98.99 579.76 49.23 525.31 64.07" style="fill:#00945e"/><path class='path' d="M145.72,297.05A77.62,77.62,0,1,1,278.58,377.1" style="fill:none;stroke:#f77722;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><text transform="translate(127.39 308.63) rotate(98.44)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">G</text><text transform="translate(124.48 337.64) rotate(84.71)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">l</text><text transform="translate(125.36 350.57) rotate(72.45)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">u</text><text transform="matrix(0.53, 0.85, -0.85, 0.53, 133.83, 374.45)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">t</text><text transform="matrix(0.71, 0.7, -0.7, 0.71, 143.39, 389.89)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">e</text><text transform="translate(162.37 407.65) rotate(27.43)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">n</text><text transform="translate(185.52 418.44) rotate(15.32)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600"> </text><text transform="translate(196.4 421.7) rotate(4.15)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">F</text><text transform="translate(217.77 422.84) rotate(-7.85)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">r</text><text transform="translate(235.53 420.42) rotate(-21.67)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">e</text><text transform="matrix(0.78, -0.62, 0.62, 0.78, 259.31, 410.27)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">e</text><polygon points="218.97 343.28 225.34 341.96 204 288.15 197.22 288.48 218.97 343.28" style="fill:#e10600"/><circle cx="236.75" cy="307.5" r="16.32" style="fill:#00945e"/><rect x="190.62" y="302.57" width="19.97" height="19.97" rx="1.6" transform="translate(-170.77 316.61) rotate(-57.93)" style="fill:#fffef9"/><rect x="205.42" y="302.93" width="19.97" height="19.97" rx="1.6" transform="translate(-114.89 125.24) rotate(-25.85)" style="fill:#fffef9"/><rect x="217.52" y="301.74" width="19.97" height="19.97" rx="1.6" transform="translate(-149.87 230.97) rotate(-41.8)" style="fill:#fffef9"/><path d="M240.59,311.26H188.76s-12.15,25.95,3.72,56.58c0,0,4.86,3.48,22.19,3.48s22.19-3.48,22.19-3.48C252.74,337.21,240.59,311.26,240.59,311.26Z" style="fill:#db6015"/><path d="M176.46,364.31c-2.32,0-5-.53-6.69-2.5-1.24-1.4-2.4-3.95-.94-8.13a42.68,42.68,0,0,0,2.63-13.76v-.05a42.68,42.68,0,0,0-2.63-13.76c-1.46-4.18-.3-6.73.94-8.13,3.54-4,10.8-2.05,11.61-1.81a72.28,72.28,0,0,0,8.88,1.76l-.79,6.85a76.42,76.42,0,0,1-9.85-2,9.87,9.87,0,0,0-4.88-.21,4.26,4.26,0,0,0,.27,1.13,51.16,51.16,0,0,1,3,16.13v.05a51.16,51.16,0,0,1-3,16.13,4.26,4.26,0,0,0-.27,1.13,9.87,9.87,0,0,0,4.88-.21,76.42,76.42,0,0,1,9.85-2l.79,6.85-.4-3.42.4,3.42a72.28,72.28,0,0,0-8.88,1.76A18.93,18.93,0,0,1,176.46,364.31Z" style="fill:#db6015"/><rect x="184.91" y="307.5" width="59.53" height="5.63" rx="2.57" style="fill:#db6015"/><path class='path' d="M366.76,334.32a77.61,77.61,0,1,1,112.18,69.49" style="fill:none;stroke:#f77722;stroke-miterlimit:10;stroke-width:3.78664005873129px"/><text transform="translate(358.65 362.14) rotate(63.77)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">V</text><text transform="translate(371.08 386.12) rotate(47.46)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">e</text><text transform="matrix(0.86, 0.51, -0.51, 0.86, 389.07, 404.86)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">g</text><text transform="translate(412.71 417.81) rotate(13.5)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">a</text><text transform="matrix(1, -0.05, 0.05, 1, 437.07, 423.13)" style="font-size:36.739681243896484px;fill:#f77722;font-family:Goldplay-SemiBold, Goldplay;font-weight:600">n</text><circle cx="464.85" cy="312.43" r="17.39" style="fill:#ff6b00"/><path d="M472.55,335.43l-5.91-25.31H418.21l-5.92,25.31s-7.94,20.14,13,28.45c0,0,3.34,2.16,12.33,2.22h9.58c9,0,12.3-2.21,12.3-2.21C480.5,355.57,472.55,335.43,472.55,335.43Z" style="fill:#fdbbcb"/><rect x="437.33" y="314.76" width="9.19" height="3.17" transform="translate(390.72 -224.72) rotate(49)" style="fill:#ff6b00"/><rect x="429.84" y="314.73" width="5.55" height="5.55" transform="translate(277.23 -196.13) rotate(36.89)" style="fill:#fffef9"/><rect x="448.72" y="314.02" width="4.79" height="4.79" transform="translate(-7.26 10.6) rotate(-1.34)" style="fill:#fffef9"/><rect x="416.07" y="326.29" width="4.79" height="4.79" transform="translate(-7.55 9.85) rotate(-1.34)" style="fill:#fffef9"/><rect x="422.2" y="312.88" width="4.79" height="4.79" transform="translate(953.38 306.38) rotate(142.44)" style="fill:#672f25"/><rect x="427.27" y="334.79" width="9.19" height="3.17" transform="translate(922.11 579.91) rotate(168.5)" style="fill:#fffef9"/><rect x="419.55" y="322.46" width="9.19" height="3.17" transform="translate(494.93 853.1) rotate(-135)" style="fill:#ff6b00"/><rect x="439.15" y="323.93" width="5.55" height="5.55" transform="translate(284.62 -199.88) rotate(36.89)" style="fill:#fffef9"/><rect x="416.32" y="334.79" width="9.19" height="3.17" transform="translate(956.41 276.59) rotate(135)" style="fill:#ff6b00"/><rect x="430.61" y="324.67" width="5.55" height="5.55" transform="translate(21.6 -26.78) rotate(3.63)" style="fill:#672f25"/></g></g></svg>
+  	</div>
+    <div class='whats-in-right'>
+	  <object data='{{ product.metafields.accentuate.nutrition[0].src }}'></object>
+      <p>
+        <b>Ingredients: </b>
+        {{ product.metafields.accentuate.ingredient_list }}
+      </p>
+      <img src='{{ 'whats-in-icons-variety.svg' | asset_url }}' class='whats-in-icons-variety'/>
+  	</div>
+</div>
+
+<div class='product-faq'>
+  <svg class='wave desktop-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920.02 169.96"><g id="a145197b-7c32-414f-8f85-87f115c0305b" data-name="Layer 2"><g id="adbee164-ba74-441b-92ef-5839c18177f8" data-name="BACKGROUND"><path d="M0,170c213.49,0,398.33-8.6,564.74-26.28C713,127.94,834.08,106.49,951.2,85.75,1189.29,43.59,1435.66,0,1920,0l0,170Z"/></g></g></svg>
+  <svg class='wave mobile-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 375 93.02"><g id="e9ebfe48-bfda-4902-9bcd-154d37fd66cc" data-name="Layer 2"><g id="b6f18be4-3072-46af-9cf8-c9facfefa0b3" data-name="Background"><path d="M375,93H0V0C44.2,0,102.85,18.71,184.16,59.33,236.37,85.41,295.19,93,375,93Z"/></g></g></svg>
+  <div class='questions'>
+    <h2 data-aos='fade-up' data-aos-duration="1000" data-aos-delay='300' data-aos-offset='300'>FAQs</h2>
+    {% for block in section.blocks %}
+    	{% if block.type == 'faq'%}
+    		<div class='accordian'>
+              <div class='question'>
+              	{{ block.settings.question }}
+              </div>
+              <div class='answer'>
+                {{ block.settings.answer }}
+              </div>
+              <div class='x'>✕</div>
+ 	  	 	</div>
+    	{% endif %}
+    {% endfor %}
+  </div>
+  <div class='pour-image'>
+    <img src='{{ product.metafields.accentuate.pouring[0].src }}'/>
+  </div>
+</div>
+
+<div class='product-reviews'>
+  	<svg class='wave desktop-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920.02 169.96"><g id="a145197b-7c32-414f-8f85-87f115c0305b" data-name="Layer 2"><g id="adbee164-ba74-441b-92ef-5839c18177f8" data-name="BACKGROUND"><path d="M0,170c213.49,0,398.33-8.6,564.74-26.28C713,127.94,834.08,106.49,951.2,85.75,1189.29,43.59,1435.66,0,1920,0l0,170Z"/></g></g></svg>
+  	<svg class='wave mobile-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 375.01 49.18"><g id="a7bcf286-e38f-4d87-8c5f-9aeedf0811c1" data-name="Layer 2"><g id="f4a1d9e6-1644-434e-aa23-34af1174928f" data-name="Background"><path d="M375,0V49.18H0c16.65,0,87.69.28,190.63-4.72C291.51,39.57,322.78,19.54,375,0Z"/></g></g></svg> 
+    <svg class='reviews-title' id="b85a987b-0fba-49e0-b244-64d7cbf84b8a" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 180"><text transform="translate(5.92 129.87) rotate(17.46)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">Y</text><text transform="translate(80.26 152.19) rotate(12.46)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">’</text><text transform="translate(99.89 157.38) rotate(8.59)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">a</text><text transform="translate(165.26 166.46) rotate(4.18)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">l</text><text transform="translate(198.05 168.81) rotate(1.86)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">l</text><text transform="matrix(1, 0.01, -0.01, 1, 230.78, 169.72)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="matrix(1, -0.06, 0.06, 1, 261.51, 170.65)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">A</text><text transform="translate(347.7 164.32) rotate(-9.91)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">r</text><text transform="matrix(0.96, -0.27, 0.27, 0.96, 399.3, 155.4)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">e</text><text transform="translate(458.91 138) rotate(-18.56)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="matrix(0.95, -0.3, 0.3, 0.95, 484.39, 128.86)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">T</text><text transform="translate(541.27 110.27) rotate(-12.7)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="translate(599.52 97.03) rotate(-6.76)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="translate(661.34 90.29) rotate(-3.18)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(687.91 88.44) rotate(-0.39)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">K</text><text transform="translate(760.84 88.65) rotate(3.17)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">i</text><text transform="translate(790.58 89.52) rotate(7.12)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">n</text><text transform="translate(853.95 97.11) rotate(13.47)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">d</text><text transform="translate(916.03 112.61) rotate(17.51)" style="font-size:110px;fill:#179b66;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">!</text></svg>
+    <div class='review-container'>
+    {% assign i = 0%}
+	{% for block in section.blocks %}
+      {% if block.type == 'review' %}
+       {% assign mod = i | modulo: 5 %}
+       {% if mod == 0%}
+        <div class='review-group'>
+       {% endif %}
+      	<div class='review'>
+          <div class='stars'>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg>
+          </div>
+          <h3>{{ block.settings.title }}</h3>
+          <h4>{{ block.settings.name }} {% if block.settings.verified %}<img src='{{ 'verified.svg' | asset_url }}'/>{% endif %}</h4>
+          <p>{{ block.settings.review }}</p>
+      	</div>
+       {% if mod == 4%}
+        </div>
+       {% endif %}
+       {% assign i = i | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+    {% if mod != 4%}
+    	</div>  
+    {% endif %}
+  </div>
+  <div class='review-controls'>
+    <svg id='review-left-arrow' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.12 23.61"><g id="b5066a2a-b61c-4be4-9e07-600d56ab6513" data-name="Layer 2"><g id="bebbd190-e032-46c7-8757-8ee537c5d4d7" data-name="ART"><polyline points="13.07 22.54 2.14 11.77 13.07 1.07" style="fill:none;stroke-miterlimit:10;stroke-width:3px"/></g></g></svg>
+    <div class='numbers'>
+      {% assign pages = i | minus: 1 | divided_by: 5 | floor %}
+      {% for j in (0..pages) %}
+      	<div class='number' data-page='{{ j }}'>{{ j | plus: 1 }}</div>
+      {% endfor %}
+    </div>
+    <svg id='review-right-arrow' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.12 23.61"><g id="b8a1a517-ffc2-4562-96dc-b3ee2f14f6b0" data-name="Layer 2"><g id="a054c75b-94ec-4295-ae14-5f470883ba35" data-name="ART"><polyline points="1.05 22.54 11.98 11.77 1.05 1.07" style="fill:none;stroke-miterlimit:10;stroke-width:3px"/></g></g></svg>
+  </div>
+</div>
+
+
+<div class='product-more'>
+    <svg class='wave desktop-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 1920.02 169.96"><g id="a145197b-7c32-414f-8f85-87f115c0305b" data-name="Layer 2"><g id="adbee164-ba74-441b-92ef-5839c18177f8" data-name="BACKGROUND"><path d="M0,170c213.49,0,398.33-8.6,564.74-26.28C713,127.94,834.08,106.49,951.2,85.75,1189.29,43.59,1435.66,0,1920,0l0,170Z"/></g></g></svg>
+    <svg class='wave mobile-only' xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" viewBox="0 0 375 37.5"><g id="afc9ea13-426f-44ba-b915-b90fc3f02119" data-name="Layer 2"><g id="e0716aba-8235-408a-8931-2d28c7c28776" data-name="Background"><path d="M375,37.5H0V0S119.37,37.5,375,37.5Z"/></g></g></svg>
+	<object class='wait-title desktop-only' data-aos='fade-up' data-aos-duration="1000" data-aos-offset='-300' data-aos-delay='300' data='{{ 'wait.svg' | asset_url }}'></object>
+  	<object class='wait-title mobile-only' data='{{ 'mobile-wait.svg' | asset_url }}'></object>
+  	<div class='product-more-container desktop-only'>
+  		{% for p in collections[section.settings.flavors].products %}
+      		{% if p.handle != product.handle %}
+      			<a class='more-product' href='{{ p.url }}'>
+                    <img src='{{ p.featured_image | img_url: '1000x' }}'/>
+                	<div class='more-product-info'>
+                      <h3>{{ p.title }}</h3>
+                      <span class='price'>{{ p.price | money }}</span>
+                  	</div>
+      			</a>
+      		{% endif %}
+      	{% endfor %}
+  	</div>
+    <div class='product-more-container-mobile mobile-only'>
+      <div class='product-more-photos product-more-photos-mobile'>
+  		{% for p in collections[section.settings.flavors].products %}
+      		{% if p.handle != product.handle %}
+      			<a class='more-product' href='{{ p.url }}'>
+                    <img src='{{ p.featured_image | img_url: '1000x' }}'/>
+      			</a>
+      		{% endif %}
+      	{% endfor %}
+      </div>
+      <div class='product-info-line'>
+        <svg id='info-left-arrow' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.12 23.61"><g id="b5066a2a-b61c-4be4-9e07-600d56ab6513" data-name="Layer 2"><g id="bebbd190-e032-46c7-8757-8ee537c5d4d7" data-name="ART"><polyline points="13.07 22.54 2.14 11.77 13.07 1.07" style="fill:none;stroke-miterlimit:10;stroke-width:3px"/></g></g></svg>
+        <div class='product-more-info product-more-info-mobile'>
+          {% for p in collections[section.settings.flavors].products %}
+              {% if p.handle != product.handle %}
+                <a href='{{ p.url }}' class='more-product-info'>
+                  <h3>{{ p.title }}</h3>
+                  <span class='price'>{{ p.price | money }}</span>
+                </a>
+              {% endif %}
+          {% endfor %}
+        </div>
+        <svg id='info-right-arrow' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 14.12 23.61"><g id="b8a1a517-ffc2-4562-96dc-b3ee2f14f6b0" data-name="Layer 2"><g id="a054c75b-94ec-4295-ae14-5f470883ba35" data-name="ART"><polyline points="1.05 22.54 11.98 11.77 1.05 1.07" style="fill:none;stroke-miterlimit:10;stroke-width:3px"/></g></g></svg>
+      </div>
+  	</div>
+  
+</div>
+
+<script>
+  $('.product-types').click(function() {
+   	$(this).toggleClass('on') 
+  })
+  
+  $('.accordian').click(function() {
+    $('.accordian').not(this).toggleClass('open', false)
+   	$(this).toggleClass('open') 
+  })
+  
+  
+  
+  window.addEventListener('DOMContentLoaded', function() {
+      $reviews = $('.review-container').flickity({
+        pageDots: false,
+        prevNextButtons: false,
+        draggable: false,
+        wrapAround: true
+	  })
+      $controls = $('.review-controls .numbers').flickity({
+          asNavFor: '.review-container',
+          pageDots: false,
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: false,
+          draggable: false,
+      })
+      
+      $('#review-left-arrow').click(function() {
+       	$reviews.flickity('previous')
+      })
+      
+	  $('.review-controls .number').click(function() {
+       	$reviews.flickity('select', $(this).data('page'))
+      })
+      
+	  $('#review-right-arrow').click(function() {
+       	$reviews.flickity('next')
+      })
+      
+      $photos = $('.product-more-photos-mobile').flickity({
+        pageDots: false,
+        prevNextButtons: false,
+        cellAlign: 'center',
+        wrapAround: true
+	  })
+      
+	  $info = $('.product-more-info-mobile').flickity({
+          asNavFor: '.product-more-photos-mobile',
+          wrapAround: true,
+          pageDots: false,
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: false,
+          draggable: false
+      })
+      
+      
+      $('#info-left-arrow').click(function() {
+       	$photos.flickity('previous')
+      })
+      
+	  $('#info-right-arrow').click(function() {
+       	$photos.flickity('next')
+      })
+      
+      $('.bsub-widget__group:last-child label').click()
+      
+  })
+</script>
+
+<style>
+  .cross-out {
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+  }
+  .cross-out:before {
+    width: 100%; 
+    height: 2px;
+    content: ' ';
+    position: absolute;
+    left:0;
+    top: calc(50% - 2px);
+    opacity:1.0;
+    background-color: var(--color-5);
+  }
+  .packs {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+  
+  .packs .pack-size {
+    flex: 0 1 30%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .packs .bubble {
+    padding: 20px;
+    border: 2px solid var(--color-1);
+    font-size: 18px;
+      line-height:20px;
+    width: 100%;
+    border-radius: 100px;
+    text-align: center;
+    position: relative;
+  }
+  
+  .packs .free {
+    transform: translateY(-5px);
+    font-size: 14px;
+  }
+  
+  .packs .save {
+        font-size: 14px;
+    text-align: center;
+       color: var(--color-5); 
+  }
+  
+  .pack-size.active .bubble {
+    color: white;
+    background: var(--color-1);
+  }
+  
+  .best-seller {
+    position: absolute;
+    top: -15px;
+    left: -10px;
+    background: var(--color-3);
+    border: 1px solid var(--color-1);
+    color: var(--color-1);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 1px 7px;
+      width: fit-content;
+    border-radius: 15px;
+  }
+  
+  .product-more .product-more-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1800px;
+  }
+  
+  .product-more .more-product {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .more-product-info {
+    text-align: center;
+    color: var(--orange-color);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .more-product-info h3 {
+   	font-size: 26px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 105%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 2px;
+    width: 80%;
+  }
+  
+  .more-product-info .price {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .wait-title {
+    width: 70%;
+    max-width: 800px;
+  }
+  
+  .product-more .wave {
+    fill: var(--orange-background);
+  }
+  
+  .review-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .review-controls .numbers {
+    height: 20px;
+    width: calc(100px * {{ pages }})
+  }
+  
+  .review-controls svg, .product-info-line svg {
+    width: 8px;
+    cursor: pointer;
+    margin: 0 30px;
+  }
+  
+  .review-controls .number {
+  	font-size: 18px;
+    font-weight: 700;
+    width: 23px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 13px;
+    color: var(--color-1);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .review-controls .number.is-selected {
+  	background-color: var(--color-1);
+    color: var(--color-2);
+  }
+  
+  .reviews-title {
+    width: 65%; 
+  }
+  
+  #review-left-arrow, #review-right-arrow {
+    stroke: var(--color-1) !important; 
+  }
+  
+  #info-left-arrow, #info-right-arrow {
+    stroke: var(--orange-color) !important; 
+  }
+  
+  .product-reviews h4, p {
+    font-size: 15px;
+    color: var(--color-1);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .product-reviews h4 {
+    display: flex;
+  }
+  
+  .review-group {
+    padding: 0 30px; 
+    width: 100%;
+  }
+  
+  .product-reviews .review {
+    border-bottom: 2px solid var(--color-1);
+    padding: 22px 0;
+    width: 100%;
+  }
+  
+  .product-reviews .review:last-child {
+    border-bottom: none;
+  }
+  
+  .review .stars {
+    width: 150px; 
+    overflow: hidden;
+    height: 30px;
+  }
+    
+  .review .stars svg {
+    fill: var(--yellow-color); 
+    height: 30px;
+    width: 150px;
+  }
+  
+  .product-reviews h4 img {
+    margin-left: 6px;
+    width: 12px;
+  }
+  
+  .review-container {
+    width: 100%;
+  }
+  
+  .product-reviews h3 {
+	font-size: 32px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    color: var(--color-1);
+  }
+  
+  .product-faq {
+     background-color: var(--color-1);
+	 color: white;
+     display: flex;
+     flex-direction: row;
+     position: relative;
+     align-items: flex-end;
+     justify-content: space-between;
+     z-index: 6;
+     padding-bottom: 100px;
+  }
+  
+  .product-faq .questions {
+     padding: 10vw;
+     max-width: 800px;
+     flex-grow: 1;
+     font-size: 16px;
+     font-weight: 700;
+     display: flex;
+     flex-direction: column;
+  }
+  
+  .product-faq .accordian.open .answer {
+     max-height: 150px;
+  }
+  
+  .product-faq .accordian {
+     position: relative; 
+     margin-bottom: 22px;
+     cursor: pointer;
+  }
+  
+  .product-faq .accordian .x {
+     transform: rotate(45deg);
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    transition: 0.3s;
+  }
+  
+  .product-faq .accordian.open .x {
+     transform: rotate(0deg);
+  }
+  
+  .product-faq .accordian .answer {
+     color: var(--yellow-color);
+	 max-height: 0;
+     overflow: hidden;
+     transition: 0.3s;
+     width: 100%;
+  }
+  
+  .product-faq h2 {
+    font-size: 58px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 18px;
+  }
+  
+  .product-faq .pour-image {
+    margin-top: -5vw;
+  }
+  
+  .product-faq .pour-image img {
+     width: auto;
+    max-width: 30vw;
+  }
+  
+  .whats-in-icons {
+    width: 75%; 
+  }
+  
+  .product-whats-in p {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 24px;
+    color: var(--color-1);
+    margin-bottom: 36px;
+  }
+  
+  .whats-in-left p {
+    text-align: center; 
+    font-size: 18px;
+  }
+  
+  .whats-in-right p {
+    font-weight: 400; 
+  }
+  
+  .product-directions .wave {
+   fill: var(--color-3); 
+  }
+  
+  .product-whats-in .wave, .product-reviews .wave {
+  	fill: var(--color-2); 
+  }
+  
+  .product-faq .wave {
+  	fill: var(--color-1); 
+  }
+  
+  .directions-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 550px;
+  }
+  
+  .product-directions-title {
+    max-width: 95%; 
+    margin: 30px 0;
+  }
+  
+  .product-directions-title text {
+    fill: var(--color-1) !important;
+  }
+  
+  .product-whats-in text, .product-reviews text, .product-directions text {
+    fill: var(--color-1) !important;
+  }
+  
+  .whats-in-icons .path {
+     stroke: var(--color-1) !important;
+  }
+  
+  .product-whats-in.variety {
+    padding-top: 0;
+    flex-direction:column;
+    align-items: center;
+  }
+  
+  .product-whats-in .whats-in-icons-variety {
+    display: none;
+  }
+  
+  .product-whats-in.variety .whats-in-icons-variety {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+  }
+  .product-whats-in.variety .whats-in-icons {
+  	display: none;
+  }
+  
+  .product-whats-in.variety .whats-in-left svg {
+    max-width: 500px;
+  }
+  
+  .product-whats-in.variety .whats-in-right {
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .product-whats-in.variety .whats-in-right p {
+    display: none; 
+  }
+  
+  .product-whats-in.variety .whats-in-right object {
+    width: 100%;
+  }
+  
+  
+  .product-whats-in {
+    background-color: var(--color-2);
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 5;
+    padding: 10vh 5vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .product-whats-in.variety > div {
+    flex: unset;
+    max-width: 800px;
+  }
+  
+  .product-whats-in > div {
+  	flex: 0 1 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+  }
+  
+  .product-reviews {
+    background-color: var(--color-2);
+   	background-image: url({{ product.metafields.accentuate.background_2[0].src }});
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 7;
+    padding: 7vh 15vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-directions {
+    background-color: var(--color-3);
+   	background-image: url({{ product.metafields.accentuate.background_1[0].src }});
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 5;
+    padding: 5vh 20vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-more {
+    background-color: var(--orange-background);
+    position: relative;
+    z-index: 8;
+    padding: 10vh 2vw;
+    padding-bottom: 15vh;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .wave {
+    position: absolute;
+    top: -149px;
+    width: 100%;
+    height: 150px;
+    left:0;
+  }
+  
+  .Product__Info {
+   width: 100%; 
+   padding: 0;
+   position: unset;
+   max-width: 100%;
+   margin: 0;
+  }
+  body {
+    --color-1: {{ product.metafields.accentuate.color_1 }};
+  	--color-2: {{ product.metafields.accentuate.color_2 }};
+    --color-3: {{ product.metafields.accentuate.color_3 }};
+    --color-4: {{ product.metafields.accentuate.color_4 }};
+    --color-5: {{ product.metafields.accentuate.color_5 }};
+   	background-color:  {{ product.metafields.accentuate.color_2 }};
+  }
+  
+  .product {
+
+  }
+    
+  .product-hero {
+    height: calc(100vh + 160px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+	align-items: flex-start;
+    color: var(--color-1);
+    padding-top: 120px;
+    padding-left: 10vw;
+    overflow: hidden;
+  }
+    
+  .product-info {
+   	flex: 0 0 440px; 
+	font-size: 18px; 
+    font-weight: 600;
+  }
+    
+  .stars {
+/*     width: calc(36px * {{ product.metafields.accentuate.star_rating }});  */
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    align-items: center;
+  }
+    
+  .stars .count {
+    margin-left: 10px; 
+  }
+    
+  .stars svg {
+    fill: #faca1b; 
+    height: 40px;
+    width: 180px;
+  }
+    
+  .product-image {
+    flex: 0 0 60%; 
+  }
+    
+  .product-image img {
+   	width: 100%;
+    object-fit: contain;
+    max-height: 80vh;
+  }
+    
+  .product-title {
+    font-size: 58px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 0px;
+  }
+    
+  .product-options {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+    
+  .product-options .label {
+    margin-bottom: 3px; 
+  }
+    
+  #quantity input {
+    font-size: 18px;
+    font-weight: 800;
+  }
+    
+  #quantity .QuantitySelector {
+    width: 100%;
+    height: 57px;
+    border-radius: 30px;
+    border: 2px solid var(--color-1);
+    padding: 0 8px;
+  }
+    
+  #quantity path {
+    stroke-width: 3px;
+  }
+   
+  .product-subtitle {
+    margin-bottom: 24px; 
+  }
+    
+  .product-options-type {
+    flex-grow: 1;
+    margin-right: 24px;
+    position: relative;
+  }
+    
+  .product-types {
+    width: 100%;
+    height: 57px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px;
+    border: 2px solid var(--color-1);
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+  }
+    
+  .product-types .others {
+    display: none;
+  }
+    
+  .product-types svg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    stroke: var(--color-1);
+  }
+    
+  .product-types.on {
+    background-color: var(--color-1);
+    color: var(--color-5);
+    height: fit-content;
+    position: absolute;
+  }
+    
+  .product-types.on svg {
+  	stroke: var(--color-2);
+    transform: rotate(180deg);
+  }
+    
+  .product-types.on > span { 
+    margin-bottom: 10px;
+  }
+    
+  .product-types.on .others {
+    display: flex;
+    flex-direction:column;
+    color: var(--color-2);
+  }
+    
+  .product-types.on .others > * {
+	margin-bottom: 10px;
+  }
+    
+  .product-types.on .others > *:last-child {
+	margin-bottom: 0px;
+  }
+    
+  .atc {
+    margin: 0 auto;
+    margin-top: 28px;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    width: 66%;
+    padding: 12px 20px;
+    color: var(--color-2);
+    background-color: var(--color-4);
+    border-radius: 30px;
+  }
+    
+  @media (max-width: 1023px) {
+    .product-more {
+      padding: 30px; 
+      padding-bottom: 60px;
+    }
+    .wait-title {
+      width: 90%;
+      max-width: 400px;
+      height: 28vw;
+      max-height: 150px;
+    }
+    .product-info-line {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .product-info-line svg {
+      margin: 0; 
+    }
+    .product-more-info {
+      width: 75%;
+      max-width: 400px;
+    }
+    .product-more-container-mobile {
+      width: 100%; 
+    }
+    .product-more-container-mobile .more-product img {
+      width: 80vw;
+      max-width: 400px;
+    }
+    
+    .more-product-info {
+      width: 100%; 
+    }
+    .more-product-info h3 {
+      font-size: 22px; 
+    }
+    .more-product-info .price {
+      font-size: 14px; 
+    }
+    .product-faq {
+      padding-bottom: 60px; 
+    }
+    .product-reviews {
+      padding: 50px;
+      padding-top: 40px;
+      padding-bottom: 110px;
+    }
+    .review .stars, .review .stars svg {
+      width: 100px;
+      height: 20px;
+    }
+    .product-reviews h3 {
+      font-size: 24px;
+    }
+    .product-reviews h4, .product-reviews p {
+      font-size: 12px; 
+    }
+    .product-reviews .wave {
+      top:-50px;
+      height: 50px;
+    }
+    .reviews-title {
+      width: 100%;
+	  height: 15vw;
+      max-width: 440px;
+    }
+    .review-group {
+      padding: 0; 
+    }
+    .product-whats-in {
+      padding: 30px;
+      padding-top: 0;
+      padding-bottom: 110px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .whats-in-left p {
+      font-size: 14px; 
+    }
+    .whats-in-icons {
+      width: 90%;
+      margin-bottom: 40px;
+    }
+    .product-faq .pour-image {
+      display: none; 
+    }
+    .product-directions .wave {
+      top: 0;
+    }
+    .wave {
+      height: 80px; 
+      top: -80px;
+    }
+    .product-directions {
+      margin-top: -50px;
+      background-image: none;
+      position: relative;
+      padding: 30px;
+      padding-bottom: 110px;
+    }
+    .product-directions .wave {
+      background-color: var(--color-2); 
+    }
+    .product-directions .bg {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .directions-container {
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .product-hero {
+      height: fit-content;
+      flex-direction: column-reverse;
+      padding-left: 0;
+      padding-top: 0;
+  	}	
+    .best-seller {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .packs .free {
+      font-size: 12px; 
+    }
+    .product-info {
+      font-size: 14px; 
+    }
+    .product-types {
+      height: 50px; 
+    }
+    .product-types svg {
+      top: 19px; 
+    }
+    #quantity .QuantitySelector {
+      height: 50px; 
+    }
+    #quantity input {
+      font-size: 14px; 
+    }
+    .bsub-widget__text {
+      line-height: 2.0; 
+    }
+    .atc {
+	  margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 14px;
+	  padding: 8px 20px;
+    }
+    .product-title {
+      font-size: 46px;
+    }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Product page",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "text",
+      "id": "whats_in",
+      "label": "What's in description",
+      "default": "Lorem ipsum dolor sit amet, consectetuer adipiLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud "
+    },
+    {
+      "type": "collection",
+      "id": "flavors",
+      "label": "Flavor collection"
+    }
+  ],
+  "blocks": [
+	{
+	  "type": "review",
+	  "name": "Review",
+	  "settings": [
+		{
+			"type": "text",
+			"id": "title",
+			"label": "Title"
+	  	},
+		{
+			"type": "text",
+			"id": "name",
+			"label": "Name"
+	  	},
+		{
+			"type": "textarea",
+			"id": "review",
+			"label": "Review"
+	  	},
+		{
+			"type": "range",
+			"id": "stars",
+			"label": "Star Rating",
+			"min": 1,
+			"max": 5,
+			"step": 0.5,
+			"default": 5
+	  	},
+		{
+			"type": "checkbox",
+			"id": "verified",
+			"label": "Verified?"
+	  	}
+	  ]
+	},
+	{
+	  "type": "faq",
+	  "name": "FAQ",
+	  "settings": [
+		{
+			"type": "text",
+			"id": "question",
+			"label": "Question"
+	  	},
+		{
+			"type": "textarea",
+			"id": "answer",
+			"label": "Answer"
+	  	}
+	  ]
+	}
+  ]
+}
+{% endschema %}

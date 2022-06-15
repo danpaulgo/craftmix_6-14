@@ -1,0 +1,207 @@
+{% assign collection = collections[section.settings.collection] %}
+{% assign collection_second = collections[section.settings.collection_second] %}
+
+<section class="Section Section--spacingNormal featured-collections-hero">
+  <div class="Container">
+	{% if section.settings.featured_product %}
+    	{% assign product = all_products[section.settings.featured_product] %}
+    <div class='featured-product-box'>
+      	<a href="{{ product.url }}" class="FeaturedProduct__Gallery">
+          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,700,800,900,1000', image: product.featured_image -%}{%- endcapture -%}
+
+          <div class="AspectRatio" style="max-width: {{ product.featured_image.width }}px; --aspect-ratio: {{ product.featured_image.aspect_ratio }}">
+            {% assign image_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+            <img class="Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+            <span class="Image__Loader"></span>
+
+            <noscript>
+              <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.featured_image.alt | escape }}">
+            </noscript>
+          </div>
+      </a>
+      <div class='featured-product-info'>
+      {%- render 'product-meta', product: product, show_price: 'no', show_description: '' -%}
+        <div class='description'>
+        	{{ section.settings.description }}
+
+        </div>
+      {%- render 'product-form', product: product, view: product.url -%}
+      </div>
+    </div>
+    {% endif %}
+    <div class="FeaturedCollectionsHero">
+
+      	<div class="collection-container">
+		    <h3 class='FeaturedCollection__Title'>{{collection.title | replace: 'Featured ', ''}}</h3>
+      		{% assign n = 0 %}
+      		{% for product in collection.products %}
+            <div class="FeaturedProduct__Info product-option {% if n == 0 %}product-show{% endif %}" id="option-{{product.id}}">
+                 <a href="{{ product.url }}" class="FeaturedProduct__Gallery">
+                    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,700,800,900,1000', image: product.featured_image -%}{%- endcapture -%}
+
+                    <div class="AspectRatio" style="max-width: {{ product.featured_image.width }}px; --aspect-ratio: {{ product.featured_image.aspect_ratio }}">
+                      {% assign image_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+                      <img class="Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+                      <span class="Image__Loader"></span>
+
+                      <noscript>
+                        <img src="{{ product.featured_image | img_url: '300x' }}" alt="{{ product.featured_image.alt | escape }}">
+                      </noscript>
+                    </div>
+                  </a>
+	             {%- render 'product-meta', product: product, show_price: 'no', show_description: '' -%}
+                    <div class='select-style-text'>Select Style:</div>
+              		<div class="option-buttons">
+                      {% assign m = 0 %}
+                      {% for product in collection.products %}
+                          <a id='option-{{product.id}}-button' data-view='option-{{product.id}}' class='option-button {% if m == 0 %}highlight{% endif %}'>
+                            <img src="{{ product.featured_image | img_url: '100x' }}" alt="{{ product.featured_image.alt | escape }}">
+                          </a>
+                          {% assign m = m | plus: 1 %}
+                      {% endfor %}
+                    </div>
+                    {% assign size_list = '' | split: '' %}
+                    {% assign product_split = product.title | split: ' - ' %}
+                    {% assign first_part = product_split[0] | append: ' - ' | append: product_split[1] %}
+                    {% if product_split.size > 1 %}
+                      <div class='size-line'>
+                        {% assign a_products = collections.all.products | sort: 'title' | reverse %}
+                        {% for loop_product in a_products %}
+                          {% if loop_product.title contains first_part %}
+                              {% assign product_size_split = loop_product.title | split: ' - '%}
+                        	  {% unless product.title == loop_product.title %}{% assign second_product = loop_product %}{% endunless %}
+                              <a data-select='{{ loop_product.id }}' class='size-button {% if product.title == loop_product.title %}selected{% endif %}'>{{ product_size_split[2] }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+              	  <div class='size-option size-show' id='size{{ product.id }}'>
+                 	{%- render 'product-form', product: product, view: product.url -%}
+	              </div>
+				  <div class='size-option' id='size{{ second_product.id }}'>
+                 	{%- render 'product-form', product: second_product, view: second_product.url -%}
+	              </div>
+            </div>
+    		{% assign n = n | plus: 1 %}
+      		{% endfor %}
+	    </div>
+      
+      	<div class='liner'>
+          <div></div>
+      	</div>
+    
+        <div class="collection-container">
+		    <h3 class='FeaturedCollection__Title'>{{collection_second.title | replace: 'Featured ', ''}}</h3>
+      		{% assign n = 0 %}
+      		{% for product in collection_second.products %}
+            <div class="FeaturedProduct__Info product-option {% if n == 0 %}product-show{% endif %}" id="option-{{product.id}}">
+                 <a href="{{ product.url }}" class="FeaturedProduct__Gallery">
+                    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,600,700,800,900,1000', image: product.featured_image -%}{%- endcapture -%}
+
+                    <div class="AspectRatio" style="max-width: {{ product.featured_image.width }}px; --aspect-ratio: {{ product.featured_image.aspect_ratio }}">
+                      {% assign image_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+                      <img class="Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ product.featured_image.alt | escape }}">
+                      <span class="Image__Loader"></span>
+
+                      <noscript>
+                        <img src="{{ product.featured_image | img_url: '200x' }}" alt="{{ product.featured_image.alt | escape }}">
+                      </noscript>
+                    </div>
+                  </a>
+	             {%- render 'product-meta', product: product, show_price: 'no', show_description: '' -%}
+              		<div class='select-style-text'>Select Style:</div>
+              		<div class="option-buttons">
+                      {% assign m = 0 %}
+                      {% for product in collection_second.products %}
+                          <a id='option-{{product.id}}-button' data-view='option-{{product.id}}' class='option-button {% if m == 0 %}highlight{% endif %}'>
+                            <img src="{{ product.featured_image | img_url: '100x' }}" alt="{{ product.featured_image.alt | escape }}">
+                          </a>
+                          {% assign m = m | plus: 1 %}
+                      {% endfor %}
+                    </div>
+                    {% assign size_list = '' | split: '' %}
+                    {% assign product_split = product.title | split: ' - ' %}
+                    {% assign first_part = product_split[0] | append: ' - ' | append: product_split[1] %}
+                    {% if product_split.size > 1 %}
+                      <div class='size-line'>
+                        {% assign a_products = collections.all.products | sort: 'title' | reverse %}
+                        {% for loop_product in a_products %}
+                          {% if loop_product.title contains first_part %}
+                              {% assign product_size_split = loop_product.title | split: ' - '%}
+                        	  {% unless product.title == loop_product.title %}{% assign second_product = loop_product %}{% endunless %}
+                              <a data-select='{{ loop_product.id }}' class='size-button {% if product.title == loop_product.title %}selected{% endif %}'>{{ product_size_split[2] }}</a>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    {% endif %}
+              	  <div class='size-option size-show' id='size{{ product.id }}'>
+                 	{%- render 'product-form', product: product, view: product.url -%}
+	              </div>
+				  <div class='size-option' id='size{{ second_product.id }}'>
+                 	{%- render 'product-form', product: second_product, view: second_product.url -%}
+	              </div>
+            </div>
+    		{% assign n = n | plus: 1 %}
+      		{% endfor %}
+	    </div>
+    </div>
+  </div>
+  {%- comment -%}
+  --------------------------------------------------------------------------------------------------------------------
+  OFF SCREEN ELEMENTS
+  --------------------------------------------------------------------------------------------------------------------
+  {%- endcomment -%}
+
+  {{- product_popovers -}}
+  {{- product_modals -}}
+</section>
+
+<style>
+
+  
+</style>
+
+{% schema %}
+{
+  "name": "Featured product",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_buttons",
+      "label": "Show checkout buttons",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "Featured product descriptions"
+    },
+	{
+      "type": "product",
+      "id": "featured_product",
+      "label": "Featured product"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection Option 1"
+    },
+    {
+      "type": "collection",
+      "id": "collection_second",
+      "label": "Collection Option 2"
+    }
+
+  ],
+  "presets": [
+    {
+      "category": "Hero",
+      "name": "Featured collection hero"
+    }
+  ]
+}
+{% endschema %}

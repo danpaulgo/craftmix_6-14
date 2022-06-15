@@ -1,0 +1,140 @@
+{% if template == 'page.social-landing'%}
+	{% assign product = all_products['variety-12-pack']%}
+{% endif %}
+
+
+{%- liquid
+  if product.requires_selling_plan or product.selected_selling_plan_allocation
+    assign current_selling_plan_allocation = product.selected_or_first_available_selling_plan_allocation
+  else
+    assign current_selling_plan_allocation = nil
+  endif
+-%}
+
+<!-- Bold Subscriptions Widget -->
+{% if product.selling_plan_groups.size > 0 %}
+<fieldset
+  class="bsub-widget"
+  role="{%- if product.requires_selling_plan == false or product.selling_plan_groups.size > 1 -%} radiogroup {%- else -%} group {%- endif -%}"
+  data-bsub-widget
+>
+
+  <div
+    class="bsub-widget__wrapper
+    {% if product.requires_selling_plan and product.selling_plan_groups.size == 1 %} bsub-widget__wrapper--single {% endif %}"
+  >
+    <!-- Selling Plan Groups (Purchase Options) -->
+    <div class="bsub-widget__groups-container">
+      <!-- render One-time purchase option -->
+      {% unless product.requires_selling_plan == true %}
+        <div class="bsub-widget__group">
+          <label class="bsub-widget__group-label">
+            <input
+              type="radio" value="once" name="bsub-selling-plan-group"
+              data-bsub-selling-plan-group-input
+              data-bsub-purchase-option-one-time
+              class="{{ product.id }}"
+              {% unless current_selling_plan_allocation %} checked {% endunless %}
+              onchange="window.BOLD.BsubWidget.handleSellingPlanGroupChange(event)"
+            >
+            <div class="bsub-widget__group-header {{ product.id }}" data-one-time onClick="$('[data-bsub-purchase-option-one-time]:not({{product.id}})').click(); $('.subscription-discount').hide(); $('.normal-discount').show()">
+              <div class="bsub-widget__text">
+                <span>One-time Purchase</span>
+                <span>{% if triple == 'yes' %}{{ product.price | times: 3 | money }}{% else %}{% unless show_base_price == 'no' %}<span class='cross-out normal-discount' style='display:none;'>{{ base_price }}</span>{% endunless %}{{ product.price | money }}{% endif %}</span>
+                <!-- {{ 'products.product.one_time_purchase' | t }} -->
+              </div>
+            </div>
+          </label>
+        </div>
+      {% endunless %}
+
+      <!-- selling plan group radio -->
+      {% for group in product.selling_plan_groups %}
+        <div
+          class="bsub-widget__group"
+          data-bsub-selling-plan-group
+          data-bsub-selling-plan-group-id="{{ group.id }}"
+        >
+          <label class="bsub-widget__group-label">
+            <input
+              data-bsub-selling-plan-group-input
+              class="bsub-widget__input"
+			  class="{{ product.id }}"
+              type="radio" value="{{group.id}}" name="bsub-selling-plan-group"
+              {% if group.id == current_selling_plan_allocation.selling_plan.group_id %} checked {% endif %}
+              onchange="window.BOLD.BsubWidget.handleSellingPlanGroupChange(event)"
+            >
+            <div class="bsub-widget__group-header {{product.id}}" data-two-time onClick="$('[data-bsub-selling-plan-group-input]:not({{product.id}})').click(); $('.subscription-discount').show(); $('.normal-discount').hide()">
+              <div class="bsub-widget__text">
+                <span>{{- group.name -}}</span>
+                <span>{% if triple == 'yes' %}{{ product.price | times: 2.7 | money }}{% else %}<span class='cross-out subscription-discount'>{{ base_price }}</span><span data-bsub-per-delivery-price>${{ product.metafields.accentuate.discount_price }}</span>{% endif %}</span>
+              </div>
+            </div>
+          </label>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Render individual selling plans -->
+    {% for group in product.selling_plan_groups %}
+      <div
+        class="bsub-widget__plans-container
+          {% unless current_selling_plan_allocation.selling_plan.group_id == group.id %} bsub__hidden {% endunless %}"
+        data-bsub-selling-plan-group-id="{{ group.id }}"
+        data-bsub-selling-plans-container
+      >
+          {% for plan in group.selling_plans %}
+            <div
+              class="bsub-widget__plan"
+              data-bsub-selling-plan
+              data-bsub-selling-plan-id="{{ plan.id }}"
+            >
+              <label class="bsub-widget__plan-label">
+                <input
+                  data-bsub-selling-plan-input
+                  type="radio" value="{{ plan.id }}"
+                  name="bsub-selling-plan-{{ group.id }}"
+                  {% if current_selling_plan_allocation == nil and forloop.first %} checked {% endif %}
+                  {% if current_selling_plan_allocation.selling_plan.id == plan.id -%} checked {% endif %}
+                  onchange="window.BOLD.BsubWidget.handleSellingPlanChange(event)"
+                >
+                <div class="bsub-widget__plan-header">
+                  <div class="bsub-widget__text">
+                    {{- plan.name -}}
+                  </div>
+                </div>
+              </label>
+            </div>
+          {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+
+  <input
+    type="hidden"
+    name="selling_plan"
+    data-bsub-selling-plan-id-input
+    value="{{ current_selling_plan_allocation.selling_plan.id }}"
+  />
+
+  <script
+    type="application/json"
+    data-bsub-product-json
+    data-bsub-product-id="{{ product.id }}"
+  >
+    {{ product | json }}
+  </script>
+</fieldset>
+
+<script
+  type="application/json"
+  data-bsub-money-format="{{shop.money_format}}"
+></script>
+
+<input
+  type="hidden"
+  data-bsub-page-template
+  value="{{ template }}"
+/>
+
+{% endif %}

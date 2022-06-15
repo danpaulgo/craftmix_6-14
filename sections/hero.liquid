@@ -1,0 +1,165 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" >
+  <div class='hero desktop-only'>
+	<div class='left-hero'>
+      	<h1 class='hero-header' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+          {{ section.settings.hero_title }}
+      	</h1>
+      	<div class='hero-info' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+          {{ section.settings.info_box}}
+      	</div>
+      	<a href='{{ section.settings.shop_url }}' class='hero-button rise' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
+          Shop Now
+      	</a>
+  	</div>
+  	<div class='right-hero'>
+        <img class='hero-product-shot Image--lazyLoad' src='{{ section.settings.product_shot | img_url: '800x' }}' data-src='{{ section.settings.product_shot | img_url: '2000x' }}' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000" />
+  	</div>
+  </div>
+  <div class='hero-mobile mobile-only'>
+	{{ section.settings.mobile-title }}
+    <img class='Image--lazyLoad' src='{{ section.settings.product_shot | img_url: '400x' }}' data-src='{{ section.settings.product_shot | img_url: '1000x' }}' />
+    <div class='hero-info'>
+      {{ section.settings.info_box}}
+    </div>
+    <a href='{{ section.settings.shop_url }}' class='hero-button rise'>
+      Shop Now
+    </a>
+  </div>
+</section>
+
+<style>
+  .hero-mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 30px);
+    justify-content: center;
+    padding: 20px 30px;
+    padding-top: 0;
+  }
+  
+  .mobile-only .hero-button {
+   padding: 10px 22px;
+   border-radius: 30px;
+   font-size: 18px;
+   font-weight: 700;
+  }
+  
+  .hero-mobile > * {
+    margin: 12px 0; 
+  }
+  
+  .hero-mobile .hero-info {
+    margin-bottom: 0; 
+    margin-top: 24px;
+  }
+  
+  .hero-mobile > img, .hero-mobile > svg {
+    width: 100%;
+    max-width: 420px;
+    object-fit: contain;
+  }
+  
+  .hero {
+   	height: calc(100vh + 30px);
+    min-height: 680px;
+    background-color: var(--blue-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .left-hero {
+   	flex: 0 0 320px;
+    margin-right: 6vw;
+  }
+  
+  .hero-header {
+   	font-family: 'Hornbill';
+    font-size: 90px;
+    line-height: 0.9;
+    color: var(--orange-color);
+    letter-spacing: -0.012em;
+    margin-bottom: 12px;
+  }
+  
+  .hero-info {
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--orange-color);
+    margin-bottom: 36px;
+  }
+  
+  .hero-product-shot {
+    width: calc(50vw + 2px);
+    object-position: right;
+    object-fit: contain;
+   	height: 75vh; 
+    min-height: 500px;
+  }
+  
+  .hero-button {
+   background-color: var(--green-color);
+   color: var(--blue-color);
+   padding: 18px 32px;
+   border-radius: 40px;
+   font-size: 20px;
+   font-weight: 700;
+  }
+  
+  .big-image.one text, .big-image.two text {
+    opacity: 0;
+/*     transform: translateY(30px); */
+    transition: 0.2s;
+  }
+  
+</style>
+         
+
+{% schema %}
+{
+  "name": "Hero Section",
+  "class": "shopify-section--hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+	  "default": "Mix Things Up"
+    },
+    {
+      "type": "textarea",
+      "id": "info_box",
+      "label": "Info Box Text",
+	  "default": "Instant craft cocktails."
+    },
+    {
+      "type": "url",
+      "id": "shop_url",
+      "label": "Shop button url"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_shot",
+      "label": "Product"
+    },
+	{
+	  "type": "textarea",
+	  "id": "mobile-title",
+      "label": "Mobile Title SVG"
+	}
+  ],
+  "presets": [
+    {
+      "category": "Hero",
+      "name": "Hero Section"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

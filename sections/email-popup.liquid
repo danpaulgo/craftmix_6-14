@@ -1,0 +1,482 @@
+<style>
+  #popupBox {
+  display: none; 
+   width: 600px;
+  background: url({{ 'email-popup.svg' | asset_url }});
+  background-size: 100% 100%;
+  height: 400px;
+ position: fixed;
+  z-index:100000;
+ top: calc(50vh - 200px);
+ left: calc(50vw - 300px);
+  box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: center;
+    color: white;
+    font-size: 16px;
+}
+  
+  #popupBox .thin-button {
+    width: fit-content;
+	font-size: 12px;
+    text-transform: uppercase;
+    color: var(--orange-color);
+    font-weight: 700;
+    margin-top: 6px;
+  }
+ 
+
+#popupRight {
+ display: flex;
+ flex-direction: column;
+ justify-content: flex-start;
+  align-items:center;
+  padding:10px;
+    width: 360px;
+  margin-bottom: 18px;
+  margin-right: 24px;
+}
+
+#popupSignup input[type='email'], #popupSignup input[type='tel'] {
+  font-size: 14px;
+  border: none;
+  padding:6px 12px;
+  width: 100%;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  height: 100%;
+  text-align: center;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: var(--orange-color);
+  border-bottom: 1px solid var(--orange-color);
+  background-color: transparent;
+}
+  
+  #popupSignup input[type='tel'] {
+/*    margin-bottom: 12px; */
+    position: relative;
+  }
+  
+  #tel_tooltip {
+    content: 'By subscribing, you agree to receive recurring automated marketing messages at this phone number. Reply STOP to unsubscribe. Msg & data rates may apply. View our Terms of Service for details.';
+    position: absolute;
+    background-color: white;
+    width: 200px;
+    z-index: 100;
+    color: var(--orange-color);
+    font-size: 11px;
+    line-height: 1.1;
+    padding: 4px 8px;
+    border-radius: 8px;
+    bottom: -64px;
+    display: none;
+  }
+  
+  #popupSignup input[type='tel']:focus + #tel_tooltip, #popupSignup input[type='tel']:focus-within + #tel_tooltip,#popupSignup input[type='tel']:active + #tel_tooltip {
+  	display: inline-block;
+  }
+  
+#popupSignup input[type='email']::placeholder {
+  color: var(--orange-color);
+}
+
+#popupClose {
+  background-color:rgba(0,0,0,0);
+  border: none;
+  position:absolute;
+  display:block;
+  top: 116px;
+  width: 20px;
+  height: 20px;
+  right: -116px;
+  z-index:1000;
+}
+
+.popupLight {
+ 	color: #888; 
+}
+
+#popupClose:after, #popupClose:before{
+  content:"";left:0px;width:20px;height:2px;background-color:var(--orange-color);position: absolute;
+} 
+#popupClose:before{transform:rotate(-45deg)}
+#popupClose:after{transform:rotate(45deg)}
+
+#popupBox .line {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  line-height: 1.45;
+  font-size: 12px;
+  position: relative;
+  z-index:1000;
+}
+
+#popupBox img {
+  width: 50%; 
+  height: 100%;
+}
+
+#popupPrompt, #popupThanks {
+  position: relative;
+  line-height: 1.45;
+  text-transform: none;
+  font-size: 14px;
+  color: black;
+  display: flex;
+  flex-direction:column;
+  text-align: center;
+  margin-bottom: 8px;
+}
+  
+  #popupThanks {
+    width: 60%;
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0 auto;
+  }
+  
+.popup-title {
+    font-size: 25px;
+    line-height: 95%;
+    font-family: 'Hornbill';
+    font-weight: 600;
+    color: var(--orange-color);
+    margin: 0 auto;
+    margin-bottom: 8px;
+    margin-top: 164px;
+    text-align: center;
+    width: 70%;
+}
+  
+.popup-subtitle {
+  color: var(--orange-color);
+  font-size:16px;
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 0px;
+    line-height: 1.1;
+}
+
+#popupThanks {
+  display:none;
+}
+  
+  #popupBox #mc_embed_signup_scroll_popup {
+    height: 40px;
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    width: 100%;
+  }
+  
+  #popupSignup {
+    width: 100%;
+  }
+  
+#popupSignup .klaviyo_field_group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+  
+  #popupBox img {
+   display: none;
+  }
+  
+  .klaviyo_messages {
+   	color: white;
+    font-size: 12px;
+    text-align: center;
+    color: var(--orange-color);
+  }
+  
+  #popupThanks {
+      color: var(--orange-color);
+        top: 200px;
+        font-size: 16px;
+  }
+  
+  #popupButton {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    color: white;
+    background-color: var(--orange-color);
+    border-radius: 10px;
+    padding-right: 40px;
+      z-index: 999;
+  }
+  
+  #popupButtonSpan {
+   cursor: pointer; 
+  }
+  
+  #email_error, #tel_error {
+    color: var(--orange-color);
+    font-size: 12px;
+    line-height: 1.0;
+  }
+  
+  #buttonPopupClose {
+    position: absolute;
+    right: 10px;
+    top: 14px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+  
+  #buttonPopupClose:after, #buttonPopupClose:before{
+    content:"";left:0px;width:20px;height:2px;background-color:white;position: absolute;
+  } 
+  #buttonPopupClose:before{transform:rotate(-45deg)}
+  #buttonPopupClose:after{transform:rotate(45deg)}
+
+</style>
+
+
+<div id='popupButton' {% if template == 'index' %}style='display:none;'{% endif %} class='rise'>
+  <span id='popupButtonSpan'>{{ section.settings.button }}</span>
+  <button id="buttonPopupClose">
+  </button>
+</div>
+
+<div id="popupBox">
+  <div id='backdrop'></div>
+  <img src='{{ section.settings.image.src | img_url: 'master' }}'>
+  <div id='popupRight'>
+      <div class='line'>
+        <button id="popupClose">
+        </button>
+      </div>
+    <div id="popupPrompt">
+      <span class='popup-title'>{{ section.settings.title }}</span>
+      <span class='popup-subtitle'>{{ section.settings.subtitle }}</span>
+    </div>
+    <div id="popupThanks">
+      {{ section.settings.thanks }}
+    </div>
+    <div id="popupSignup">
+      <form  id='emailForm'  class="klaviyo_gdpr_embed_{{section.settings.list_id}}" action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+        <input type="hidden" name="g" value="{{section.settings.list_id}}">
+    	<input type="hidden" name="$fields" value="$phone_number">
+	    <input type="hidden" name="$list_fields" value="$consent">
+          <div class="klaviyo_field_group">
+            <input type="email" value="" name="email" id="k_id_email" class="required email" placeholder="Email" required >
+            <span id='email_error'></span>
+            {% if section.settings.enable_phone %}
+            <input type="tel" value="" name="phone_number" id="k_id_phone" class="required phone" placeholder="Phone Number" required>
+            <span id='tel_tooltip'>By subscribing, you agree to receive recurring automated marketing messages at this phone number. Reply STOP to unsubscribe. Msg & data rates may apply. View our Terms of Service for details.</span>
+            <span id='tel_error'></span>
+            {% endif %}
+            <input type="submit" value="{{ section.settings.button_text }}" name="subscribe" id="mc-embedded-subscribe" class="thin-button klaviyo_submit_button" disabled>
+          </div>
+          <div class="klaviyo_messages">
+            <div class="success_message" style="display:none;">{{ settings.success_copy | newline_to_br }}</div>
+            <div class="error_message" style="display:none;"></div>
+		 </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  
+  function resetStartTime() {
+  	startTime = new Date();
+  	window.sessionStorage.setItem('startTime', startTime);
+  	return startTime;
+  }
+  
+	document.addEventListener('DOMContentLoaded', function(event) {
+      
+      var cleave = new Cleave('#k_id_phone', {
+		delimiter: '-',
+	    blocks: [3, 3, 4],
+      });
+      
+      if(window.sessionStorage.getItem('popupTimeout') === null){
+      	//console.log('setting true - out')
+  		window.sessionStorage.setItem('popupTimeout', true);
+      }
+      //console.log(window.localStorage.getItem('popupTimeout'))
+      {% if template == 'index' %}
+      setTimeout(function() {
+      if(window.sessionStorage.getItem('popupTimeout') == 'true'){
+        //console.log('showing popup')
+      	document.getElementById('popupBox').style.display = 'flex';
+      }
+      }, 5000);
+      {% endif %}
+      
+  		// get timestamp
+    	startTime = new Date(window.sessionStorage.getItem('startTime') || resetStartTime());
+    	// start timer
+  		window.setInterval(function() {
+          
+    	  var secsDiff = new Date().getTime() - startTime.getTime();
+          //console.log('timer: '+ Math.floor(secsDiff / 1000))
+          //console.log(window.localStorage.getItem('popupTimeout'))
+          	//2hrs up
+          if ((Math.floor(secsDiff / 1000)) >= 7200000){
+            //console.log('setting true - in')
+            window.sessionStorage.setItem('popupTimeout', true);
+            resetStartTime()
+          }
+  		}, 1000);
+	});
+  
+  
+  function submitForm() {
+      window.sessionStorage.setItem('popupTimeout', false);
+      document.getElementById('popupPrompt').style.display = 'none';
+      document.getElementById('popupThanks').style.display = 'flex';
+      document.getElementById('popupSignup').style.display = 'none';
+//       setTimeout(function(){document.getElementById('popupBox').style.display = 'none';}, 1500);
+  }
+  
+  
+  /*
+  window.onload = function () {
+  var element = document.querySelector(".fancyboxPop-close-pop")
+  element.innerHTML = "X";
+  }*/
+  document.getElementById('popupButtonSpan').addEventListener('click', function() {
+    document.getElementById('popupBox').style.display = 'flex';
+  })
+  
+  document.getElementById('buttonPopupClose').addEventListener('click', function() {
+    document.getElementById('popupButton').style.display = 'none';
+  })
+  
+  document.getElementById('popupClose').addEventListener('click', function(){
+    window.sessionStorage.setItem('popupTimeout', false);
+     console.log('closed')
+     //console.log(window.localStorage.getItem('popupTimeout'))
+    document.getElementById('popupBox').style.display = 'none';
+    document.getElementById('popupButton').style.display = 'inline-block';
+  });
+  
+  document.getElementById('k_id_email').addEventListener('keyup', function (event) {
+    if (/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(event.target.value)) {
+		document.getElementById('mc-embedded-subscribe').disabled = false
+       	document.getElementById('email_error').innerHTML = ''
+    } else {
+      	document.getElementById('mc-embedded-subscribe').disabled = true
+    }
+  })
+  
+  document.getElementById('k_id_email').addEventListener('focusout', function (event) {
+    if (/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(event.target.value)) {
+      document.getElementById('email_error').innerHTML = ''
+    } else if (event.target.value === '') {
+      document.getElementById('email_error').innerHTML = ''
+    }
+    else {
+      document.getElementById('email_error').innerHTML = 'Please enter valid email address.'
+    }
+  })
+    
+  document.getElementById('k_id_phone')?.addEventListener('keyup', function (event) {
+    if (event.target.value === '' || /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(event.target.value)) {
+		document.getElementById('mc-embedded-subscribe').disabled = false
+        document.getElementById('tel_error').innerHTML = ''
+    } else {
+      	document.getElementById('mc-embedded-subscribe').disabled = true
+    }
+  })
+  
+  document.getElementById('k_id_phone')?.addEventListener('focusout', function (event) {
+    if (event.target.value === '' || /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(event.target.value)) {
+		document.getElementById('tel_error').innerHTML = ''
+    } else {
+		document.getElementById('tel_error').innerHTML = 'Please enter valid phone number.'
+    }
+  })
+  
+  document.getElementById('emailPopup').addEventListener('click', function (event) {
+    if (document.getElementById('k_id_phone').value === '' || /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(document.getElementById('k_id_phone'))) {
+		document.getElementById('tel_error').innerHTML = ''
+    } else {
+		document.getElementById('tel_error').innerHTML = 'Please enter valid phone number.'
+    }
+  })
+
+      
+</script>
+
+<script type="text/javascript" src="//www.klaviyo.com/media/js/public/klaviyo_subscribe.js"></script>
+  <script type="text/javascript">
+    KlaviyoSubscribe.attachToForms('#emailForm', {
+      hide_form_on_success: false,
+      extra_properties: {
+        success: submitForm
+      }
+    });
+  </script>
+
+{% schema %}
+  {
+    "name": "Email popup",
+    "settings": [
+	  {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+	  {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Enter to win a variety pack."
+      },
+	  {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button text",
+        "default": "Submit"
+      },
+	  {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Subtitle",
+        "default": "And be the first to hear about new flavors!"
+      },
+	  {
+        "type": "text",
+        "id": "thanks",
+        "label": "Thanks Message",
+        "default": "Thanks!"
+      },
+	  {
+        "type": "text",
+        "id": "button",
+        "label": "Button text",
+        "default": "Get 10% Off"
+      },
+	  {
+        "type": "text",
+        "id": "list_id",
+        "label": "Klaviyo List Id"
+      },
+	  {
+		"type": "checkbox",
+		"id": "enable_phone",
+		"label": "Enable phone number capture",
+		"default": true
+	  }],
+  "presets": [
+    {
+      "name": "Email Popup",
+      "category": "Email"
+    }
+  ]
+  }
+{% endschema %}

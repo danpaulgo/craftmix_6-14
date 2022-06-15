@@ -1,0 +1,204 @@
+
+$bsub-color-bg: #f8f9f9;
+$bsub-color-bg-hover: rgba(0, 0, 0, 0.03);
+$bsub-color-bg-active-green: rgba(125, 186, 99, 0.07);
+$bsub-color-widget-border: rgba(0, 0, 0, 0.4);
+$bsub-color-group-border: rgba(0, 0, 0, 0.1);
+$bsub-color-active-blue: #3B63FF;
+$bsub-color-active-green: #7DBA63;
+
+@keyframes bsub-fadeInFromNone {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  1% {
+    display: block;
+    opacity: 0;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
+.bsub__hidden {
+  display: none;
+}
+
+// TODO: Stop BSUB from pushing React widget CSS
+.bsub-widget {
+  padding: 0 7px !important;
+  border: 0 !important;
+  margin: 0 !important;
+  
+  z-index: 0;
+  position: relative;
+
+  legend {
+    margin-bottom: 5px;
+  }
+}
+
+.bsub-widget__wrapper {
+  z-index: 0;
+
+  fieldset {
+    border: 0;
+  	background-color: inherit;
+    margin: 0;
+    padding: 0;
+  }
+
+}
+
+.bsub-widget__wrapper--single {
+  .bsub-widget__groups-container {
+  	display: none;
+  }
+
+  .bsub-widget__plans-container,
+  .bsub-widget__options-container {
+  	margin-top: 0;
+  }
+}
+
+.bsub-widget__description {
+
+}
+
+.bsub-widget__groups-container {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  margin-top: 24px;
+
+  input[type='radio'] {
+  	display: none;
+  }
+
+  &:only-child {
+  	margin-bottom: 0;
+  }
+}
+
+.bsub-widget__group {
+  flex: 1 1 100%;
+}
+
+.bsub-widget__group-header {
+  display: flex !important;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  transition: 0.3s;
+  margin-left: 30px;
+  position: relative;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+
+  .bsub-widget__image {
+    display: block;
+    width: 4em;
+    height: 4em;
+  }
+  
+  &:before {
+   	 content: ' ';
+     width: 26px;
+     height: 26px;
+     border: 2px solid var(--color-1);
+     border-radius: 13px;
+     position: absolute;
+     left:-36px;
+     top: 1px;
+     z-index: 0;
+  }
+  
+  input:checked + &:before {
+     background-color: var(--color-5);
+  }
+
+  input:checked + & {
+    color: var(--color-1);
+    font-weight: 700;
+  }
+}
+
+.bsub-widget__group-label {
+  height: 100%;
+}
+
+
+.bsub-widget__plans-container,
+.bsub-widget__options-container {
+  animation: bsub-fadeInFromNone 100ms ease-in-out;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-top: 14px;
+  
+  &:not(.bsub__hidden) {
+    display: flex; 
+  }
+  
+  input[type='radio'] {
+  	display: none;
+  }
+}
+
+.bsub-widget__plan,
+.bsub-widget__option {
+  width: fit-content;
+}
+
+
+.bsub-widget__text {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.bsub-widget__plan-header {
+  display: flex !important;
+  align-items: center;
+  position: relative;
+  margin-top: 36px;
+  cursor: pointer;
+
+  .bsub-widget__text {
+    flex-grow: 1;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &:before {
+	left: 50%;
+    transform: translateX(-50%);
+    content: ' ';
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--color-1);
+    border-radius: 13px;
+    position: absolute;
+    top: -28px;
+  }
+  
+  input:checked + &:before  {
+    background-color: var(--color-5);
+  }
+
+  input:not(:checked) + &  {
+	
+  }
+}
+
+.bsub-cart__selling-plan-details,
+.bsub-cart-popup__selling-plan-details {
+  font-size: 12px;
+}

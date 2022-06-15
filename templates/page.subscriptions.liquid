@@ -1,0 +1,65 @@
+<div class="page">
+  <div class="page-container">
+    {% if request.path == '/pages/my-subscriptions' %}
+    <a href="{{ routes.account_url }}" class="PageHeader__Back Heading Text--subdued Link Link--primary u-h7">{% render 'icon' with 'select-arrow-left' %} {{ 'customer.account.back_to_account' | t }}</a><br/>
+    {% endif %}
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.content }}</p>
+    <p id='customer-portal-additional'></p>
+  </div>
+</div>
+
+<script>
+  {% if request.path == '/pages/my-subscriptions' %}
+    $(document).ready(function(){
+      setTimeout(checkSubs, 1000)  
+    })
+  {% endif %}
+  
+   function checkSubs(){
+      if ($('#customer-portal-root').text() === '') {
+        $('#customer-portal-additional').html('<center>You currently don’t have any active subscriptions.<br/><a href="/collections/flavors-2020">Let\'s change that!</a></center>')
+      } else {
+        $('#customer-portal-additional').html('')
+      }
+      setTimeout(checkSubs, 1000)
+    }
+</script>
+
+<style>
+  .page {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--orange-color);
+  }
+  
+  h1 {
+    font-family: 'hornbill';
+    font-weight: 700;
+    font-size: 72px;
+    letter-spacing: -0.1rem;
+    margin-bottom: 20px;
+  }
+  
+  p, #customer-portal-root {
+    font-size: 18px; 
+  }
+  
+  #customer-portal-additional a {
+    text-decoration: underline; 
+  }
+  
+  .page-container {
+    width: 100%;
+    max-width: 800px;
+    padding: 120px 30px;
+  }
+  
+  @media (max-width: 1023px) {
+    h1 {
+      font-size: 36px;
+      line-height: 1.1;
+    }
+  }
+</style>

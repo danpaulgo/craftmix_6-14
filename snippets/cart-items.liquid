@@ -1,0 +1,76 @@
+{%- assign for_drawer = true -%}
+
+{%- if template == 'cart' or template == 'cart.ajax' -%}
+  {%- assign for_drawer = false -%}
+{%- endif -%}
+
+<div class="">
+
+  {%- for item in cart.items -%}
+    {%- if for_drawer -%}
+      <div class="CartItemWrapper">
+    {%- endif -%}
+
+    <div class="cart-item">
+      <div class="cart-image AspectRatio">
+        <div class="AspectRatio" style="--aspect-ratio: {{ item.image.aspect_ratio }}">
+          <img class="CartItem__Image" src="{{ item.image | img_url: '240x' }}" alt="{{ item.image.alt | escape }}">
+        </div>
+      </div>
+
+      <div class="cart-item-info">
+        <div class='cart-item-line  cart-item-top'>
+          <div class='cart-item-title'>
+            <h2 class="h2-new">
+              {% assign product_split = item.product.title | split: ' - ' %}
+              {% if product_split.size > 1 %}
+                  <a href="{{ item.url }}"><span class='h2-new'>{{ product_split[0] }}</span><br/>{{ product_split[1] }}{% if product_split.size > 2 %} - {{product_split[2]}}{% endif %}</a>
+              {% else %}
+                  <a href="{{ item.url }}">{{ item.product.title }}</a>
+              {% endif %}
+            </h2>
+              {% if item.selling_plan_allocation != empty  %}
+                <span class="selling-plan-details" data-bsub-item-key="{{item.key}}">
+                  {{item.selling_plan_allocation.selling_plan.name}}
+                </span>
+              {% endif %}
+           </div>
+          <a href="{{ routes.cart_change_url }}?quantity=0&id={{ item.key }}" class="CartItem__Remove Link" data-quantity="0" data-line-id="{{ item.key }}" data-action="remove-item">
+            {%- render 'icon' with 'close' -%}
+          </a>
+        </div>
+
+
+        <div class='cart-item-line cart-item-bottom'>
+        {%- capture item_actions -%}
+          <div class="CartItem__Actions Heading Text--subdued" style="text-align: center">
+                {%- assign quantity_minus_one = item.quantity | minus: 1 -%}
+
+                <a class="QuantitySelector__Button Link Link--primary" title="{{ 'cart.items.set_quantity' | t: new_quantity: quantity_minus_one }}" href="{{ routes.cart_change_url }}?quantity={{ quantity_minus_one }}&id={{ item.key }}" data-quantity="{{ quantity_minus_one }}" data-line-id="{{ item.key }}" data-action="update-item-quantity">
+                  {%- render 'icon' with 'cart-minus' -%}
+                </a>
+
+                <input type="text" name="updates[]" id="updates_{{ item.key }}" class="QuantitySelector__CurrentQuantity" pattern="[0-9]*" data-line-id="{{ item.key }}" value="{{ item.quantity }}">
+
+                {%- assign quantity_plus_one = item.quantity | plus: 1 -%}
+
+                <a class="QuantitySelector__Button Link Link--primary" title="{{ 'cart.items.set_quantity' | t: new_quantity: quantity_plus_one }}" href="{{ routes.cart_change_url }}?quantity={{ quantity_plus_one }}&id={{ item.key }}" data-quantity="{{ quantity_plus_one }}" data-line-id="{{ item.key }}" data-action="update-item-quantity">
+                  {%- render 'icon' with 'cart-plus' -%}
+                </a>
+          </div>
+        {%- endcapture -%}
+
+          <div class='cart-item-quantity'>
+        	{{ item_actions }}
+          </div>
+          <span class="CartItem__Price Price" data-money-convertible>{{ item.final_price | money_without_trailing_zeros }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    {%- if for_drawer -%}
+      </div>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

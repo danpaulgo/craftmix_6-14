@@ -1,0 +1,111 @@
+<div class="contact-section">
+  <div class='contact-container'>
+    <img src="{{ 'contact-title.svg' | asset_url }}" class='contact-title' />
+    <div class='contact-blocks'>
+      {% for block in section.blocks %}
+      	<div class='contact-block'>
+          <h3>
+            {{ block.settings.label }}
+          </h3>
+          <a href='{{ block.settings.url}}'>
+            <h4>
+              {{ block.settings.value }}
+            </h4>
+          </a>
+      	</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<style>
+  body {
+    background-color: var(--orange-background); 
+  }
+  .contact-section {
+    width: 100%;
+    padding: 250px 0;
+    padding-bottom: 180px;
+    background-image: url({{ 'contact-bg.svg' | asset_url }});
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+  
+  .contact-container {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-title {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .contact-blocks {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .contact-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 30px;
+    font-weight: 700;
+    color: var(--orange-color);
+  }
+  
+  .contact-block h3 {
+    text-transform: uppercase;
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+  
+  .contact-block h4 {
+    font-size: 26px;
+    margin-bottom: 0px;
+  }
+  
+  @media (max-width: 1023px) {
+     .contact-section {
+       padding-top: 100px; 
+     }
+  }
+  
+</style>
+
+{% schema %}
+{
+  "name": "Contact page",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "block",
+      "name": "Info block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        },
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value"
+        },
+		{
+          "type": "url",
+          "id": "url",
+          "label": "URL"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

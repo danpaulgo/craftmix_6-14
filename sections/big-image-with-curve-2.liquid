@@ -1,0 +1,314 @@
+<div id="section-{{section.id}}">
+  <div class='mobile-image-section mobile-only'>
+    <img src='{{ 'mobile-' | append: section.settings.color  | append: '-wave.svg' | asset_url}}' class='mobile-top-curve mobile-only' />
+    <div class='mobile-image-container'>
+      {{ section.settings.mobile-title }}
+      {% if section.settings.use_mobile_asset_svg %}
+          <object data='{{ section.settings.mobile_asset_svg | asset_url }}' ></object>
+      {% endif%}
+      {% for block in section.blocks %}
+        <div class='mobile-block' style='width: {{ block.settings.width }}%; {% if block.settings.mobile_margin %}margin-bottom: -12px;{% endif %}'>
+          {{ block.settings.data }}
+        </div>
+      {% endfor %}
+      {% unless section.settings.hide_cta %}
+      <a href='{{ section.settings.shop_url }}' class='hero-button rise centered'>
+          Shop Now
+      </a>
+      {% endunless %}
+    </div>
+          {% if request.path == '/pages/social-landing' or request.path == '/pages/sampler-pack-landing' %}
+      <a href='#shop' class='hero-button rise centered'>
+        Shop Now
+      </a>
+    {% endif %}
+  </div>
+  <div class='image-section desktop-only'>
+      <img src='{{ section.settings.color  | append: '-curve.svg' | asset_url}}' class='top-curve' />
+
+
+      <div class='big-image one'>
+        {% if section.settings.use_asset_svg %}
+          <object data='{{ section.settings.asset_svg | asset_url }}' data-aos='fade-up' data-aos-duration="1000" data-aos-delay='400'></object>
+        {% else %}
+            {{ section.settings.big_one  }}
+        {% endif%}
+
+      </div>
+      <div class='big-image two'>{{ section.settings.big_two  }}</div>
+  <!--   	<svg id="Layer_1" class='' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 470"><text transform="translate(268 103.4) rotate(-0.68)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">S</text><text transform="translate(306.31 103) rotate(-3.84)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">a</text><text transform="translate(340.82 100.81) rotate(-7.64)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">y</text><text transform="matrix(0.98, -0.19, 0.19, 0.98, 377.03, 95.65)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(393.26 92.95) rotate(-14.8)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">G</text><text transform="translate(438.94 80.47) rotate(-15.57)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="matrix(0.98, -0.21, 0.21, 0.98, 471.91, 71.06)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="translate(505.13 63.67) rotate(-7.67)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">d</text><text transform="matrix(1, -0.06, 0.06, 1, 542.49, 58.61)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">b</text><text transform="translate(578.32 56.38) rotate(-0.68)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">y</text><text transform="matrix(1, 0.03, -0.03, 1, 610.24, 55.91)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">e</text><text transform="translate(643.51 56.94) rotate(3.65)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(657.57 57.39) rotate(6.65)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">T</text><text transform="translate(691.47 61.1) rotate(10.55)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="translate(723.62 67.22) rotate(13.52)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="matrix(0.97, 0.26, -0.26, 0.97, 738.93, 70.86)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="translate(754.27 74.98) rotate(15.9)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><path d="M441.58,317.33c-17.13-.9-20.68-16.73-20.71-16.89l2.23-.48c.13.58,3.25,14.28,18.6,15.09Z" style="fill:#ff6b00"/><polygon points="433 324.23 431.66 322.38 440.8 315.79 433.56 307.16 435.32 305.69 444.13 316.21 433 324.23" style="fill:#ff6b00"/><path d="M631.12,230.7l-.18-2.27a21.43,21.43,0,0,0,18.18-11.91,32.08,32.08,0,0,0,3.45-11l2.27.2C654.82,206,652.63,229,631.12,230.7Z" style="fill:#ff6b00"/><polygon points="637.15 218.97 638.93 220.4 631.87 229.17 641.14 235.57 639.85 237.45 628.56 229.66 637.15 218.97" style="fill:#ff6b00"/><text transform="translate(412.31 147.12) rotate(1.67)" style="font-size:21.22273063659668px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.0012884180866362302em">L</tspan><tspan x="11.86" y="0" style="letter-spacing:-0.003727209464911952em">e</tspan><tspan x="23.3" y="0" style="letter-spacing:-0.03069195942094163em">a</tspan><tspan x="34.81" y="0" style="letter-spacing:-0.027102794751026418em">v</tspan><tspan x="46.18" y="0" style="letter-spacing:-0.000046014931665579656em">e </tspan><tspan x="63.01" y="0" style="letter-spacing:-0.021995137336147073em">y</tspan><tspan x="74.5" y="0" style="letter-spacing:-0.012976210729693462em">o</tspan><tspan x="86.44" y="0" style="letter-spacing:0.0079145682464797em">u</tspan><tspan x="99.68" y="0">r </tspan><tspan x="114.77" y="0" style="letter-spacing:-0.006810209886505789em">c</tspan><tspan x="126.17" y="0" style="letter-spacing:-0.014356658679660851em">o</tspan><tspan x="138.09" y="0" style="letter-spacing:0.013988539226336215em">z</tspan><tspan x="149.23" y="0">y </tspan><tspan x="166.49" y="0" style="letter-spacing:-0.006810209886505789em">c</tspan><tspan x="177.89" y="0" style="letter-spacing:-0.012976210729693462em">o</tspan><tspan x="189.84" y="0" style="letter-spacing:-0.012516061413037665em">u</tspan><tspan x="202.64" y="0" style="letter-spacing:-0.008696822084794555em">c</tspan><tspan x="214" y="0" style="letter-spacing:0.000046014931665579656em">h</tspan></text><text transform="translate(423.17 165.15) rotate(8.08)" style="font-size:21.222700119018555px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:0.0005061649761697133em">D</tspan><tspan x="15.38" y="0" style="letter-spacing:0.01049141950606315em">r</tspan><tspan x="25.38" y="0" style="letter-spacing:-0.011871869441071459em">i</tspan><tspan x="31.24" y="0" style="letter-spacing:-0.02714884872183008em">v</tspan><tspan x="42.61" y="0" style="letter-spacing:0.000046014997833610305em">e </tspan><tspan x="59.44" y="0" style="letter-spacing:0.006396084698871833em">i</tspan><tspan x="65.69" y="0">n </tspan><tspan x="84.28" y="0" style="letter-spacing:0.0034051098396871626em">t</tspan><tspan x="92.67" y="0" style="letter-spacing:-0.008788864586219568em">r</tspan><tspan x="102.27" y="0" style="letter-spacing:-0.005291724750865185em">a</tspan><tspan x="114.32" y="0" style="letter-spacing:-0.010951569484399253em">f</tspan><tspan x="124.42" y="0" style="letter-spacing:-0.008512774599217907em">fi</tspan><tspan x="138.5" y="0">c </tspan><tspan x="155.35" y="0" style="letter-spacing:-0.01343637936741421em">t</tspan><tspan x="163.39" y="0" style="letter-spacing:0.000046014997833610305em">o </tspan><tspan x="180.92" y="0" style="letter-spacing:0.007914579627380973em">s</tspan><tspan x="191.74" y="0" style="letter-spacing:-0.013390364369580599em">t</tspan><tspan x="199.77" y="0" style="letter-spacing:-0.00750044464687848em">o</tspan><tspan x="211.84" y="0" style="letter-spacing:-0.013390364369580599em">r</tspan><tspan x="221.34" y="0" style="letter-spacing:0.000046014997833610305em">e</tspan></text><text transform="translate(380.29 189.35) rotate(6.6)" style="font-size:21.222679138183594px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:0.010905565267845299em">P</tspan><tspan x="14.05" y="0" style="letter-spacing:0.007914587451769584em">u</tspan><tspan x="27.29" y="0" style="letter-spacing:-0.010813535181196815em">r</tspan><tspan x="36.84" y="0" style="letter-spacing:-0.008696843188281693em">c</tspan><tspan x="48.2" y="0" style="letter-spacing:-0.014862858993730091em">h</tspan><tspan x="61.32" y="0">a</tspan><tspan x="73.48" y="0" style="letter-spacing:-0.004785564505721144em">s</tspan><tspan x="84.03" y="0" style="letter-spacing:0.00004601504332424177em">e </tspan><tspan x="100.86" y="0" style="letter-spacing:-0.008512783014984726em">p</tspan><tspan x="113.86" y="0" style="letter-spacing:0.010537444921251365em">r</tspan><tspan x="123.87" y="0" style="letter-spacing:-0.014034588213893738em">i</tspan><tspan x="129.68" y="0" style="letter-spacing:-0.008282707798363518em">c</tspan><tspan x="141.05" y="0" style="letter-spacing:-0.011871881177654376em">e</tspan><tspan x="152.32" y="0">y </tspan><tspan x="169.58" y="0" style="letter-spacing:0.006396091022069605em">i</tspan><tspan x="175.82" y="0" style="letter-spacing:-0.013712482910624046em">n</tspan><tspan x="188.82" y="0" style="letter-spacing:-0.01748571646321187em">g</tspan><tspan x="200.52" y="0" style="letter-spacing:-0.013390377607354354em">r</tspan><tspan x="210.02" y="0" style="letter-spacing:-0.003773233552587825em">e</tspan><tspan x="221.46" y="0" style="letter-spacing:0.007408421975202925em">d</tspan><tspan x="234.72" y="0" style="letter-spacing:-0.014494738647136157em">i</tspan><tspan x="240.52" y="0" style="letter-spacing:-0.005567820242233254em">e</tspan><tspan x="251.93" y="0" style="letter-spacing:-0.014908874037054333em">n</tspan><tspan x="264.89" y="0" style="letter-spacing:0.0032670680760211656em">t</tspan><tspan x="273.28" y="0" style="letter-spacing:0.00004601504332424177em">s</tspan></text><text transform="matrix(1, 0.01, -0.01, 1, 382.84, 275.67)" style="font-size:21.22277069091797px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:0.006396063430025621em">Fi</tspan><tspan x="19.39" y="0" style="letter-spacing:-0.013666408911637477em">n</tspan><tspan x="32.39" y="0">d </tspan><tspan x="50.79" y="0" style="letter-spacing:-0.021949080979296556em">o</tspan><tspan x="62.54" y="0" style="letter-spacing:-0.027102743599173314em">v</tspan><tspan x="73.92" y="0" style="letter-spacing:-0.005613811068080041em">e</tspan><tspan x="85.32" y="0" style="letter-spacing:-0.01081348853277713em">r</tspan><tspan x="94.88" y="0" style="letter-spacing:-0.006764182188588246em">c</tspan><tspan x="106.28" y="0" style="letter-spacing:-0.0075004197057134975em">o</tspan><tspan x="118.34" y="0" style="letter-spacing:-0.012792126860051241em">m</tspan><tspan x="137.58" y="0" style="letter-spacing:-0.011227622136160083em">p</tspan><tspan x="150.52" y="0" style="letter-spacing:0.006396063430025621em">l</tspan><tspan x="156.76" y="0" style="letter-spacing:-0.013988512825379775em">i</tspan><tspan x="162.58" y="0" style="letter-spacing:-0.006304033740384965em">c</tspan><tspan x="173.99" y="0" style="letter-spacing:-0.020890739548429006em">a</tspan><tspan x="185.71" y="0" style="letter-spacing:-0.01587512146301323em">t</tspan><tspan x="193.69" y="0" style="letter-spacing:-0.0038192321200872415em">e</tspan><tspan x="205.13" y="0">d </tspan><tspan x="223.53" y="0" style="letter-spacing:-0.013390319842715508em">r</tspan><tspan x="233.03" y="0" style="letter-spacing:-0.005797870447361354em">ec</tspan><tspan x="255.85" y="0" style="letter-spacing:-0.01182581511882435em">i</tspan><tspan x="261.72" y="0" style="letter-spacing:-0.003773217275266913em">p</tspan><tspan x="274.81" y="0" style="letter-spacing:-0.000046014844820328206em">e</tspan></text><text transform="translate(347.17 240.44)" style="font-size:21.22256088256836px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.01647347730250404em">A</tspan><tspan x="15.14" y="0" style="letter-spacing:0.015967309005499728em">t</tspan><tspan x="23.8" y="0" style="letter-spacing:-0.015875278406044396em">t</tspan><tspan x="31.78" y="0" style="letter-spacing:-0.00561386656677512em">e</tspan><tspan x="43.19" y="0" style="letter-spacing:-0.012792253324290848em">m</tspan><tspan x="62.42" y="0" style="letter-spacing:-0.010859610735728921em">p</tspan><tspan x="75.37" y="0">t </tspan><tspan x="88.99" y="0" style="letter-spacing:-0.013436467520478156em">t</tspan><tspan x="97.03" y="0" style="letter-spacing:0.00004601529972766492em">o </tspan><tspan x="114.56" y="0" style="letter-spacing:-0.0022087343869279163em">b</tspan><tspan x="127.63" y="0">e a </tspan><tspan x="161.92" y="0" style="letter-spacing:-0.009893289441447958em">b</tspan><tspan x="174.83" y="0" style="letter-spacing:0.006902294959149738em">a</tspan><tspan x="187.13" y="0" style="letter-spacing:0.023237726362470783em">r</tspan><tspan x="197.41" y="0" style="letter-spacing:-0.015921293705772062em">t</tspan><tspan x="205.39" y="0" style="letter-spacing:-0.005567851267047455em">e</tspan><tspan x="216.8" y="0" style="letter-spacing:-0.013712559318844146em">nd</tspan><tspan x="242.59" y="0" style="letter-spacing:-0.00561386656677512em">e</tspan><tspan x="254" y="0" style="letter-spacing:0.00004601529972766492em">r</tspan></text><text transform="translate(394.27 338.47)" style="font-size:21.22256088256836px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.07261214297025523em">Y</tspan><tspan x="12.61" y="0" style="letter-spacing:-0.012976314523201507em">o</tspan><tspan x="24.56" y="0" style="letter-spacing:0.007914631553158366em">u</tspan><tspan x="37.8" y="0">r </tspan><tspan x="52.89" y="0" style="letter-spacing:-0.006810264359694408em">c</tspan><tspan x="64.29" y="0" style="letter-spacing:-0.0075004938556093815em">o</tspan><tspan x="76.36" y="0" style="letter-spacing:-0.01647347730250404em">n</tspan><tspan x="89.29" y="0" style="letter-spacing:-0.006810264359694408em">c</tspan><tspan x="100.69" y="0" style="letter-spacing:-0.0036812239782131936em">o</tspan><tspan x="112.84" y="0" style="letter-spacing:0.006396126662145424em">c</tspan><tspan x="124.52" y="0" style="letter-spacing:0.003405132179847204em">t</tspan><tspan x="132.91" y="0" style="letter-spacing:-0.01122773313355024em">i</tspan><tspan x="138.79" y="0" style="letter-spacing:-0.0075004938556093815em">o</tspan><tspan x="150.85" y="0">n </tspan><tspan x="169.44" y="0" style="letter-spacing:-0.003313101580391874em">t</tspan><tspan x="177.69" y="0" style="letter-spacing:0.00004601529972766492em">a</tspan><tspan x="189.85" y="0" style="letter-spacing:0.007914631553158366em">s</tspan><tspan x="200.67" y="0" style="letter-spacing:-0.015921293705772062em">t</tspan><tspan x="208.65" y="0" style="letter-spacing:0.0013344436921022826em">e</tspan><tspan x="220.21" y="0" style="letter-spacing:-0.0031750556812088796em">s</tspan><tspan x="230.79" y="0" style="letter-spacing:-0.013712559318844146em">..</tspan><tspan x="242.9" y="0" style="letter-spacing:-0.00004601529972766492em">. </tspan><tspan x="254.55" y="0" style="letter-spacing:-0.01748581389651267em">g</tspan><tspan x="266.25" y="0" style="letter-spacing:-0.009755243542264962em">r</tspan><tspan x="275.83" y="0" style="letter-spacing:-0.007316432656698723em">o</tspan><tspan x="287.9" y="0" style="letter-spacing:0.004417468773855833em">s</tspan><tspan x="298.65" y="0" style="letter-spacing:0.00004601529972766492em">s</tspan></text><text transform="translate(384.72 416.59) rotate(-10.26)" style="font-size:21.22241973876953px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.07261262589132768em">Y</tspan><tspan x="12.61" y="0" style="letter-spacing:-0.012976400824685935em">o</tspan><tspan x="24.56" y="0" style="letter-spacing:0.007868668585181897em">u</tspan><tspan x="37.8" y="0" style="letter-spacing:0.00004601560576129764em">r </tspan><tspan x="52.89" y="0" style="letter-spacing:-0.033683423417269875em">f</tspan><tspan x="62.51" y="0" style="letter-spacing:0.010491558113575862em">r</tspan><tspan x="72.52" y="0" style="letter-spacing:-0.014494915814808756em">i</tspan><tspan x="78.32" y="0" style="letter-spacing:-0.005613903902878312em">e</tspan><tspan x="89.73" y="0" style="letter-spacing:-0.013712650516866697em">n</tspan><tspan x="102.72" y="0" style="letter-spacing:-0.003681248460903811em">d</tspan><tspan x="115.74" y="0" style="letter-spacing:0.00004601560576129764em">s </tspan><tspan x="131.7" y="0" style="letter-spacing:0.006948356469955943em">a</tspan><tspan x="144" y="0" style="letter-spacing:-0.013390541276537613em">r</tspan><tspan x="153.5" y="0">e </tspan><tspan x="170.33" y="0" style="letter-spacing:0.00740851252756892em">d</tspan><tspan x="183.58" y="0" style="letter-spacing:-0.0046935917876523596em">i</tspan><tspan x="189.6" y="0" style="letter-spacing:-0.0022087490765422867em">s</tspan><tspan x="200.2" y="0" style="letter-spacing:-0.017762023823860888em">a</tspan><tspan x="211.99" y="0" style="letter-spacing:-0.011227807805756624em">p</tspan><tspan x="224.93" y="0" style="letter-spacing:-0.003681248460903811em">p</tspan><tspan x="238.03" y="0" style="letter-spacing:-0.0075005437390915156em">o</tspan><tspan x="250.09" y="0" style="letter-spacing:0.006396169200820372em">i</tspan><tspan x="256.34" y="0" style="letter-spacing:-0.014909056266660435em">n</tspan><tspan x="269.31" y="0" style="letter-spacing:-0.015921399593408984em">t</tspan><tspan x="277.29" y="0" style="letter-spacing:-0.0037732796724264067em">e</tspan><tspan x="288.73" y="0">d</tspan></text><text transform="matrix(1, 0.04, -0.04, 1, 415.77, 428.29)" style="font-size:21.222549438476562px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.008696896338258651em">C</tspan><tspan x="14.52" y="0" style="letter-spacing:-0.014494827230431084em">l</tspan><tspan x="20.33" y="0" style="letter-spacing:-0.003681225963284085em">e</tspan><tspan x="31.77" y="0" style="letter-spacing:0.006902298681157659em">a</tspan><tspan x="44.08" y="0">n </tspan><tspan x="62.67" y="0" style="letter-spacing:-0.010307432697195439em">u</tspan><tspan x="75.52" y="0">p </tspan><tspan x="94.01" y="0" style="letter-spacing:0.0023927968761346553em">t</tspan><tspan x="102.38" y="0" style="letter-spacing:-0.020614865394390877em">h</tspan><tspan x="115.37" y="0" style="letter-spacing:0.00004601532454105106em">e </tspan><tspan x="132.21" y="0" style="letter-spacing:-0.006902298681157659em">b</tspan><tspan x="145.17" y="0" style="letter-spacing:-0.014034673985020573em">i</tspan><tspan x="150.99" y="0" style="letter-spacing:0.00004601532454105106em">g </tspan><tspan x="168.37" y="0" style="letter-spacing:-0.015507164370334208em">m</tspan><tspan x="187.54" y="0" style="letter-spacing:0.0013344444116904807em">e</tspan><tspan x="199.1" y="0" style="letter-spacing:0.004417471155940902em">s</tspan><tspan x="209.84" y="0">s</tspan></text><text transform="translate(364.49 382.57) rotate(-7.1)" style="font-size:21.222570419311523px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.0018866264410444067em">S</tspan><tspan x="12.76" y="0" style="letter-spacing:-0.01403466011020839em">i</tspan><tspan x="18.57" y="0" style="letter-spacing:-0.019372432479992565em">g</tspan><tspan x="30.24" y="0">h </tspan><tspan x="48.97" y="0" style="letter-spacing:-0.015277072644554707em">o</tspan><tspan x="60.87" y="0">f </tspan><tspan x="76.51" y="0" style="letter-spacing:-0.013390446203510301em">r</tspan><tspan x="86.01" y="0" style="letter-spacing:-0.0055678487650334925em">e</tspan><tspan x="97.42" y="0" style="letter-spacing:-0.012194048948213848em">m</tspan><tspan x="116.66" y="0" style="letter-spacing:-0.007454475206077899em">o</tspan><tspan x="128.73" y="0" style="letter-spacing:-0.004279420951637312em">r</tspan><tspan x="138.42" y="0" style="letter-spacing:-0.004785589021185812em">s</tspan><tspan x="148.97" y="0">e</tspan></text><text transform="translate(414.2 295.02) rotate(3.8)" style="font-size:21.22270965576172px;fill:#fff;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan style="letter-spacing:-0.037318146473581115em">F</tspan><tspan x="12.22" y="0" style="letter-spacing:-0.007500441276441086em">o</tspan><tspan x="24.28" y="0" style="letter-spacing:-0.006258036893226919em">r</tspan><tspan x="33.93" y="0" style="letter-spacing:-0.0098011901342451em">g</tspan><tspan x="45.8" y="0" style="letter-spacing:-0.010859534608834948em">o</tspan><tspan x="57.79" y="0">t </tspan><tspan x="71.42" y="0" style="letter-spacing:-0.013436373329575441em">t</tspan><tspan x="79.45" y="0" style="letter-spacing:0.000046014977156080284em">o </tspan><tspan x="96.98" y="0" style="letter-spacing:-0.012378028854985597em">b</tspan><tspan x="109.83" y="0" style="letter-spacing:-0.010813519631678868em">u</tspan><tspan x="122.68" y="0">y </tspan><tspan x="139.93" y="0" style="letter-spacing:-0.0068102166190998825em">c</tspan><tspan x="151.33" y="0" style="letter-spacing:-0.003681198172486423em">o</tspan><tspan x="163.48" y="0" style="letter-spacing:-0.008696830682499174em">c</tspan><tspan x="174.84" y="0" style="letter-spacing:0.005429767304417474em">k</tspan><tspan x="187.03" y="0" style="letter-spacing:-0.0033130783552377803em">t</tspan><tspan x="195.28" y="0" style="letter-spacing:0.006902246573412043em">a</tspan><tspan x="207.58" y="0" style="letter-spacing:0.00639608182469516em">i</tspan><tspan x="213.83" y="0">l </tspan><tspan x="225.25" y="0" style="letter-spacing:-0.013436373329575441em">t</tspan><tspan x="233.29" y="0" style="letter-spacing:-0.0026688686750526566em">o</tspan><tspan x="245.45" y="0" style="letter-spacing:-0.010169309951493743em">o</tspan><tspan x="257.46" y="0" style="letter-spacing:-0.0047395426470762695em">l</tspan><tspan x="263.47" y="0" style="letter-spacing:0.000046014977156080284em">s</tspan></text><path d="M518.65,344.93c-21.47-3-49.07-46.77-62.33-67.81-1.1-1.75-2.11-3.34-3-4.76a69.32,69.32,0,0,1-10.39-41.62A47.88,47.88,0,0,1,432.5,233c-12.51,1.35-24.83-1.61-36.27-5-7.18-2.13-15.42-4.82-22.47-9.7-7.58-5.25-12.64-12.6-13.88-20.15a16,16,0,0,1,4.71-13.65,15.15,15.15,0,0,1,13.9-3.8l-.44,2.24a12.94,12.94,0,0,0-11.87,3.2,13.7,13.7,0,0,0-4.05,11.64c1.15,7,5.86,13.74,12.93,18.64,6.77,4.7,14.81,7.31,21.82,9.39,11.22,3.33,23.27,6.23,35.37,4.93a45.24,45.24,0,0,0,10.88-2.51,66.9,66.9,0,0,1,6.38-22.66c2.44-5,5.43-7.52,8.89-7.48,3.78.05,6.62,3.51,7.19,6.83.48,2.84-.25,6-2.16,9.52-3.75,6.81-10.18,12.17-18.16,15.41a67.11,67.11,0,0,0,10,41.27l3,4.77c13.08,20.75,40.3,63.92,60.71,66.77ZM458.32,200.38c-3.09,0-5.38,3.37-6.76,6.2a64.82,64.82,0,0,0-6,20.69,33,33,0,0,0,15.9-13.92c1.66-3,2.3-5.72,1.91-8s-2.42-4.9-5-4.94Z" style="fill:#ff6b00"/><polygon points="509.42 350.84 508.26 348.86 518.01 343.21 511.66 333.91 513.54 332.62 521.28 343.95 509.42 350.84" style="fill:#ff6b00"/><path d="M383.81,419.63c-11.75,0-14.45-2.25-15-4.77-.86-4.17,5.13-9.7,54.33-21.78,32.77-8.05,77.18-17.17,120.13-26l11.18-2.29.55,2.65-11.18,2.29c-42.93,8.82-87.31,17.93-120,26-17.6,4.33-30.42,8-39.2,11.17-13.26,4.83-13.18,7.19-13.13,7.44.09.46,1.16,2.72,13.2,2.61,8.33-.07,20.59-1.27,36.45-3.56,26.34-3.8,63.58-10.71,117.22-21.73s88.9-19,113.93-25.79c15-4.07,25.9-7.59,33.29-10.77,10.15-4.38,10.51-6.82,10.38-7.46,0-.07-1.89-6-57.31-2.12A1082.58,1082.58,0,0,0,521.37,361l-.5-2.66a1088.3,1088.3,0,0,1,117.59-15.51c17.18-1.21,31.64-1.6,41.81-1.12,15.42.73,17.9,3.27,18.33,5.39.87,4.23-3.86,10.08-45.6,21.39-25.09,6.79-60.27,14.76-114.1,25.83-53.68,11-91,18-117.37,21.75C403.55,418.63,391.66,419.63,383.81,419.63Z" style="fill:#ff6b00"/><path d="M885.11,411.74c-9.75,6-42.16,37.78-19.64,41.15,6.91,1,90.75,14.67,128.94-13.91,16.59-12.42,33.25-33.2,43.65-58.39,4.67-11.29,12.59-28.58-7.36-39-5.68-2.95-38.22-16.16-67.25-26.7A13.42,13.42,0,0,0,945.54,326C941.48,362,931.81,426.24,885.11,411.74Z" style="fill:#672f25"/><path d="M873.81,438.07c-7.57-.71-13.08-7.49-8-13.5,14.62-17.28,39.76-29.12,51.92-53.28,6.6-13.13,12.29-24.49,19.11-39.35,3.56-7.75,9.17-12.77,16.92-10,20.49,7.29,42.37,16.72,62.36,26.07a15.38,15.38,0,0,1,7.56,20c-7.73,17.65-23.23,44.84-37.38,53.45C950.18,443.42,915.54,442,873.81,438.07Z" style="fill:#fff"/><path d="M42.41,204.5C9.88,175.4.45,103.83,38.88,67.89,116.63-4.82,174.51,60.76,184,76.7Z" style="fill:#76236c"/><path d="M61.43,69.88c43.16-32.19,76.67-31.47,115,13.71L47.12,200.25C32.27,174.14,5,112,61.43,69.88Z" style="fill:#fffef9"/><path d="M164.37,94.45,54.52,193.57c-11.67-24-26.87-85.22,28.65-120.24C105.44,59.29,142,61.2,164.37,94.45Z" style="fill:#ffd600"/><path d="M88,438.7C91,437,94,434.26,97.79,434c-.53,3.87-1.38,7.81-2.2,11.66a41.71,41.71,0,0,1-2.89,9.53c23.7,9.66,49.91,8.86,79.56,5.08,6.46-.83,16.29-2.28,23.51-4.29-1-1.63-.82-15.62-1.47-19.28-2-11.22-3.9-22.25-7.24-33-.8-2.55-1.7-5-2.68-7.47-4.41,1.78-8.81,3.38-13.07,4.63,1.52-3.79,3.52-7.39,5.43-11.05.81-1.56,1.3-3.47,2-5.22-8.4-14.77-20.35-27-34.18-37.83a182.23,182.23,0,0,0-48.32-26.69,70.33,70.33,0,0,1-9.29,3.94c-4.75,1.46-8.65,4.5-13.18,6.12,1.86-4.44,3.79-10.74,7.62-14.9a185.21,185.21,0,0,0-64.32-6.57C12.31,317,12,329.32,12,337.34c0,4.39,0,8.83.21,13.25a38.2,38.2,0,0,1,10.61-2.91c-.86,3.13-3,6.36-4.89,9.14-1.53,2.24-2.77,5.06-4.6,7.27,1.17,8.7,3.34,17,7.28,24.39,12.66,23.66,31.87,42.87,55,57.65C79.67,443.6,83.84,441.1,88,438.7Z" style="fill:#009f61"/><path d="M909.76,54.83l-2.51-12.32s71-20.37,140.46,44.75l-10.37,7.24S946.42,74.65,909.76,54.83Z" style="fill:#ffd600"/><path d="M940.78,174.2l-31-119.37s65.45-6.35,127.58,39.67C1000.73,123.93,940.78,174.2,940.78,174.2Z" style="fill:#ff6b00"/></svg> -->
+  <!--   	<svg id="Layer_1" class='big-image two' data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 764 330"><text transform="translate(155.67 56.5) rotate(1.33)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">A</text><text transform="matrix(1, 0.1, -0.1, 1, 203.83, 57.67)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">n</text><text transform="translate(240.25 61) rotate(9.96)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">d</text><text transform="translate(277.48 67.83) rotate(13.25)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(291.32 70.78) rotate(15.8)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">H</text><text transform="translate(336.09 83.72) rotate(14.56)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">e</text><text transform="translate(368.55 92.01) rotate(11.66)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">l</text><text transform="translate(386.1 95.65) rotate(9.32)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">l</text><text transform="translate(402.93 98.71) rotate(6.07)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="matrix(1, 0.06, -0.06, 1, 439.89, 102.37)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"> </text><text transform="translate(455.66 103.56) rotate(0.83)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">T</text><text transform="matrix(1, -0.03, 0.03, 1, 491.27, 104.19)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</text><text transform="translate(525.61 103.2) rotate(-3.71)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="matrix(1, -0.1, 0.1, 1, 542.44, 102.16)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="translate(559.33 100.59) rotate(-7.43)" style="font-size:65px;fill:#ff6b00;font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">.</text><text transform="translate(62.71 118.34) rotate(-9.84)" style="font-size:13.315899848937988px;fill:#ff6b00;font-family:Goldplay-SemiBold, Goldplay;font-weight:600;letter-spacing:-0.004986989295004065em">4 <tspan x="10.56" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.005060327372871772em">ea</tspan><tspan x="25.29" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.014960967885012196em">s</tspan><tspan x="31.77" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.005060327372871772em">y s</tspan><tspan x="49.08" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.025008284552888033em">t</tspan><tspan x="53.97" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">eps </tspan><tspan x="79.22" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700;letter-spacing:-0.025008284552888033em">t</tspan><tspan x="84.1" y="0" style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700">o</tspan><tspan style="font-family:HornbillPersonalUse-Bold, Hornbill Personal Use;font-weight:700"><tspan x="-5.65" y="14.75">enj</tspan><tspan x="14.1" y="14.75" style="letter-spacing:-0.03498226314289617em">o</tspan><tspan x="21.31" y="14.75" style="letter-spacing:-0.005060327372871772em">y c</tspan><tspan x="39.17" y="14.75" style="letter-spacing:-0.024934946475020328em">r</tspan><tspan x="44.98" y="14.75" style="letter-spacing:-0.005060327372871772em">a</tspan><tspan x="52.54" y="14.75" style="letter-spacing:-0.06490419891292055em">f</tspan><tspan x="58.16" y="14.75">tmix :)</tspan></tspan></text><path d="M71.22,142.74c-22.7,0-35.14-5.7-37.11-17.08-1.58-9.12,5.49-16.55,21.61-22.73,14.65-5.62,35.52-9.65,54-12.86l.33,1.87c-37.52,6.51-77.27,15-74.07,33.4,1.44,8.33,9.52,13.36,24,14.95,12.71,1.4,30.37.16,52.48-3.68s39.15-8.61,50.65-14.21c13.1-6.37,19-13.83,17.57-22.16-1.37-7.91-14.67-13.07-37.43-14.53-19.12-1.23-44.4.34-66,4.08l-.32-1.87c21.72-3.76,47.18-5.34,66.43-4.1,16.78,1.08,37.21,4.74,39.18,16.1,2.95,17-20.52,30-69.77,38.56Q88.21,142.74,71.22,142.74Z" style="fill:#ff6b00"/><polygon points="82.18 247.18 30.55 247.18 26.06 183.37 86.67 183.37 82.18 247.18" style="fill:#ffd600"/><path d="M82.18,247.17H30.55L27.44,203a35.46,35.46,0,0,0,15.43-1.23C49,200,56.49,193.94,64.4,193.94c14.28,0,20.89,9,20.89,9Z" style="fill:#ff6b00"/><polygon points="255.06 244.69 204.94 244.69 200.58 182.75 259.41 182.75 255.06 244.69" style="fill:#ff6b00"/><path d="M255.06,244.69H204.93l-3-42.92a34.4,34.4,0,0,0,15-1.2c5.93-1.72,13.22-7.55,20.9-7.55,13.87,0,20.28,8.71,20.28,8.71Z" style="fill:#ffd600"/><polygon points="325.1 244.69 274.97 244.69 270.62 182.75 329.45 182.75 325.1 244.69" style="fill:#ff6b00"/><path d="M325.1,244.69H275l-3-42.92a34.4,34.4,0,0,0,15-1.2c5.93-1.72,13.22-7.55,20.9-7.55,13.87,0,20.28,8.71,20.28,8.71Z" style="fill:#ffd600"/><polygon points="478.89 252.17 432.09 236.42 449 192.84 495.81 208.59 478.89 252.17" style="fill:#ff6b00"/><rect x="448.93" y="182.36" width="54.46" height="10.6" style="fill:#ff6b00"/><rect x="501.93" y="198.65" width="21.71" height="5.27" style="fill:#ffd600"/><polygon points="537.86 202.75 524.84 218.92 520.31 215.76 533.33 199.59 537.86 202.75" style="fill:#ff6b00"/><polygon points="516.87 231.47 501.37 217.3 505.34 213.54 520.83 227.71 516.87 231.47" style="fill:#ff6b00"/><polygon points="518.63 244.66 540.19 246.99 539.54 252.23 517.98 249.9 518.63 244.66" style="fill:#ff6b00"/><polygon points="502.54 238.97 523.59 234 524.98 239.11 503.93 244.08 502.54 238.97" style="fill:#ffd600"/><ellipse cx="537.73" cy="227.41" rx="4.31" ry="4.02" style="fill:#ffd600"/><ellipse cx="500.61" cy="231.43" rx="4.31" ry="4.02" style="fill:#ff6b00"/><ellipse cx="669.19" cy="187.01" rx="13.95" ry="12.98" style="fill:#ff6b00"/><polygon points="695.43 195.14 691.18 193.7 696.62 177.7 713.93 171.9 715.36 176.15 700.15 181.25 695.43 195.14" style="fill:#ff6b00"/><path d="M689.26,242.44c26.81,0,29.87-7.18,29.87-12.58s-5.69-10-5.69-10-9.33-5.89-9.33-16.3,9.33-16.11,9.33-16.11H665.09s9.33,5.7,9.33,16.11-9.33,16.3-9.33,16.3-5.7,4.63-5.7,10S662.45,242.44,689.26,242.44Z" style="fill:#ffd600"/><path d="M708.59,261.77H668.17S689,252.1,689,242.44C689,252.19,708.59,261.77,708.59,261.77Z" style="fill:#ff6b00"/><path d="M665.09,219.82s-5.7,4.63-5.7,10,3.06,12.58,29.87,12.58,29.87-7.18,29.87-12.58-5.69-10-5.69-10-9-5.71-9.31-15.79H674.39C674.08,214.11,665.09,219.82,665.09,219.82Z" style="fill:#ff6b00"/><text transform="translate(19.38 295.1)" style="font-size:16.250059127807617px;fill:#ff6b00;font-family:Goldplay-SemiBold, Goldplay;font-weight:600;letter-spacing:0.04999981806894623em">1 <tspan x="11.31" y="0" style="letter-spacing:0.04597339041195177em">S</tspan><tspan x="21.5" y="0" style="letter-spacing:0.05005991400412526em">h</tspan><tspan x="32.17" y="0" style="letter-spacing:0.040023892829228594em">o</tspan><tspan x="42.82" y="0">t </tspan><tspan x="54.68" y="0" style="letter-spacing:0.04705511724517416em">O</tspan><tspan x="68.15" y="0" style="letter-spacing:0.024038374071608765em">f</tspan><tspan x="10.58" y="18.96">Liquo</tspan><tspan x="57.3" y="18.96" style="letter-spacing:0.024038374071608765em">r</tspan></text><text transform="translate(224.19 295.1)" style="font-size:16.250059127807617px;fill:#ff6b00;font-family:Goldplay-SemiBold, Goldplay;font-weight:600;letter-spacing:0.04999981806894623em">2 <tspan x="14.23" y="0" style="letter-spacing:0.04603348634713079em">S</tspan><tspan x="24.42" y="0">h</tspan><tspan x="35.1" y="0" style="letter-spacing:0.040023892829228594em">o</tspan><tspan x="45.74" y="0" style="letter-spacing:0.05005991400412526em">ts </tspan><tspan x="66.1" y="0" style="letter-spacing:0.04705511724517416em">O</tspan><tspan x="79.58" y="0" style="letter-spacing:0.024038374071608765em">f</tspan><tspan style="letter-spacing:0.0010216308980433727em"><tspan x="18.13" y="18.96">W</tspan><tspan x="33.75" y="18.96" style="letter-spacing:0.042968593653000674em">a</tspan><tspan x="43.58" y="18.96" style="letter-spacing:0.042067154625315344em">t</tspan><tspan x="50.85" y="18.96" style="letter-spacing:0.04999981806894623em">e</tspan><tspan x="61.17" y="18.96" style="letter-spacing:0.024038374071608765em">r</tspan></tspan></text><text transform="translate(440.76 295.1)" style="font-size:16.250059127807617px;fill:#ff6b00;font-family:Goldplay-SemiBold, Goldplay;font-weight:600;letter-spacing:0.04999981806894623em">1 C<tspan x="23.09" y="0" style="letter-spacing:-0.043990224551044045em">r</tspan><tspan x="28.91" y="0" style="letter-spacing:-0.0010216308980433727em">a</tspan><tspan x="38.02" y="0" style="letter-spacing:-0.006009593517902191em">f</tspan><tspan x="44.18" y="0" style="letter-spacing:0.05005991400412526em">tmix</tspan><tspan style="letter-spacing:-0.024999909034473116em"><tspan x="15.11" y="18.96">P</tspan><tspan x="24.81" y="18.96" style="letter-spacing:-0.0370190960702775em">a</tspan><tspan x="33.34" y="18.96" style="letter-spacing:-0.004026427656994468em">c</tspan><tspan x="41.99" y="18.96" style="letter-spacing:-0.03900226193118522em">k</tspan><tspan x="50.21" y="18.96" style="letter-spacing:0.0020432617960867453em">e</tspan><tspan x="59.75" y="18.96" style="letter-spacing:0.04999981806894623em">t</tspan></tspan></text><text transform="translate(643.14 295.1)" style="font-size:16.250059127807617px;fill:#ff6b00;font-family:Goldplay-SemiBold, Goldplay;font-weight:600;letter-spacing:0.04999981806894623em">Se<tspan x="20.57" y="0" style="letter-spacing:0.059014208345799526em">r</tspan><tspan x="28.06" y="0" style="letter-spacing:0.030949406617196286em">v</tspan><tspan x="37.39" y="0">e </tspan><tspan x="52.18" y="0" style="letter-spacing:0.042067154625315344em">O</tspan><tspan x="65.57" y="0" style="letter-spacing:0.030949406617196286em">v</tspan><tspan x="74.9" y="0">e</tspan><tspan x="85.21" y="0" style="letter-spacing:0.024038374071608765em">r</tspan><tspan style="letter-spacing:0.043990224551044045em"><tspan x="1.36" y="18.96">I</tspan><tspan x="6.8" y="18.96" style="letter-spacing:-0.003966331721815447em">c</tspan><tspan x="15.45" y="18.96" style="letter-spacing:0.04999981806894623em">e </tspan><tspan x="30.23" y="18.96" style="letter-spacing:0.020973481377478648em">&amp;</tspan><tspan x="41.49" y="18.96" style="letter-spacing:0.04999981806894623em"> </tspan><tspan x="45.96" y="18.96" style="letter-spacing:0.044050320486223066em">E</tspan><tspan x="56.1" y="18.96" style="letter-spacing:0.04999981806894623em">nj</tspan><tspan x="71.95" y="18.96" style="letter-spacing:0.032031133450418685em">o</tspan><tspan x="82.46" y="18.96" style="letter-spacing:0.04999981806894623em">y!</tspan></tspan></text><path d="M149.69,224.57a77.74,77.74,0,0,1-28.44-5.92l.88-2c.23.1,23.56,10.25,43.06,3.21l.74,2A47.93,47.93,0,0,1,149.69,224.57Z" style="fill:#ff6b00"/><polygon points="161.81 231.67 159.89 230.68 164.78 221.18 154.95 217 155.8 215 167.77 220.1 161.81 231.67" style="fill:#ff6b00"/><path d="M596.61,220.25a84.64,84.64,0,0,1-30.09-5.91l.85-2c.28.12,27.91,11.62,50.58,1.53l.88,2A54.45,54.45,0,0,1,596.61,220.25Z" style="fill:#ff6b00"/><polygon points="614.97 225.63 613.01 224.71 617.56 215.04 607.59 211.21 608.37 209.19 620.51 213.86 614.97 225.63" style="fill:#ff6b00"/><path d="M355.5,220.61a70.33,70.33,0,0,1-9.61-.68l.3-2.15c14.32,2,24.89-.78,31.21-4.84a9,9,0,0,1-2.21-1.13c-4-2.89-3.94-6.6-2.58-9.11A8.52,8.52,0,0,1,383.15,199c2.64,1,3.8,3.53,3,6.59a13.82,13.82,0,0,1-3.85,6.21c7.74.86,20.43-.71,31.56-2.89l.42,2.13a190.24,190.24,0,0,1-19.65,2.83,57.56,57.56,0,0,1-14.48-.21C375,217.59,366.73,220.61,355.5,220.61Zm24.47-20a6.22,6.22,0,0,0-5.45,3.14c-1.2,2.21-.47,4.57,2,6.33a8.88,8.88,0,0,0,3.12,1.29,12.67,12.67,0,0,0,4.48-6.29c.3-1.15.47-3.2-1.69-4A6.87,6.87,0,0,0,380,200.59Z" style="fill:#ff6b00"/><polygon points="405.41 202.54 404.24 204.38 413.26 210.1 406.89 218.68 408.64 219.97 416.39 209.52 405.41 202.54" style="fill:#ff6b00"/><rect x="639.15" y="163.46" width="23.38" height="1.95" style="fill:#fff"/><rect x="649.86" y="153.55" width="1.95" height="21.77" style="fill:#fff"/><rect x="649.86" y="155.51" width="1.95" height="17.84" transform="translate(86.99 528.72) rotate(-47.04)" style="fill:#fff"/><rect x="641.92" y="163.46" width="17.84" height="1.95" transform="translate(62.45 487.59) rotate(-42.96)" style="fill:#fff"/><rect x="723.92" y="225.57" width="23.77" height="1.95" style="fill:#fff"/><rect x="734.83" y="215.47" width="1.95" height="22.13" style="fill:#fff"/><rect x="734.83" y="217.47" width="1.95" height="18.14" transform="translate(68.6 610.68) rotate(-47.04)" style="fill:#fff"/><rect x="726.73" y="225.57" width="18.14" height="1.95" transform="translate(42.91 562.14) rotate(-42.96)" style="fill:#fff"/></svg> -->
+{% unless section.settings.hide_cta %}
+      <a href='{{ section.settings.shop_url }}' class='hero-button rise centered'>
+        Shop Now
+      </a>
+    {% endunless %}
+        {% if request.path == '/pages/social-landing' or request.path == '/pages/sampler-pack-landing'%}
+      <a href='#shop' class='hero-button rise centered'>
+        Shop Now
+      </a>
+    {% endif %}
+  </div>
+</div>
+
+<style>
+  #section-{{section.id}} .image-section {
+    width: 100%;
+    background-color: var(--{{ section.settings.color }}-color);
+	padding: 20px 8vw;
+    {% if section.settings.extra_bottom %}
+      padding-bottom: calc(80px + 20vw);
+    {% else %}
+      padding-bottom: 160px;
+    {% endif %}
+      
+    {% if section.settings.extra_top %}
+      padding-top: 16vw;
+    {% endif %}
+    overflow: show;
+    position: relative;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #section-{{section.id}} .mobile-image-section {
+    width: 100%;
+    background-color: var(--{{ section.settings.color }}-color);
+	padding: 30px 30px;
+    {% if section.settings.extra_bottom %}
+      padding-bottom: calc(30px + 20vw);
+    {% else %}
+      padding-bottom: 30px;
+    {% endif %}
+      
+    {% if section.settings.extra_top %}
+      padding-top: calc(10px + 20vw);
+    {% endif %}
+    position: relative;
+    overflow: show;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .mobile-image-container {
+    overflow: show;
+    position: relative;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 440px; 
+  }
+  
+  #section-{{section.id}} .mobile-image-section .mobile-image-container > * {
+    margin: 12px 0;
+  }
+   
+  
+  #section-{{section.id}} .mobile-image-section .hero-button {
+    margin-top: 32px; 
+  }
+   
+  
+  #section-{{section.id}} .mobile-image-section > .mobile-top-curve {
+   	position:absolute;
+    top:-34px;
+    height: 36px;
+    margin: 0;
+    left: 0;
+    width: 100%;
+    max-width: unset;
+  }
+  
+  .top-curve {
+   	position:absolute;
+    top:-130px;
+    height: 130px;
+    left: 0;
+    width: 100%;
+    max-width: unset;
+  }
+  
+  .big-image {
+    text-align: center;
+   	width: 100%;
+    margin-bottom: 30px;
+  }
+  
+  .big-image.one svg, .big-image.one object{
+    height: 100%;
+    max-height: 60vh;
+    min-height: 300px;
+  }
+  
+  {% if section.settings.large_image %}
+  #section-{{section.id}} .big-image.one object{
+   	max-height: 72vh; 
+    min-height: 500px;
+  }
+  {% endif %}
+  
+  .big-image.two svg{
+    height: 100%;
+   	max-height: 45vh;
+    max-width: 60vw;
+    min-height: 150px;
+    object-fit: contain;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .centered {
+   	margin: 0 auto; 
+  }
+  
+</style>
+
+
+{% schema %}
+  {
+    "name": "Big Images with Top Curve",
+    "settings": [
+	    {
+      "type": "url",
+      "id": "shop_url",
+      "label": "Shop button url"
+    },
+    {
+      "type": "select",
+      "id": "color",
+      "label": "Color",
+      "options": [
+        {
+        "group": "Color",
+        "value": "pink",
+        "label": "Pink"
+        },
+        {
+        "group": "Color",
+        "value": "cream",
+        "label": "Cream"
+        },
+        {
+        "group": "Color",
+        "value": "purple",
+        "label": "Purple"
+        }
+      ],
+      "default": "pink"
+    },
+    {
+      "type": "textarea",
+      "id": "big_one",
+      "label": "Big Image 1"
+    },
+	{
+      "type": "textarea",
+      "id": "big_two",
+      "label": "Big Image 2"
+    },
+	{
+	  "type": "checkbox",
+	  "id": "extra_top",
+	  "label": "Extra padding on top"
+	},
+	{
+	  "type": "checkbox",
+	  "id": "extra_bottom",
+	  "label": "Extra padding on bottom"
+	},
+	{
+	  "type": "checkbox",
+	  "id": "use_asset_svg",
+	  "label": "Use Asset SVG",
+	  "info": "Upload an SVG within the Theme's Asset folder.",
+	  "default": false
+	},
+	{
+	  "type": "checkbox",
+	  "id": "large_image",
+	  "label": "Use Tall First Image",
+	  "default": false
+	},
+	{
+	  "type": "text",
+	  "id": "asset_svg",
+	  "label": "Asset SVG Name",
+	  "default": "guilt-free.svg"
+	},
+	{
+	  "type": "checkbox",
+	  "id": "use_mobile_asset_svg",
+	  "label": "Use Mobile Asset SVG",
+	  "info": "Upload an SVG within the Theme's Asset folder.",
+	  "default": false
+	},
+	{
+	  "type": "text",
+	  "id": "mobile_asset_svg",
+	  "label": "Asset SVG Name",
+	  "default": "mobile-cheers.svg"
+	},
+	{
+	  "type": "textarea",
+	  "id": "mobile-title",
+      "label": "Mobile Title SVG"
+	},
+	{
+	  "type": "checkbox",
+	  "id": "include_mobile",
+	  "label": "Include Asset in Mobile",
+	  "default": false
+	},
+	{
+	  "type": "checkbox",
+	  "id": "hide_cta",
+	  "label": "Hide CTA"
+	}
+  ],
+  "blocks": [
+	{
+		"type": "block",
+		"name": "Image block",
+		"settings": [
+          {
+			"type": "textarea",
+			"id": "data",
+			"label": "SVG Data"
+          },
+		  {
+			"type": "range",
+			"id": "width",
+			"label": "Width",
+			"min": 0,
+			"max": 100,
+			"unit": "%",
+			"default": 100
+		  },
+          {
+            "type": "checkbox",
+            "id": "mobile_margin",
+            "label": "Remove bottom margin",
+            "default": false
+          }
+		]
+	}
+  ],
+  "presets": [
+    {
+      "category": "Hero",
+      "name": "Big Images"
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

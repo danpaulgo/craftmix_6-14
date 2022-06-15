@@ -1,0 +1,416 @@
+<section id="section-{{ section.id }}" data-section-id="{{ section.id }}" class='collection'>
+  <div class='collection-hero'>
+      <div class='collection-mobile-title'>
+        {{ section.settings.mobile-title }}<br/><br/><br/><br/>
+      </div>
+      <div class='collection-left-hero desktop-only'>
+          <img class='hero-collection-shot Image--lazyLoad' src='{{ section.settings.image | img_url: '800x' }}' data-src='{{ section.settings.image | img_url: '2000x' }}' />
+      </div>
+      <div class='collection-right-hero desktop-only'>
+          <h1 class='collection-hero-header'>
+            {{ section.settings.title }}
+          </h1>
+      </div>
+  </div>
+  <div class='collection-products'>
+    {% for product in collections['test-collection'].products %}
+    	<div class='wave-product' style='z-index: {{forloop.index0 | plus: 1}}'>
+          <a href='{{ product.url }}'>
+            <img class='Image--lazyLoad' src='{{ product.featured_image | img_url: 'large' }}' data-src='{{ product.featured_image | img_url: '1400x' }}'/>
+            <div class='wave-product-details'>
+              <h3>{{ product.title }}</h3>
+              <span class='wave-product-price'>{{ product.price | money }}</span>
+              <div style='display: flex; align-items: center'>
+                  <div class="QuantitySelector QuantitySelector--medium" style='margin-top: 16px; margin-right: 12px; border-color: currentColor;'>
+                    {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%}
+
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="event.preventDefault(); $(this).siblings('input').val(Math.max(1, parseInt($(this).siblings('input').val()) - 1))">{% render 'icon' with 'minus' %}</span>
+                    <input type="text" class="QuantitySelector__CurrentQuantity" data-qty-reference-id="{{ product.id }}" pattern="[0-9]*" name="quantity" value="1">
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="event.preventDefault(); $(this).siblings('input').val(parseInt($(this).siblings('input').val()) + 1)">{% render 'icon' with 'plus' %}</span>
+                  </div>
+                <button class="ProductForm__AddToCart atc" data-upsell-attach="{{product.id}}" onclick="addProductCP(event, '{{product.id}}')">
+                    {%- if product.available -%}
+                        <span>Add to Cart</span>
+                    {%- else -%}
+                        <span>Sold Out</span>
+                    {%- endif -%}
+                </button>
+              </div>
+            </div>
+          </a>
+          {% assign i = forloop.index0 | plus: 1%}
+          <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
+          <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
+    	</div>
+    {% endfor %}
+  </div>
+  
+</section>
+
+<div >
+        {% for product in collections['all'].products %}
+          {%- capture section_settings -%}
+            {
+            "enableHistoryState": true,
+            "templateSuffix": {{ product.template_suffix | json }},
+            "useAjaxCart": true
+            }
+          {%- endcapture -%}
+          	<section class="Product" data-section-settings='{{ section_settings }}' data-section-type='product'>
+            <div class='upsell-product Product__Wrapper' >
+                  <div class="Product__Wrapper">
+                    <div class="Product__InfoWrapper">
+                      <div class="Product__Info">
+                        <div class="Container">
+                          {%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
+                              {{ product.title }}
+                              <input type="hidden" name="id" data-productid="{{ product.id }}" data-sku="{{ product.sku }}" value="{{ product.selected_or_first_available_variant.id }}">
+                          	  <input type="hidden" name="quantity" data-qty-upsell-id="{{product.id}}" value="1">
+                              <button type="submit" class="ProductForm__AddToCart atc" data-upsell-id="{{product.id}}" {% if product.available %}data-action="add-to-cart"{% else %}disabled="disabled"{% endif %}>
+                                {%- if product.available -%}sz
+                                  <span>Add to Cart</span>
+                                {%- else -%}
+                                  {{- 'product.form.sold_out' | t -}}
+                                {%- endif -%}
+                              </button>
+                          {%- endform -%}
+                          <script type="application/json" data-product-json>
+                            {
+                              "product": {{ product | json }},
+                              "selected_variant_id": {{ product.selected_or_first_available_variant.id }}
+                            }
+                          </script>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+           </section>
+            {% assign count = count | plus: 1 %}
+        {% endfor %}
+</div>
+
+<script>
+  function addProductCP(event, id) {
+    event.preventDefault(); 
+	let q = $('[data-qty-reference-id="'+id+'"]').val()
+    console.log(q)
+    $('[data-qty-upsell-id="'+id+'"]').val(q)
+    $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
+    setTimeout(function(){$('[data-upsell-id="'+id+'"]').click()}, 100)
+  }
+</script>
+
+<style>
+    .atc {
+    margin: 0 auto;
+    margin-top: 16px;
+    font-size: 16px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    width: 66%;
+    min-width: 200px;
+    font-weight: 800;
+    padding: 12px 20px;
+    color: var(--color-2);
+    background-color: var(--color-4);
+    border-radius: 30px;
+  }
+    
+  .collection-hero {
+   	margin: 0 auto;
+	padding: 75px;
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+  }
+  
+  .collection-products {
+   	display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: flex-end;
+    z-index: 3;
+    margin-top: max(-120px, -10vw);
+    margin-bottom: -100px;
+  }
+  
+  .wave-product {
+   	flex: 0 1 33.3333333333%;
+    margin-top: -10vw;
+    position: relative;
+    color: #00a7e1;
+  }
+  
+    .wave-product-details input {
+    font-size: 16px;
+    font-weight: 800;
+  }
+    
+  .wave-product-details .QuantitySelector {
+    width: 100%;
+    height: 52px;
+    border-radius: 30px;
+    border-width: 2px;
+    padding: 0 8px;
+  }
+  .wave-product-details path {
+    stroke-width: 3px;
+  }
+  
+  .wave-product:nth-child(n + 2) {
+	color: var(--orange-color);
+  }
+  
+  .wave-product:nth-child(n + 3) {
+	color: var(--green-color);
+  }
+  
+  .wave-product:nth-child(n + 4) {
+	color: var(--green-color);
+  }
+  
+  .wave-product:nth-child(n + 5) {
+  	color: var(--red-color);
+  }
+  
+  .wave-product:nth-child(n + 6) {
+	color: #76236c;
+  }
+  
+  .wave-product .atc {
+    color: white;
+    background-color: #00a7e1;
+  }
+  
+  .wave-product:nth-child(n + 2) .atc {
+	background-color: var(--orange-color);
+  }
+  
+  .wave-product:nth-child(n + 3) .atc {
+	background-color: var(--green-color);
+  }
+  
+  .wave-product:nth-child(n + 4) .atc {
+	background-color: var(--green-color);
+  }
+  
+  .wave-product:nth-child(n + 5) .atc {
+    	background-color: var(--red-color);
+  }
+  
+  .wave-product:nth-child(n + 6) .atc {
+	background-color: #76236c;
+  }
+  
+  .wave-product:hover img{
+   	transform: translateY(-18px) 
+  }
+  
+  .wave-product a, .wave-space {
+   	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 6.5vw;
+  }
+  
+  .wave-space {
+    justify-content: center;
+    padding-top: 0vw;
+  }
+  
+  .wave-product img {
+   	transition: 0.25s;
+   	width: 88%;
+    margin-bottom:0px;
+  }
+  
+  .wave-product-details {
+   	text-align: center;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .wave-product-details h3 {
+   	font-family: 'Hornbill';
+    letter-spacing: -0.01rem;
+    font-size: 2.5vw;
+    line-height: 0.95;
+    margin-bottom: 2px;
+  }
+  
+  .wave-product-price {
+   	font-size: 1.4vw; 
+    font-weight: 800;
+  }
+  
+  .wave-space h3 {
+   	 width: 60%;
+     font-size: 4.5vw;
+     font-family: 'Hornbill';
+     font-weight: 800;
+     line-height: 0.9;
+     text-align: center;
+     margin-bottom: 2vw;
+  }
+  
+  .wave-space p {
+   	 width: 60%;
+     text-align: center;
+     font-weight: 800;
+     line-height: 1.35;
+     font-size: 1.4vw;
+  }
+  
+  .wave-product object {
+    width: 100.25%;
+  }
+  
+  .wave-product object path {
+    fill: #e6dbea; 
+  }
+  
+  .collection-left-hero {
+   	flex: 0 1 50%; 
+  }
+  
+  .collection-right-hero {
+    flex: 0 1 41%; 
+  }
+  
+  .hero-collection-shot {
+   	width: 100%; 
+  }
+  
+  .collection-hero-header {
+   	font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 0.9;
+    letter-spacing: -0.4rem;
+    font-size: 82px;
+    color: var(--orange-color);
+    padding-top: 150px;
+  }
+  
+  @media (max-width: 1023px) {
+        .atc {
+	  margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 14px;
+	  padding: 8px 20px;
+    }
+    .collection-hero {
+      padding: 30px;
+      padding-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .collection-products {
+      display: flex;
+      flex-direction: column;
+      margin-top: -10vw;
+      margin-bottom: -10px;
+    }
+
+    .wave-product {
+      flex: unset;
+      margin-top: -20vw;
+      width: 100%;
+    }
+    .collection-mobile-title {
+      width: 100%;
+      margin-bottom: 30px;
+    }
+    
+    .wave-product a:first-of-type {
+      padding-bottom: 40px; 
+    }
+    
+    .wave-product a, .wave-space {
+    	justify-content: center;
+    }
+    
+    .wave-product:last-of-type {
+/*        height: 400px; */
+    }
+    
+    .wave-space h3 {
+       font-size: 42px;
+       margin-bottom: 12px;
+    }
+    
+    .wave-product-details h3 {
+       font-size: 26px;
+       margin-bottom: 6px;
+    }
+
+    .wave-product-price {
+       font-size: 15px;
+    }
+    
+    .wave-space p {
+       font-size: 22px;
+	   width: 80%;
+    }
+    
+    .wave-product object {
+      width: 100%;
+    }
+      .wave-product-details .QuantitySelector {
+    
+      margin-bottom: 24px;
+    height: 40px;
+  }
+  }
+</style>
+
+
+{% schema %}
+{
+  "name": "Collection page",
+  "class": "shopify-section--bordered",
+  "settings": [
+	{
+	  "type": "text",
+	  "id": "title",
+	  "label": "Page title"
+	},
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+	{
+	  "type": "text",
+	  "id": "space_title",
+	  "label": "Space title"
+	},
+	{
+	  "type": "text",
+	  "id": "space_sub_title",
+	  "label": "Space sub-title"
+	},
+	{
+	  "type": "textarea",
+	  "id": "mobile-title",
+	  "label": "Mobile title SVG"
+	}
+  ]
+}
+{% endschema %}

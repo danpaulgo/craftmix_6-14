@@ -1,0 +1,140 @@
+<section class='story-section'>
+  <div class='story-block'>
+    <div class='story-flex'>
+      <div class='story-content'>
+        <h1>{{ section.settings.top-title }}</h1>
+        <p>{{ section.settings.top-description | newline_to_br }}</p>
+      </div>
+      <div class='story-image'>
+        {{ section.settings.top-image }}
+      </div>
+    </div>
+  </div>
+  <img src='{{ 'story-wave.svg' | asset_url }}' class='story-wave' />
+  <div class='story-block yellow-bg'>
+    <div class='story-flex'>
+      <div class='story-image'>
+        {{ section.settings.bottom-image }}
+      </div>
+      <div class='story-content'>
+        <h1>{{ section.settings.bottom-title }}</h1>
+        <p>{{ section.settings.bottom-description | newline_to_br }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  body {
+    background-color: var(--orange-background); 
+  }
+  .story-section {
+    padding-top: 100px; 
+  }
+  .story-section, .story-block {
+    color: var(--orange-color);
+    width: 100%;
+  }
+  .story-block:last-child {
+    padding-bottom: 100px; 
+    padding-top: 20px;
+  }
+  .story-flex {
+    margin: 0 auto;
+    padding: 40px 0;
+    max-width: 1100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .story-content {
+    flex: 0 1 50%;
+  }
+  .story-image {
+    flex: 0 1 40%; 
+  }
+  .story-image img {
+    width: 100%; 
+  }
+  
+  .story-content h1 {
+    font-size: 68px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 16px;
+  }
+  .story-content p {
+    font-size: 20px;
+    line-height: 1.5;
+  }
+  .yellow-bg {
+    background-color: #ffd600; 
+  }
+  
+  @media (max-width: 1023px) {
+    .story-flex {
+      margin: 0 auto;
+      padding: 30px 20px;
+	  flex-direction: column-reverse;
+    }
+    
+    .story-image {
+      width: 70%;
+      max-width: 300px;
+      height: auto;
+    }
+    
+    .story-section {
+    	padding-top: 40px; 
+	}
+
+    .story-block:last-child {
+      padding-bottom: 40px; 
+      padding-top: 30px;
+    }
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Story Section",
+    "settings": [
+	{
+		"type": "text",
+		"id": "top-title",
+		"label": "Top title",
+		"default": "Our Cocktail Tale"
+	},
+	{
+		"type": "textarea",
+		"id": "top-description",
+		"label": "Top description",
+		"default": "Making your own cocktails from scratch can be a real struggle! And we realized that the cocktail mixers on the market were all extremely unhealthy, inconveniently sized, and tasted terrible! I mean seriously, who likes that syrupy neon sludge? And that’s why we Created Craftmix! Finally, a cocktail mix that’s health-conscious, conveniently sized, and most of all tastes delicious!"
+	},
+	{
+		"type": "textarea",
+		"id": "top-image",
+		"label": "Top image (SVG)"
+	},
+	{
+		"type": "text",
+		"id": "bottom-title",
+		"label": "Bottom title",
+		"default": "After Many Hours of Drinking…"
+	},
+	{
+		"type": "textarea",
+		"id": "bottom-description",
+		"label": "Bottom description",
+		"default": "Craftmix was created by JT, an avid entrepreneur and former bartender, when realizing there was a void in the pre-packaged cocktail market. After starting various small startups, JT received an overwhelmingly positive response to the idea of Craftmix, knew it was the one!  JT, alongside many brave roommates, friends, and team members, spent over 6 months, testing (getting drunk) different flavor combinations and formulas, to create the delicious flavors you know today!"
+	},
+	{
+		"type": "textarea",
+		"id": "bottom-image",
+		"label": "Bottom image (SVG)"
+	}
+	]
+  }
+{% endschema %}

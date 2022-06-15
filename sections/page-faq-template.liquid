@@ -1,0 +1,164 @@
+<section data-section-id="{{ section.id }}" class='faq-section'>
+  <div class="faq-container">
+	<img src='{{ 'faq-title.svg' | asset_url }}' class='faq-title' />
+    <div class='faq'>
+     {% for block in section.blocks %}
+      <div class='accordian {% if forloop.index0 == 0 %}open{% endif %}'>
+        <div class='question'>
+          {{ block.settings.title }}
+        </div>
+        <div class='answer'>
+          {{ block.settings.answer }}
+        </div>
+        <div class='x'>✕</div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>  
+  $('.accordian').click(function() {
+    $('.accordian').not(this).toggleClass('open', false)
+   	$(this).toggleClass('open') 
+  })
+</script>
+
+<style>
+  	.question {
+      width: 100%;
+      text-align: left;
+      height: 36px;
+      font-size: 22px;
+      line-height: 36px;
+      font-weight: 700;
+    }
+  
+    .answer {
+      width: 100%;
+      text-align: left;
+      font-size: 20px;
+      line-height: 1.5;
+    }
+  
+	.faq-section {
+      text-align: center;
+      padding: 100px 0;
+      background-image: url({{ 'faq-background.svg' | asset_url }});
+      background-size: cover;
+    }
+  
+  	.faq-container {
+      margin: 0 auto;
+      max-width: 900px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--orange-color);
+    }
+  
+  	.faq {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+  	.faq-title {
+      width: 100%;
+      margin-bottom: 40px;
+    }
+  
+    .accordian.open .answer {
+		max-height: 150px;
+	    padding: 18px 0;
+    }
+  
+    .accordian {
+       position: relative; 
+       cursor: pointer;
+       border-bottom: 2px solid var(--orange-color);
+       padding: 18px 0;
+    }
+
+    .accordian .x {
+        transform: rotate(45deg);
+        position: absolute;
+        top: 22px;
+        right: 0;
+      	font-size: 18px;
+     	font-weight: 700;
+        width: fit-content;
+        height: fit-content;
+      	transition: 0.2s;
+    }
+
+    .accordian.open .x {
+       transform: rotate(0deg);
+    }
+
+    .accordian .answer {
+	 max-height: 0;
+     overflow: hidden;
+     transition: 0.3s;
+       width: 100%;
+    }
+  
+  @media (max-width: 1023px) {
+    
+    .faq-title {
+      height: fit-content;
+      margin-bottom: 20px;
+    }
+    
+    .faq-section {
+      background-image: none;
+      width: 90%;
+      margin: 0 auto;
+      padding: 40px 0;
+    }
+    
+    .question {
+      width: 90%;
+      font-size: 16px;
+      line-height: 16px;
+      height: fit-content;
+    }
+  
+    .answer {
+	  margin: 0 auto;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 10px 0;
+    }
+    
+    .accordian .x {
+      top: 14px;
+    }
+   	 
+  }
+</style>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

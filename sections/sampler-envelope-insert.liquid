@@ -1,0 +1,940 @@
+{% assign product = section.settings.product %}
+
+{%- capture section_settings -%}
+{
+  "enableHistoryState": true,
+  "templateSuffix": {{ product.template_suffix | json }},
+  "useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %}
+}
+{%- endcapture -%}
+<div id="shop-anchor">
+  <img src="https://cdn.shopify.com/s/files/1/2340/1623/files/curve-top-dg.png?v=1653591870" class="desktop-only top-curve-new">
+  <img src="https://cdn.shopify.com/s/files/1/2340/1623/files/mobile-curve-top-dg.png?v=1653595180" class="mobile-only mobile-curve-new">
+<section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' style='position: unset;'>
+  <div class="Product__Wrapper">
+    <div class="Product__InfoWrapper" >
+      <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
+        <div class="Container">
+          <span style='display: none;'>{%- render 'product-meta', product: product, show_price: 'no', show_options: true, show_description: true, alt_description: 'Just Add Liquor, Water & Ice' -%}</span>
+             <div class='product' >
+                <div class='product-hero' id="sampler-landing-product-hero">
+                  <div class='product-info' id="sampler-landing-product-info">
+                      <h1 class='product-title'>Craftmix Sampler Pack</h1>
+                      <div class='stars'>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg> (1,073 Reviews)
+                      </div>
+                      <p class='product-subtitle'>Just Add Liquor, Water & Ice</p>
+                      <div class='product-subtitle' style='font-size: 15px'>
+                        <ul class='desktop-only'>
+						  Includes:
+                          <li style='color: #FE6A00; font-weight: 800;'>1x Blood Orange Mai Tai Packet (pairs with rum)</li>
+                          <li style='color: #72226C; font-weight: 800;'>1x Passionfruit Paloma Packet (pairs with tequila)</li>
+                          <li style='color: #E00600; font-weight: 800;'>1x Strawberry Mule Packet (pairs with vodka)</li>
+                        </ul>
+						<div class='mobile-only' style='display: inline;'>
+                          <div>
+                              Includes:
+            	              <span style='color: #FE6A00; font-weight: 800;'>1x Blood Orange Mai Tai Packet (pairs with rum)</span> |  
+        	                  <span style='color: #72226C; font-weight: 800;'>1x Passionfruit Paloma Packet (pairs with tequila)</span> | 
+    	                      <span style='color: #E00600; font-weight: 800;'>1x Strawberry Mule Packet (pairs with vodka)</span>
+                          </div>
+                        </div>
+                    </div>
+                      {%- render 'product-form', showQty: 'no', triple: 'no', productPage: true, product: product -%} 
+                  </div>
+                  <div class='product-image'>
+                    <img style="max-width:100%;" class='Image--lazyLoad' data-src='https://cdn.shopify.com/s/files/1/2340/1623/files/crafmix-sampler-2.png?v=1653671814'/>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<script>
+  $('.product-types').click(function() {
+   	$(this).toggleClass('on') 
+  })
+  
+  $('.accordian').click(function() {
+    $('.accordian').not(this).toggleClass('open', false)
+   	$(this).toggleClass('open') 
+  })
+  
+  
+  
+  window.addEventListener('DOMContentLoaded', function() {
+      $reviews = $('.review-container').flickity({
+        pageDots: false,
+        prevNextButtons: false,
+        draggable: false,
+        wrapAround: true
+	  })
+      $controls = $('.review-controls .numbers').flickity({
+          asNavFor: '.review-container',
+          pageDots: false,
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: false,
+          draggable: false,
+      })
+      
+      $('#review-left-arrow').click(function() {
+       	$reviews.flickity('previous')
+      })
+      
+	  $('.review-controls .number').click(function() {
+       	$reviews.flickity('select', $(this).data('page'))
+      })
+      
+	  $('#review-right-arrow').click(function() {
+       	$reviews.flickity('next')
+      })
+      
+      $photos = $('.product-more-photos-mobile').flickity({
+        pageDots: false,
+        prevNextButtons: false,
+        cellAlign: 'center',
+        wrapAround: true
+	  })
+      
+	  $info = $('.product-more-info-mobile').flickity({
+          asNavFor: '.product-more-photos-mobile',
+          wrapAround: true,
+          pageDots: false,
+          cellAlign: 'center',
+          contain: true,
+          prevNextButtons: false,
+          draggable: false
+      })
+      
+      
+      $('#info-left-arrow').click(function() {
+       	$photos.flickity('previous')
+      })
+      
+	  $('#info-right-arrow').click(function() {
+       	$photos.flickity('next')
+      })
+      
+  })
+</script>
+
+<style>
+  
+  #shopify-section-product-template-insert {
+    
+    position: relative; 
+  }
+  
+  .product-more .product-more-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 1800px;
+  }
+  
+  .product-more .more-product {
+    flex: 0 1 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .more-product-info {
+    text-align: center;
+    color: var(--orange-color);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .more-product-info h3 {
+   	font-size: 26px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 105%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 2px;
+    width: 80%;
+  }
+  
+  .more-product-info .price {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .wait-title {
+    width: 70%;
+    max-width: 800px;
+  }
+  
+  .product-more .wave {
+    fill: var(--orange-background);
+  }
+  
+  .review-controls {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .review-controls .numbers {
+    height: 20px;
+    width: calc(100px * {{ pages }})
+  }
+  
+  .review-controls svg, .product-info-line svg {
+    width: 8px;
+    cursor: pointer;
+    margin: 0 30px;
+  }
+  
+  .review-controls .number {
+  	font-size: 18px;
+    font-weight: 700;
+    width: 23px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 13px;
+    color: var(--color-1);
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .review-controls .number.is-selected {
+  	background-color: var(--color-1);
+    color: var(--color-2);
+  }
+  
+  .reviews-title {
+    width: 65%; 
+  }
+  
+  #review-left-arrow, #review-right-arrow {
+    stroke: var(--color-1) !important; 
+  }
+  
+  #info-left-arrow, #info-right-arrow {
+    stroke: var(--orange-color) !important; 
+  }
+  
+  .product-reviews h4, p {
+    font-size: 15px;
+    color: var(--color-1);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  
+  .product-reviews h4 {
+    display: flex;
+  }
+  
+  .review-group {
+    padding: 0 30px; 
+    width: 100%;
+  }
+  
+  .product-reviews .review {
+    border-bottom: 2px solid var(--color-1);
+    padding: 22px 0;
+    width: 100%;
+  }
+  
+  .product-reviews .review:last-child {
+    border-bottom: none;
+  }
+  
+  .review .stars {
+    width: 150px; 
+    overflow: hidden;
+    height: 30px;
+  }
+    
+  .review .stars svg {
+    fill: #faca1b; 
+    height: 30px;
+    width: 150px;
+  }
+  
+  .product-reviews h4 img {
+    margin-left: 6px;
+    width: 12px;
+  }
+  
+  .review-container {
+    width: 100%;
+  }
+  
+  .product-reviews h3 {
+	font-size: 32px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    color: var(--color-1);
+  }
+  
+  .product-faq {
+     background-color: var(--color-1);
+	 color: white;
+     display: flex;
+     flex-direction: row;
+     position: relative;
+     align-items: flex-end;
+     justify-content: space-between;
+     z-index: 6;
+     padding-bottom: 100px;
+  }
+  
+  .product-faq .questions {
+     padding: 10vw;
+     max-width: 800px;
+     flex-grow: 1;
+     font-size: 16px;
+     font-weight: 700;
+     display: flex;
+     flex-direction: column;
+  }
+  
+  .product-faq .accordian.open .answer {
+     max-height: 150px;
+  }
+  
+  .product-faq .accordian {
+     position: relative; 
+     margin-bottom: 22px;
+     cursor: pointer;
+  }
+  
+  .product-faq .accordian .x {
+     transform: rotate(45deg);
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content;
+    transition: 0.3s;
+  }
+  
+  .product-faq .accordian.open .x {
+     transform: rotate(0deg);
+  }
+  
+  .product-faq .accordian .answer {
+     color: var(--yellow-color);
+	 max-height: 0;
+     overflow: hidden;
+     transition: 0.3s;
+     width: 100%;
+  }
+  
+  .product-faq h2 {
+    font-size: 58px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 18px;
+  }
+  
+  .product-faq .pour-image {
+    margin-top: -5vw;
+  }
+  
+  .product-faq .pour-image img {
+     width: auto;
+    max-width: 30vw;
+  }
+  
+  .whats-in-icons {
+    width: 75%; 
+  }
+  
+  .product-whats-in p {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 24px;
+    color: var(--color-1);
+    margin-bottom: 36px;
+  }
+  
+  .whats-in-left p {
+    text-align: center; 
+    font-size: 18px;
+  }
+  
+  .whats-in-right p {
+    font-weight: 400; 
+  }
+  
+  .product-directions .wave {
+   fill: var(--color-3); 
+  }
+  
+  .product-whats-in .wave, .product-reviews .wave {
+  	fill: var(--color-2); 
+  }
+  
+  .product-faq .wave {
+  	fill: var(--color-1); 
+  }
+  
+  .directions-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 550px;
+  }
+  
+  .product-directions-title {
+    max-width: 95%; 
+    margin: 30px 0;
+  }
+  
+  .product-directions-title text {
+    fill: var(--color-1) !important;
+  }
+  
+  .product-whats-in text, .product-reviews text, .product-directions text {
+    fill: var(--color-1) !important;
+  }
+  
+  .whats-in-icons .path {
+     stroke: var(--color-1) !important;
+  }
+  
+  .product-whats-in.variety {
+    padding-top: 0;
+    flex-direction:column;
+    align-items: center;
+  }
+  
+  .product-whats-in .whats-in-icons-variety {
+    display: none;
+  }
+  
+  .product-whats-in.variety .whats-in-icons-variety {
+    display: inline-block;
+    width: 100%;
+    max-width: 600px;
+    margin-top: 30px;
+  }
+  .product-whats-in.variety .whats-in-icons {
+  	display: none;
+  }
+  
+  .product-whats-in.variety .whats-in-left svg {
+    max-width: 500px;
+  }
+  
+  .product-whats-in.variety .whats-in-right {
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .product-whats-in.variety .whats-in-right p {
+    display: none; 
+  }
+  
+  .product-whats-in.variety .whats-in-right object {
+    width: 100%;
+  }
+  
+  
+  .product-whats-in {
+    background-color: var(--color-2);
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 5;
+    padding: 10vh 5vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  
+  .product-whats-in.variety > div {
+    flex: unset;
+    max-width: 800px;
+  }
+  
+  .product-whats-in > div {
+  	flex: 0 1 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+  }
+  
+  .product-reviews {
+    background-color: var(--color-2);
+   	background-image: url({{ product.metafields.accentuate.background_2[0].src }});
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 7;
+    padding: 7vh 15vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-directions {
+    background-color: var(--color-3);
+   	background-image: url({{ product.metafields.accentuate.background_1[0].src }});
+    background-size: 100%;
+    background-position: top top;
+    position: relative;
+    z-index: 5;
+    padding: 5vh 20vw;
+    padding-bottom: calc(10vh + 150px);
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .product-more {
+    background-color: var(--orange-background);
+    position: relative;
+    z-index: 8;
+    padding: 10vh 2vw;
+    padding-bottom: 15vh;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .wave {
+    position: absolute;
+    top: -149px;
+    width: 100%;
+    height: 150px;
+    left:0;
+  }
+  
+  .Product__Info {
+   width: 100%; 
+   padding: 0;
+   position: unset;
+   max-width: 100%;
+   margin: 0;
+  }
+  body {
+    --color-1: {{ product.metafields.accentuate.color_1 }};
+  	--color-2: {{ product.metafields.accentuate.color_2 }};
+    --color-3: {{ product.metafields.accentuate.color_3 }};
+    --color-4: {{ product.metafields.accentuate.color_4 }};
+    --color-5: {{ product.metafields.accentuate.color_5 }};
+   	background-color:  {{ product.metafields.accentuate.color_2 }};
+  }
+  
+  .product {
+
+  }
+    
+  .product-hero {
+    height: calc(100vh);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: var(--color-1);
+    padding-left: 10vw;
+    overflow: hidden;
+  }
+    
+  .product-info {
+   	flex: 0 0 440px; 
+	font-size: 18px; 
+    font-weight: 600;
+  }
+    
+  .stars {
+    width: 100%; 
+    overflow: hidden;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+    
+  .stars svg {
+    fill: #faca1b;  
+    height: 40px;
+    width: 140px;
+    margin-right: 12px;
+  }
+    
+  .product-image {
+    flex: 0 0 60%; 
+    position: relative;
+  }
+    
+  .product-image img {
+   	width: 100%;
+    object-fit: contain;
+    max-height: 80vh;
+  }
+    
+  .product-image .badge {
+    position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 120px;
+    height: 120px;
+    
+  }
+    
+  .product-title {
+    font-size: 54px;
+    font-family: 'Hornbill';
+    font-weight: 800;
+    line-height: 95%;
+    letter-spacing: -0.1rem;
+    margin-bottom: 0px;
+  }
+    
+  .product-options {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+    
+  .product-options .label {
+    margin-bottom: 3px; 
+  }
+    
+  #quantity input {
+    font-size: 18px;
+    font-weight: 800;
+  }
+    
+  #quantity .QuantitySelector {
+    width: 100%;
+    height: 57px;
+    border-radius: 30px;
+    border: 2px solid var(--color-1);
+    padding: 0 8px;
+  }
+    
+  #quantity path {
+    stroke-width: 3px;
+  }
+   
+  .product-subtitle {
+    margin-bottom: 24px; 
+  }
+    
+  .product-options-type {
+    flex-grow: 1;
+    margin-right: 24px;
+    position: relative;
+  }
+    
+  .product-types {
+    width: 100%;
+    height: 57px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    padding: 12px 20px;
+    border: 2px solid var(--color-1);
+    position: relative;
+    z-index: 100;
+    cursor: pointer;
+  }
+    
+  .product-types .others {
+    display: none;
+  }
+    
+  .product-types svg {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 20px;
+    stroke: var(--color-1);
+  }
+    
+  .product-types.on {
+    background-color: var(--color-1);
+    color: var(--color-5);
+    height: fit-content;
+    position: absolute;
+  }
+    
+  .product-types.on svg {
+  	stroke: var(--color-2);
+    transform: rotate(180deg);
+  }
+    
+  .product-types.on > span { 
+    margin-bottom: 10px;
+  }
+    
+  .product-types.on .others {
+    display: flex;
+    flex-direction:column;
+    color: var(--color-2);
+  }
+    
+  .product-types.on .others > * {
+	margin-bottom: 10px;
+  }
+    
+  .product-types.on .others > *:last-child {
+	margin-bottom: 0px;
+  }
+    
+  .atc {
+    margin: 0 auto;
+    margin-top: 28px;
+    font-size: 24px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    width: 66%;
+    padding: 12px 20px;
+    color: var(--color-2);
+    background-color: var(--color-4);
+    border-radius: 30px;
+  }
+    
+/*   ADDED BY DANIEL GOLDBERG - 5/26/22   */
+    
+  img.top-curve-new{
+   width: 100%; 
+  }
+    
+  img.mobile-curve-new{
+	width:100%;
+    max-height:36px;
+  }
+    
+  div#sampler-pack-price-container{
+    padding-top:32px;
+    margin:auto;
+    font-size:22px;
+  }
+  div#sampler-pack-price-container span{
+    display:inline-block;
+    width:100%;
+    box-sizing: border-box;
+    text-align:center;
+  }
+  div#sampler-pack-price-container span#sampler-pack-insert-price{
+    text-align:right;
+    width:29%;
+  }
+    
+    div#shopify-section-sampler-envelope-insert div.product-image img{
+/* 		width:85% !important; */
+    }
+    
+  @media only screen and (max-width: 1023px) {
+    div#sampler-landing-product-info{
+      max-height:375px;
+    }
+  }
+  @media only screen and (min-width: 1024px) {
+    div#sampler-landing-product-hero{
+      max-height:525px;
+    }
+  }
+    
+
+/*  END - 5/26/22    */
+    
+  @media (max-width: 1023px) {
+    .product-more {
+      padding: 30px; 
+      padding-bottom: 60px;
+    }
+    .wait-title {
+      width: 90%;
+      max-width: 400px;
+      height: 28vw;
+      max-height: 150px;
+    }
+    .product-info-line {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .product-info-line svg {
+      margin: 0; 
+    }
+    .product-more-info {
+      width: 75%;
+      max-width: 400px;
+    }
+    .product-more-container-mobile {
+      width: 100%; 
+    }
+    .product-more-container-mobile .more-product img {
+      width: 80vw;
+      max-width: 400px;
+    }
+    
+    .more-product-info {
+      width: 100%; 
+    }
+    .more-product-info h3 {
+      font-size: 22px; 
+    }
+    .more-product-info .price {
+      font-size: 14px; 
+    }
+    .product-faq {
+      padding-bottom: 60px; 
+    }
+    .product-reviews {
+      padding: 50px;
+      padding-top: 40px;
+      padding-bottom: 110px;
+    }
+    .review .stars, .review .stars svg {
+      width: 100px;
+      height: 20px;
+    }
+    .product-reviews h3 {
+      font-size: 24px;
+    }
+    .product-reviews h4, .product-reviews p {
+      font-size: 12px; 
+    }
+    .product-reviews .wave {
+      top:-50px;
+      height: 50px;
+    }
+    .reviews-title {
+      width: 100%;
+	  height: 15vw;
+      max-width: 440px;
+    }
+    .review-group {
+      padding: 0; 
+    }
+    .product-whats-in {
+      padding: 30px;
+      padding-top: 0;
+      padding-bottom: 110px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .whats-in-left p {
+      font-size: 14px; 
+    }
+    .whats-in-icons {
+      width: 90%;
+      margin-bottom: 40px;
+    }
+    .product-faq .pour-image {
+      display: none; 
+    }
+    .product-directions .wave {
+      top: 0;
+    }
+    .wave {
+      height: 80px; 
+      top: -80px;
+    }
+    .product-directions {
+      margin-top: -50px;
+      background-image: none;
+      position: relative;
+      padding: 30px;
+      padding-bottom: 110px;
+    }
+    .product-directions .wave {
+      background-color: var(--color-2); 
+    }
+    .product-directions .bg {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .directions-container {
+      max-width: 440px;
+      margin: 0 auto;
+    }
+    .product-hero {
+      height: fit-content;
+      flex-direction: column-reverse;
+      padding-left: 0;
+  	}	
+    .product-info {
+      font-size: 14px; 
+    }
+    .product-types {
+      height: 50px; 
+    }
+    .product-types svg {
+      top: 19px; 
+    }
+    #quantity .QuantitySelector {
+      height: 50px; 
+    }
+    #quantity input {
+      font-size: 14px; 
+    }
+    .bsub-widget__text {
+      line-height: 2.0; 
+    }
+    .atc {
+	  margin-top: 20px;
+      margin-bottom: 30px;
+      font-size: 14px;
+	  padding: 8px 20px;
+    }
+    .product-title {
+      font-size: 46px;
+    }
+      .product-subtitle {
+    margin-bottom: 8px; 
+  }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Sampler envelope insert",
+  "class": "shopify-section--bordered",
+  "settings": [
+    {
+      "type": "text",
+      "id": "whats_in",
+      "label": "What's in description",
+      "default": "Lorem ipsum dolor sit amet, consectetuer adipiLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud "
+    },
+    {
+      "type": "collection",
+      "id": "flavors",
+      "label": "Flavor collection"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    }
+  ]
+}
+{% endschema %}

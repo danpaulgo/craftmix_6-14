@@ -1,0 +1,86 @@
+<div class='packets'>
+  <div class='scrolling-container'>
+    <div class='scrolling-packets'>
+      {% for block in section.blocks %}
+          <img src='{{ block.settings.packet | img_url: '1200x' }}' class='packet'/>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    
+    $('.scrolling-packets').html( $('.scrolling-packets').html() + $('.scrolling-packets').html() + $('.scrolling-packets').html() + $('.scrolling-packets').html() + + $('.scrolling-packets').html());
+    
+  });
+  
+</script>
+
+<style>
+  .packets {
+   	width: 100%;
+    height: fit-content;
+    transition: transform 0.1s linear;
+    position: relative;
+    z-index:10;
+  }
+  
+  .scrolling-container {
+   	position: absolute;
+    z-index: 10;
+    top: -16vw; 
+    overflow: hidden;
+    height: 38vw;
+    width: 100%;
+  }
+  
+  .scrolling-packets {
+    position: absolute;
+    width: 500vw;
+    left: -1200px;
+  }
+  
+  .packet {
+   	width: 22vw;
+  }
+  
+  @media (max-width: 1023px) {
+     .scrolling-container {
+    top: -20vw; 
+  }
+  
+  .packet {
+   	width: 32vw;
+  } 
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [],
+	"blocks": [{
+		"type": "image",
+		"name": "Packet Image",
+		"settings": [{
+			"type": "image_picker",
+			"id": "packet",
+			"label": "Image"
+		}]
+	}],
+	"presets": [
+    {
+      "category": "Images",
+      "name": "Scrolling Images"
+    }
+  	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
