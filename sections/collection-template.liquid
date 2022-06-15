@@ -14,7 +14,9 @@
   </div>
   <div class='collection-products'>
     {% for product in collections['test-collection'].products %}
-    	<div class='wave-product' style='z-index: {{forloop.index0 | plus: 1}}'>
+      
+    	<div class='wave-product'>
+        {% unless forloop.index == 7 or forloop.index == 9 %}
           <a href='{{ product.url }}'>
             <img class='Image--lazyLoad' src='{{ product.featured_image | img_url: 'large' }}' data-src='{{ product.featured_image | img_url: '1400x' }}'/>
             <div class='wave-product-details'>
@@ -38,57 +40,26 @@
               </div>
             </div>
           </a>
-          {% assign i = forloop.index0 | plus: 1%}
-          <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
+        {% endunless %}
+          {% assign i = forloop.index %}
+          {% if i < 7 %}
+            <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
+          {% elsif i == 7 %}
+            <object data='{{ 'panel-1.svg' | asset_url }}' class='desktop-only'></object>
+          {% elsif i == 8 %}
+            <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
+          {% elsif i == 9 %}
+            <object data='{{ 'panel-3.svg' | asset_url }}' class='desktop-only'></object>
+          {% endif %}
           <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
     	</div>
+
     {% endfor %}
   </div>
   
 </section>
 
-<div >
-        {% for product in collections['all'].products %}
-          {%- capture section_settings -%}
-            {
-            "enableHistoryState": true,
-            "templateSuffix": {{ product.template_suffix | json }},
-            "useAjaxCart": true
-            }
-          {%- endcapture -%}
-          	<section class="Product" data-section-settings='{{ section_settings }}' data-section-type='product'>
-            <div class='upsell-product Product__Wrapper' >
-                  <div class="Product__Wrapper">
-                    <div class="Product__InfoWrapper">
-                      <div class="Product__Info">
-                        <div class="Container">
-                          {%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
-                              {{ product.title }}
-                              <input type="hidden" name="id" data-productid="{{ product.id }}" data-sku="{{ product.sku }}" value="{{ product.selected_or_first_available_variant.id }}">
-                          	  <input type="hidden" name="quantity" data-qty-upsell-id="{{product.id}}" value="1">
-                              <button type="submit" class="ProductForm__AddToCart atc" data-upsell-id="{{product.id}}" {% if product.available %}data-action="add-to-cart"{% else %}disabled="disabled"{% endif %}>
-                                {%- if product.available -%}sz
-                                  <span>Add to Cart</span>
-                                {%- else -%}
-                                  {{- 'product.form.sold_out' | t -}}
-                                {%- endif -%}
-                              </button>
-                          {%- endform -%}
-                          <script type="application/json" data-product-json>
-                            {
-                              "product": {{ product | json }},
-                              "selected_variant_id": {{ product.selected_or_first_available_variant.id }}
-                            }
-                          </script>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-           </section>
-            {% assign count = count | plus: 1 %}
-        {% endfor %}
-</div>
+
 
 <script>
   function addProductCP(event, id) {
