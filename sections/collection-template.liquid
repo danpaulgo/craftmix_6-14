@@ -45,12 +45,33 @@
           {% if i < 7 %}
             <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 7 %}
+            <div id="seventh-tile-content">
+              <div id="last-tile-content">
+                <h1 id="seventh-tile-heading">Stay In The Loop!</h1>
+                <h2 id="seventh-tile-subheading">Sign up for special discounts, updates, and more.</h2>
+              </div>
+              <form id='footer-newsletter' action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+                <input type="hidden" name="g" value="{{ section.settings.klaviyo }}">
+                <input type="hidden" name="$fields" value="$consent">
+                <input type="hidden" name="$list_fields" value="$consent">
+        
+                <div class='footer-newsletter-line'>
+                  <input type="email" name="email" class="footer-newsletter-input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="Your Email Address" required>
+                  <button type="submit" class='newsletter-submit'><img src='{{ 'submit-arrow.svg' | asset_url }}' class='submit-arrow'/></button>
+                </div>
+                <div class="klaviyo_messages">
+                  <div class="success_message" style="display:none;">Thanks!</div>
+                  <div class="error_message" style="display:none;">Error submitting email.</div>
+                </div>
+              </form>
+            </div>
             <object data='{{ 'panel-1.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 8 %}
             <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 9 %}
-            <div>
-              <h1 id="collections-last-tile">You Can't Go Wrong!</h1>
+            <div id="last-tile-content">
+              <h1 id="last-tile-heading">You Can't Go Wrong!</h1>
+              <h2 id="last-tile-subheading">All the flavor, all the fun, no artificial junk.</h2>
             </div>
             <object data='{{ 'panel-3.svg' | asset_url }}' class='desktop-only'></object>
           {% endif %}
@@ -395,16 +416,26 @@
   }
   {% comment %} ADDED BY DG 6/16/22 {% endcomment %}
 
-  h1#collections-last-tile{
+  h1#last-tile-heading, h1#seventh-tile-heading{
     font-size:80px;
-    line-height:85px;
+    line-height:80px;
     text-align:center;
     position:absolute;
-    top:200px;
-    font-family: "swiss_721_rounded_n7", "Hornbill";
+    top:160px;
+    font-family: "Hornbill";
     color:#00945e;
     padding: 0 50px;
   }
+  h2#last-tile-subheading, h2#seventh-tile-subheading{
+    top:425px;
+    font-size:22px;
+    text-align:center;
+    position:absolute;
+    color:#00945e;
+    padding: 0 60px;
+  }
+
+
 
 </style>
 
