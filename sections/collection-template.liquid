@@ -15,7 +15,7 @@
   <div class='collection-products'>
     {% for product in collections['test-collection'].products %}
       
-    	<div class='wave-product'>
+        <div class='wave-product'>
         {% unless forloop.index == 7 or forloop.index == 9 %}
           <a href='{{ product.url }}'>
             <img class='Image--lazyLoad' src='{{ product.featured_image | img_url: 'large' }}' data-src='{{ product.featured_image | img_url: '1400x' }}'/>
@@ -49,22 +49,66 @@
           {% elsif i == 8 %}
             <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 9 %}
+            <div>
+              <h1 id="collections-last-tile">You Can't Go Wrong!</h1>
+            </div>
             <object data='{{ 'panel-3.svg' | asset_url }}' class='desktop-only'></object>
           {% endif %}
           <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
-    	</div>
+        </div>
 
     {% endfor %}
   </div>
   
 </section>
 
-
+<div style='display: none'>
+  {% for product in collections['all'].products %}
+    {%- capture section_settings -%}
+      {
+      "enableHistoryState": true,
+      "templateSuffix": {{ product.template_suffix | json }},
+      "useAjaxCart": true
+      }
+    {%- endcapture -%}
+        <section class="Product" data-section-settings='{{ section_settings }}' data-section-type='product'>
+      <div class='upsell-product Product__Wrapper' >
+            <div class="Product__Wrapper">
+              <div class="Product__InfoWrapper">
+                <div class="Product__Info">
+                  <div class="Container">
+                    {%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
+                        {{ product.title }}
+                        <input type="hidden" name="id" data-productid="{{ product.id }}" data-sku="{{ product.sku }}" value="{{ product.selected_or_first_available_variant.id }}">
+                          <input type="hidden" name="quantity" data-qty-upsell-id="{{product.id}}" value="1">
+                        <button type="submit" class="ProductForm__AddToCart atc" data-upsell-id="{{product.id}}" {% if product.available %}data-action="add-to-cart"{% else %}disabled="disabled"{% endif %}>
+                          {%- if product.available -%}sz
+                            <span>Add to Cart</span>
+                          {%- else -%}
+                            {{- 'product.form.sold_out' | t -}}
+                          {%- endif -%}
+                        </button>
+                    {%- endform -%}
+                    <script type="application/json" data-product-json>
+                      {
+                        "product": {{ product | json }},
+                        "selected_variant_id": {{ product.selected_or_first_available_variant.id }}
+                      }
+                    </script>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+     </section>
+      {% assign count = count | plus: 1 %}
+  {% endfor %}
+</div>
 
 <script>
   function addProductCP(event, id) {
     event.preventDefault(); 
-	let q = $('[data-qty-reference-id="'+id+'"]').val()
+    let q = $('[data-qty-reference-id="'+id+'"]').val()
     console.log(q)
     $('[data-qty-upsell-id="'+id+'"]').val(q)
     $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
@@ -90,8 +134,8 @@
   }
     
   .collection-hero {
-   	margin: 0 auto;
-	padding: 75px;
+       margin: 0 auto;
+    padding: 75px;
     padding-top: 100px;
     display: flex;
     justify-content: space-between;
@@ -100,7 +144,7 @@
   }
   
   .collection-products {
-   	display: flex;
+       display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:center;
@@ -111,7 +155,7 @@
   }
   
   .wave-product {
-   	flex: 0 1 33.3333333333%;
+       flex: 0 1 33.3333333333%;
     margin-top: -10vw;
     position: relative;
     color: #00a7e1;
@@ -134,23 +178,23 @@
   }
   
   .wave-product:nth-child(n + 2) {
-	color: var(--orange-color);
+    color: var(--orange-color);
   }
   
   .wave-product:nth-child(n + 3) {
-	color: var(--green-color);
+    color: var(--green-color);
   }
   
   .wave-product:nth-child(n + 4) {
-	color: var(--green-color);
+    color: var(--green-color);
   }
   
   .wave-product:nth-child(n + 5) {
-  	color: var(--red-color);
+      color: var(--red-color);
   }
   
   .wave-product:nth-child(n + 6) {
-	color: #76236c;
+    color: #76236c;
   }
   
   .wave-product .atc {
@@ -159,31 +203,31 @@
   }
   
   .wave-product:nth-child(n + 2) .atc {
-	background-color: var(--orange-color);
+    background-color: var(--orange-color);
   }
   
   .wave-product:nth-child(n + 3) .atc {
-	background-color: var(--green-color);
+    background-color: var(--green-color);
   }
   
   .wave-product:nth-child(n + 4) .atc {
-	background-color: var(--green-color);
+    background-color: var(--green-color);
   }
   
   .wave-product:nth-child(n + 5) .atc {
-    	background-color: var(--red-color);
+        background-color: var(--red-color);
   }
   
   .wave-product:nth-child(n + 6) .atc {
-	background-color: #76236c;
+    background-color: #76236c;
   }
   
   .wave-product:hover img{
-   	transform: translateY(-18px) 
+       transform: translateY(-18px) 
   }
   
   .wave-product a, .wave-space {
-   	position: absolute;
+       position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -201,13 +245,13 @@
   }
   
   .wave-product img {
-   	transition: 0.25s;
-   	width: 88%;
+       transition: 0.25s;
+       width: 88%;
     margin-bottom:0px;
   }
   
   .wave-product-details {
-   	text-align: center;
+       text-align: center;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -215,7 +259,7 @@
   }
   
   .wave-product-details h3 {
-   	font-family: 'Hornbill';
+       font-family: 'Hornbill';
     letter-spacing: -0.01rem;
     font-size: 2.5vw;
     line-height: 0.95;
@@ -223,12 +267,12 @@
   }
   
   .wave-product-price {
-   	font-size: 1.4vw; 
+       font-size: 1.4vw; 
     font-weight: 800;
   }
   
   .wave-space h3 {
-   	 width: 60%;
+        width: 60%;
      font-size: 4.5vw;
      font-family: 'Hornbill';
      font-weight: 800;
@@ -238,7 +282,7 @@
   }
   
   .wave-space p {
-   	 width: 60%;
+        width: 60%;
      text-align: center;
      font-weight: 800;
      line-height: 1.35;
@@ -254,7 +298,7 @@
   }
   
   .collection-left-hero {
-   	flex: 0 1 50%; 
+       flex: 0 1 50%; 
   }
   
   .collection-right-hero {
@@ -262,11 +306,11 @@
   }
   
   .hero-collection-shot {
-   	width: 100%; 
+       width: 100%; 
   }
   
   .collection-hero-header {
-   	font-family: 'Hornbill';
+       font-family: 'Hornbill';
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: -0.4rem;
@@ -277,10 +321,10 @@
   
   @media (max-width: 1023px) {
         .atc {
-	  margin-top: 20px;
+      margin-top: 20px;
       margin-bottom: 30px;
       font-size: 14px;
-	  padding: 8px 20px;
+      padding: 8px 20px;
     }
     .collection-hero {
       padding: 30px;
@@ -314,7 +358,7 @@
     }
     
     .wave-product a, .wave-space {
-    	justify-content: center;
+        justify-content: center;
     }
     
     .wave-product:last-of-type {
@@ -337,7 +381,7 @@
     
     .wave-space p {
        font-size: 22px;
-	   width: 80%;
+       width: 80%;
     }
     
     .wave-product object {
@@ -349,6 +393,19 @@
     height: 40px;
   }
   }
+  {% comment %} ADDED BY DG 6/16/22 {% endcomment %}
+
+  h1#collections-last-tile{
+    font-size:80px;
+    line-height:85px;
+    text-align:center;
+    position:absolute;
+    top:200px;
+    font-family: "swiss_721_rounded_n7", "Hornbill";
+    color:#00945e;
+    padding: 0 50px;
+  }
+
 </style>
 
 
@@ -357,31 +414,31 @@
   "name": "Collection page",
   "class": "shopify-section--bordered",
   "settings": [
-	{
-	  "type": "text",
-	  "id": "title",
-	  "label": "Page title"
-	},
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Page title"
+    },
     {
       "type": "image_picker",
       "id": "image",
       "label": "Hero image"
     },
-	{
-	  "type": "text",
-	  "id": "space_title",
-	  "label": "Space title"
-	},
-	{
-	  "type": "text",
-	  "id": "space_sub_title",
-	  "label": "Space sub-title"
-	},
-	{
-	  "type": "textarea",
-	  "id": "mobile-title",
-	  "label": "Mobile title SVG"
-	}
+    {
+      "type": "text",
+      "id": "space_title",
+      "label": "Space title"
+    },
+    {
+      "type": "text",
+      "id": "space_sub_title",
+      "label": "Space sub-title"
+    },
+    {
+      "type": "textarea",
+      "id": "mobile-title",
+      "label": "Mobile title SVG"
+    }
   ]
 }
 {% endschema %}
