@@ -19,7 +19,7 @@ for size, we use it to display a size chart (if applicable)
 
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
 {%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
-
+{% unless product.title == "5PM Happy Hour Kit (DG)"%}
 {%- assign alternate_1 = all_products[super_product.metafields.accentuate.alternate_pack_1] -%}
 {%- assign alternate_2 = all_products[super_product.metafields.accentuate.alternate_pack_2] -%}
 	<div class='packs'>
@@ -48,6 +48,7 @@ for size, we use it to display a size chart (if applicable)
       </div>
     </div>
     {% endunless %}
+  {% endunless %}
     {% if page.title == "Social Landing"%}
          <input type="hidden" name="quantity" value="3">
     {% elsif page.title == "Sampler Pack Landing" %}
@@ -58,7 +59,6 @@ for size, we use it to display a size chart (if applicable)
       <div class="ProductForm__QuantitySelector">
         <div class="QuantitySelector QuantitySelector--medium">
           {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%}
-
           <span class="QuantitySelector__Button Link Link--secondary" data-action="decrease-quantity">{% render 'icon' with 'minus' %}</span>
           <input type="text" class="QuantitySelector__CurrentQuantity" pattern="[0-9]*" name="quantity" value="1">
           <span class="QuantitySelector__Button Link Link--secondary" data-action="increase-quantity">{% render 'icon' with 'plus' %}</span>
@@ -83,7 +83,6 @@ for size, we use it to display a size chart (if applicable)
 	{% if page.title == "Sampler Pack Landing" %}
   <div id="sampler-pack-price-container">
     <span id="sampler-pack-otp">Price: $5.99</span> 
-<!--     <span id="sampler-pack-insert-price">$5.99</span> -->
   </div>
 	{% endif %}
   {%- comment -%}

@@ -18,13 +18,18 @@
              <div class='product'>
                 <div class='product-hero'>
                   <div class='product-info' data-aos='fade-up' data-aos-delay='1000' data-aos-duration="1000">
-                      <h1 class='product-title' >{{ product.title }}</h1>
+                    <h1 class='product-title' >{{ product.title }}</h1>
                       <div class='stars'>
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250.45 32.66"><g id="b84a4a42-096a-4f07-b832-9d739b159335" data-name="Layer 2"><g id="ab22c364-94a9-45f2-afc2-9758ea143366" data-name="ART"><polygon points="11.7 10.8 16.63 0 22.2 10.49 34 11.84 25.75 20.38 28.11 32.02 17.44 26.82 7.1 32.66 8.75 20.9 0 12.87 11.7 10.8"/><polygon points="65.81 10.8 70.74 0 76.31 10.49 88.11 11.84 79.86 20.38 82.22 32.02 71.55 26.82 61.21 32.66 62.86 20.9 54.11 12.87 65.81 10.8"/><polygon points="119.92 10.8 124.85 0 130.43 10.49 142.23 11.84 133.98 20.38 136.34 32.02 125.66 26.82 115.32 32.66 116.97 20.9 108.22 12.87 119.92 10.8"/><polygon points="174.03 10.8 178.96 0 184.54 10.49 196.34 11.84 188.09 20.38 190.45 32.02 179.77 26.82 169.43 32.66 171.09 20.9 162.33 12.87 174.03 10.8"/><polygon points="228.14 10.8 233.07 0 238.65 10.49 250.45 11.84 242.2 20.38 244.56 32.02 233.88 26.82 223.54 32.66 225.2 20.9 216.44 12.87 228.14 10.8"/></g></g></svg>
                           <span class='count'>{{ product.metafields.accentuate.number_of_reviews_pdp }}</span>
                       </div>
                       <p class='product-subtitle'>{{ product.metafields.accentuate.subtitle }}</p>
-                      {%- render 'product-form', productPage: true, product: all_products[product.metafields.accentuate.alternate_pack_2], super_product: product, base_price: base_price -%} 
+                      {% if product.title == "5PM Happy Hour Kit (DG)"%}
+                      {% assign primary_product = product %}
+                      {% else %}
+                      {% assign primary_product = all_products[product.metafields.accentuate.alternate_pack_2] %}
+                      {% endif %}
+                      {%- render 'product-form', productPage: true, product: primary_product, super_product: product, base_price: base_price -%} 
                   </div>
                   <div class='product-image'>
                     <img src='{{ product.metafields.accentuate.main[0].src }}'/>
@@ -33,14 +38,12 @@
             </div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 {% assign base_price = product.price | times: 2 | money %}
 <section class="Product Product--{{ section.settings.image_size }}" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' id='pack-24' style='display:none;'>
   <div class="Product__Wrapper">
-
     <div class="Product__InfoWrapper" >
       <div class="Product__Info {% if image_count == 0 %}Product__Info--noGallery{% endif %}">
         <div class="Container">
