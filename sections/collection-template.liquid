@@ -50,14 +50,14 @@
                 <h1 id="seventh-tile-heading">Stay In The Loop!</h1>
                 <h2 id="seventh-tile-subheading">Sign up for special discounts, updates, and more.</h2>
               </div>
-              <form id='footer-newsletter' action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
+              <form id='seventh-tile-newsletter' action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
                 <input type="hidden" name="g" value="{{ section.settings.klaviyo }}">
                 <input type="hidden" name="$fields" value="$consent">
                 <input type="hidden" name="$list_fields" value="$consent">
         
-                <div class='footer-newsletter-line'>
-                  <input type="email" name="email" class="footer-newsletter-input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="Your Email Address" required>
-                  <button type="submit" class='newsletter-submit'><img src='{{ 'submit-arrow.svg' | asset_url }}' class='submit-arrow'/></button>
+                <div class='footer-newsletter-line' id="seventh-tile-newsletter-line">
+                  <input type="email" name="email" class="footer-newsletter-input" id="seventh-tile-newsletter-input" aria-label="{{ 'footer.newsletter.input' | t }}" placeholder="Your Email Address" required>
+                  <button type="submit" class='newsletter-submit'><img src='https://cdn.shopify.com/s/files/1/2340/1623/files/submit-arrow-blue.png?v=1655425245' class='submit-arrow' id="seventh-tile-button"/></button>
                 </div>
                 <div class="klaviyo_messages">
                   <div class="success_message" style="display:none;">Thanks!</div>
@@ -417,24 +417,64 @@
   {% comment %} ADDED BY DG 6/16/22 {% endcomment %}
 
   h1#last-tile-heading, h1#seventh-tile-heading{
-    font-size:80px;
-    line-height:80px;
     text-align:center;
     position:absolute;
-    top:160px;
     font-family: "Hornbill";
-    color:#00945e;
     padding: 0 50px;
   }
+
+  h1#last-tile-heading{
+    font-size:75px;
+    color:#00945e;
+    top:160px;
+    line-height:75px;
+  }
+
+  h1#seventh-tile-heading{
+    font-size:60px;
+    color:#00a7e1;
+    top:210px;
+    line-height:75px;
+  }
+
+
   h2#last-tile-subheading, h2#seventh-tile-subheading{
-    top:425px;
+    
     font-size:22px;
     text-align:center;
     position:absolute;
-    color:#00945e;
     padding: 0 60px;
   }
 
+  h2#last-tile-subheading{
+    color:#00945e;
+    top:450px;
+  }
+
+  h2#seventh-tile-subheading{
+    color:#00a7e1;
+    top:475px;
+  }
+
+  form#seventh-tile-newsletter{
+    position:absolute;
+    top:400px;
+    width:100%;
+  }
+
+div#seventh-tile-newsletter-line{
+    border-bottom: 1px solid #00a7e1;
+    width: 70%;
+    margin-left:15%;
+  }
+
+  input#seventh-tile-newsletter-input{
+    color:#00a7e1;
+  }
+
+  .wave-product:hover img#seventh-tile-button{
+    transform: translateY(0) 
+}
 
 
 </style>
