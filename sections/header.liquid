@@ -219,6 +219,36 @@
         height: 42px;
       }
   }
+
+{% comment %} ADDED BY DG 6/17/22 {% endcomment %}
+
+div.dropdown-content{
+  top: 110px;
+  position:absolute;
+  background-color: #ff5f00;
+  color: #ddf7f7;
+  border-radius: 20px;
+  padding: 15px;
+  {% comment %} margin-top:5px; {% endcomment %}
+  left:72px;
+  display:none;
+}
+
+div.dropdown-content a.dropdown-link{
+  display:block;
+  margin-right: 0;
+  {% comment %} padding-bottom:50px; {% endcomment %}
+}
+
+/* Show the dropdown menu on hover */
+div.dropdown:hover div.dropdown-content {
+  display: block;
+}
+
+div.dropdown:hover a.dropdown-link:hover {
+  color: #08945c;
+}
+
 </style>
 
 <div class='header-container' id='header-container'>
@@ -236,7 +266,18 @@
   <div class='header-links left'>
     {% for link in linklists[section.settings.menu].links %}
     	{% unless forloop.index0 > 0 and template == 'page.social-landing' %}
-    	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}'>{{ link.title }}</a>
+      {% if link.title == "Shop" %}
+        <div class="dropdown">
+        {% endif %}
+    	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}' {% if link.title == "Shop" %}style="padding-bottom:50px;"{% endif %}>{{ link.title }}</a>
+      {% if link.title == "Shop" %}
+        <br>
+        <div class="dropdown-content">
+          <a class="dropdown-link" href="https://www.craftmix.com/collections/flavors-2020">Shop All</a>
+          <a class="dropdown-link" href="https://www.craftmix.com/products/5pm-happy-hour-kit-dg">5PM Happy Hour Kit</a>
+        </div>
+      </div>
+      {% endif %}
     	{% endunless %}
     {% endfor %}
   </div>
