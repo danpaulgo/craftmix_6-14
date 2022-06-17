@@ -40,7 +40,12 @@
             <div class="bsub-widget__group-header {{ product.id }}" data-one-time onClick="$('[data-bsub-purchase-option-one-time]:not({{product.id}})').click(); $('.subscription-discount').hide(); $('.normal-discount').show()">
               <div class="bsub-widget__text">
                 <span>One-time Purchase</span>
-                <span>{% if triple == 'yes' %}{{ product.price | times: 3 | money }}{% else %}{% unless show_base_price == 'no' %}<span class='cross-out normal-discount' style='display:none;'>{{ base_price }}</span>{% endunless %}{{ product.price | money }}{% endif %}</span>
+                {% if product.title == "5PM Happy Hour Kit (DG)" %}
+                  {% assign new_base_price = 29.99 %}
+                {% else %}
+                  {% assign new_base_price = base_price %}
+                {% endif %}
+                <span>{% if triple == 'yes' %}{{ product.price | times: 3 | money }}{% else %}{% unless show_base_price == 'no' or product.title == "5PM Happy Hour Kit (DG)" %}<span class='cross-out normal-discount' style='display:none;'>{{ new_base_price }}</span>{% endunless %}{{ product.price | money }}{% endif %}</span>
                 <!-- {{ 'products.product.one_time_purchase' | t }} -->
               </div>
             </div>
@@ -67,7 +72,7 @@
             <div class="bsub-widget__group-header {{product.id}}" data-two-time onClick="$('[data-bsub-selling-plan-group-input]:not({{product.id}})').click(); $('.subscription-discount').show(); $('.normal-discount').hide()">
               <div class="bsub-widget__text">
                 <span>{{- group.name -}}</span>
-                <span>{% if triple == 'yes' %}{{ product.price | times: 2.7 | money }}{% else %}<span class='cross-out subscription-discount'>{{ base_price }}</span><span data-bsub-per-delivery-price>${{ product.metafields.accentuate.discount_price }}</span>{% endif %}</span>
+                <span>{% if triple == 'yes' %}{{ product.price | times: 2.7 | money }}{% else %}<span class='cross-out subscription-discount'>{{ new_base_price }}</span><span data-bsub-per-delivery-price>${{ product.metafields.accentuate.discount_price }}</span>{% endif %}</span>
               </div>
             </div>
           </label>
