@@ -45,10 +45,10 @@
           {% if i < 7 %}
             <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 7 %}
-            <div id="seventh-tile-content">
+            <div id="seventh-tile-content" class="desktop-only">
               
                 <h1 id="seventh-tile-heading">Stay In The Loop!</h1>
-                <h2 id="seventh-tile-subheading">Sign up for special discounts, updates, and more.</h2>
+                <h2 id="seventh-tile-subheading">New flavors & discount codes? Sign up Above!</h2>
               
               <form id='seventh-tile-newsletter' action="//manage.kmail-lists.com/subscriptions/subscribe" data-ajax-submit="//manage.kmail-lists.com/ajax/subscriptions/subscribe" method="GET" target="_blank" novalidate="novalidate">
                 <input type="hidden" name="g" value="{{ section.settings.klaviyo }}">
@@ -69,13 +69,17 @@
           {% elsif i == 8 %}
             <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 9 %}
-            <div id="ninth-tile-content">
+            <div id="ninth-tile-content" class="desktop-only">
               <h1 id="ninth-tile-heading">You Can't Go Wrong!</h1>
               <h2 id="ninth-tile-subheading">All the flavor, all the fun, no artificial junk.</h2>
             </div>
             <object data='{{ 'panel-3.svg' | asset_url }}' class='desktop-only'></object>
           {% endif %}
-          <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
+          {% if i == 7 %}
+            <object data='{{ 'mobile-panel-1.svg' | asset_url }}' class='mobile-only'></object>
+          {% else %}
+            <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
+          {% endif %}
         </div>
 
     {% endfor %}
@@ -427,13 +431,15 @@
     position:absolute;
     font-family: "Hornbill";
     padding: 0 50px;
-    top:185px;
+    top:150px;
+    font-size:72px;
+    line-height:72px;
   }
 
   h1#ninth-tile-heading{
-    font-size:72px;
+    
     color:#00945e;
-    line-height:72px;
+    padding: 0 50px;
     max-width: 425px;
     left:0;
     right:0;
@@ -441,9 +447,9 @@
   }
 
   h1#seventh-tile-heading{
-    font-size:50px;
+    padding: 0px;
     color:#00a7e1;
-    line-height:72px;
+    
   }
 
 
@@ -452,7 +458,7 @@
     text-align:center;
     position:absolute;
     padding: 0 60px;
-    top:450px;
+    top:475px;
   }
 
   h2#ninth-tile-subheading{
@@ -465,7 +471,7 @@
 
   form#seventh-tile-newsletter{
     position:absolute;
-    top:375px;
+    top:400px;
     width:100%;
   }
 
@@ -483,6 +489,22 @@ div#seventh-tile-newsletter-line{
     transform: translateY(0) 
 }
 
+@media only screen and (max-width: 1300px) {
+  h1#ninth-tile-heading, h1#seventh-tile-heading{ 
+    font-size:60px;
+    top:125px;
+  }
+  h1#ninth-tile-heading{
+    max-width: 350px;
+  }
+  form#seventh-tile-newsletter{
+    top:300px;
+  }
+  h2#ninth-tile-subheading, h2#seventh-tile-subheading{
+    font-size:20px;
+    top:375px;
+  }
+}
 
 </style>
 
