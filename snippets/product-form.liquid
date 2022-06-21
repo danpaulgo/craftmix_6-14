@@ -22,7 +22,7 @@ for size, we use it to display a size chart (if applicable)
 {% unless product.title == ""%}
 {%- assign alternate_1 = all_products[super_product.metafields.accentuate.alternate_pack_1] -%}
 {%- assign alternate_2 = all_products[super_product.metafields.accentuate.alternate_pack_2] -%}
-	<div class='packs' {% if product.title == "5PM Happy Hour Kit (DG)" %}style="display:none"{% endif %}>
+	<div class='packs' {% if product.id == 7745391984878 %}style="display:none"{% endif %}>
       <div class='pack-size {% if alternate_2.id == product.id %}active{% endif %}' {% if alternate_2.id == product.id %}onLoad="$(this).click()"{% endif %} onClick='$("#pack-12").hide();$("#pack-24").hide();$("#pack-36").show();'><div class='bubble'><span class='best-seller'>Best Seller</span>36 Pack</div><span class='save'>Save <span class='normal-discount' style='display:none;'>11.1%</span><span class='subscription-discount'>20%</span></span><span class='free'>+ Free Shipping</span></div>
             <div class='pack-size {% if alternate_1.id == product.id %}active{% endif %}' onClick='$("#pack-12").hide();$("#pack-24").show();$("#pack-36").hide();'><div class='bubble'>24 Pack</div><span class='save'>Save <span class='normal-discount' style='display:none;'>6.6%</span><span class='subscription-discount'>15%</span></span><span class='free'>+ Free Shipping</span></div>
       <div class='pack-size {% if super_product.id == product.id %}active{% endif %}' onClick='$("#pack-12").show();$("#pack-24").hide();$("#pack-36").hide();'><div class='bubble'>12 Pack</div><span class='save subscription-discount'>Save <span>10%</span></span></div>
@@ -82,7 +82,7 @@ for size, we use it to display a size chart (if applicable)
     <div id="sampler-pack-price-container">
       <span id="sampler-pack-otp">Price: $5.99</span> 
     </div>
-  {% elsif page.title == "5PM Happy Hour Kit (DG)" %}
+  {% elsif product.id == 7745391984878 %}
     {% render 'bsub-widget', triple: false, product: product, base_price: base_price, show_base_price: show_base_price %}
 	{% else %}
   		{% render 'bsub-widget', triple: triple, product: product, base_price: base_price, show_base_price: show_base_price %}

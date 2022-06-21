@@ -24,7 +24,7 @@
                           <span class='count'>{{ product.metafields.accentuate.number_of_reviews_pdp }}</span>
                       </div>
                       <p class='product-subtitle'>{{ product.metafields.accentuate.subtitle }}</p>
-                      {% if product.title == "5PM Happy Hour Kit (DG)"%}
+                      {% if product.id == 7745391984878%}
                       {% assign primary_product = product %}
                       {% else %}
                       {% assign primary_product = all_products[product.metafields.accentuate.alternate_pack_2] %}

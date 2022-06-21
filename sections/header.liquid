@@ -230,7 +230,7 @@ div.dropdown-content{
   border-radius: 20px;
   padding: 15px;
   {% comment %} margin-top:5px; {% endcomment %}
-  left:72px;
+  left:5%;
   display:none;
 }
 
@@ -246,7 +246,7 @@ div.dropdown:hover div.dropdown-content {
 }
 
 div.dropdown:hover a.dropdown-link:hover {
-  color: #08945c;
+  color: #fdbbcb;
 }
 
 </style>
@@ -269,7 +269,7 @@ div.dropdown:hover a.dropdown-link:hover {
       {% if link.title == "Shop" %}
         <div class="dropdown">
         {% endif %}
-    	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}' {% if link.title == "Shop" %}style="padding-bottom:50px;"{% endif %}>{{ link.title }}</a>
+    	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}' {% if link.title == "Shop" %}style="padding-bottom:10px;"{% endif %}>{{ link.title }}</a>
       {% if link.title == "Shop" %}
         <br>
         <div class="dropdown-content">
