@@ -14,9 +14,9 @@
   </div>
   <div class='collection-products'>
     {% for product in collections['test-collection'].products %}
-      
-        <div class='wave-product'>
-        {% unless forloop.index == 7 or forloop.index == 9 %}
+      {% assign i = forloop.index %}
+        <div class='wave-product'{% if i == 8 %}id="last-tile-mobile"{% endif %}>
+        {% unless i == 7 or i == 9 %}
           <a href='{{ product.url }}'>
             <img class='Image--lazyLoad' src='{{ product.featured_image | img_url: 'large' }}' data-src='{{ product.featured_image | img_url: '1400x' }}'/>
             <div class='wave-product-details'>
@@ -41,7 +41,7 @@
             </div>
           </a>
         {% endunless %}
-          {% assign i = forloop.index %}
+          
           {% if i < 7 %}
             <object data='{{ 'panel-' | append: i | append: '.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 7 %}
@@ -67,6 +67,7 @@
             </div>
             <object data='{{ 'panel-1.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 8 %}
+            <object data='{{ 'mobile-panel-2.svg' | asset_url }}' class='mobile-only'></object>
             <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 9 %}
             <div id="ninth-tile-content" class="desktop-only">
@@ -75,14 +76,13 @@
             </div>
             <object data='{{ 'panel-3.svg' | asset_url }}' class='desktop-only'></object>
           {% endif %}
-          {% if i == 7 %}
-            <object data='{{ 'mobile-panel-1.svg' | asset_url }}' class='mobile-only'></object>
-          {% else %}
+          
             <object data='{{ 'mobile-panel-' | append: i | append: '.svg' | asset_url }}' class='mobile-only'></object>
-          {% endif %}
+    
         </div>
 
     {% endfor %}
+    
   </div>
   
 </section>
@@ -503,6 +503,13 @@ div#seventh-tile-newsletter-line{
   h2#ninth-tile-subheading, h2#seventh-tile-subheading{
     font-size:20px;
     top:375px;
+  }
+}
+
+@media only screen and (max-width: 1023px) {
+  div#last-tile-mobile{
+    {% comment %} height:900px; {% endcomment %}
+    margin-top:0;
   }
 }
 
