@@ -207,8 +207,13 @@
 	<object class='wait-title desktop-only' data-aos='fade-up' data-aos-duration="1000" data-aos-offset='-300' data-aos-delay='300' data='{{ 'wait.svg' | asset_url }}'></object>
   	<object class='wait-title mobile-only' data='{{ 'mobile-wait.svg' | asset_url }}'></object>
   	<div class='product-more-container desktop-only'>
-  		{% for p in collections[section.settings.flavors].products %}
+      {% assign fori = 0 %}
+  		{% for p in collections["more-flavors"].products %}
       		{% if p.handle != product.handle %}
+            {% assign fori = fori | plus: 1 %}
+            {% if fori > 4 %}
+              {% break %}
+            {% endif %}
       			<a class='more-product' href='{{ p.url }}'>
                     <img src='{{ p.featured_image | img_url: '1000x' }}'/>
                 	<div class='more-product-info'>
@@ -221,7 +226,7 @@
   	</div>
     <div class='product-more-container-mobile mobile-only'>
       <div class='product-more-photos product-more-photos-mobile'>
-  		{% for p in collections[section.settings.flavors].products %}
+  		{% for p in collections["more-flavors"].products %}
       		{% if p.handle != product.handle %}
       			<a class='more-product' href='{{ p.url }}'>
                     <img src='{{ p.featured_image | img_url: '1000x' }}'/>
