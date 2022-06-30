@@ -24,11 +24,11 @@
               <span class='wave-product-price'>{{ product.price | money }}</span>
               <div style='display: flex; align-items: center'>
                   <div class="QuantitySelector QuantitySelector--medium" style='margin-top: 16px; margin-right: 12px; border-color: currentColor;'>
-                    {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%}
-
-                    <span class="QuantitySelector__Button Link Link--secondary" onclick="event.preventDefault(); $(this).siblings('input').val(Math.max(1, parseInt($(this).siblings('input').val()) - 1))">{% render 'icon' with 'minus' %}</span>
-                    <input type="text" class="QuantitySelector__CurrentQuantity" data-qty-reference-id="{{ product.id }}" pattern="[0-9]*" name="quantity" value="1">
-                    <span class="QuantitySelector__Button Link Link--secondary" onclick="event.preventDefault(); $(this).siblings('input').val(parseInt($(this).siblings('input').val()) + 1)">{% render 'icon' with 'plus' %}</span>
+                    {% comment %} {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%} {% endcomment %}
+                    {% assign quantity = 1 %}
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="subtractQuantity(this)">{% render 'icon' with 'minus' %}</span>
+                    <input type="text" class="QuantitySelector__CurrentQuantity" data-qty-reference-id="{{ product.id }}" pattern="[0-9]*" name="quantity" value="{{quantity}}">
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="addQuantity(this)">{% render 'icon' with 'plus' %}</span>
                   </div>
                 <button class="ProductForm__AddToCart atc" data-upsell-attach="{{product.id}}" onclick="addProductCP(event, '{{product.id}}')">
                     {%- if product.available -%}
@@ -68,6 +68,7 @@
             <object data='{{ 'panel-1.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 8 %}
             <object data='{{ 'mobile-panel-2.svg' | asset_url }}' class='mobile-only'></object>
+
             <object data='{{ 'panel-2.svg' | asset_url }}' class='desktop-only'></object>
           {% elsif i == 9 %}
             <div id="ninth-tile-content" class="desktop-only">
@@ -137,7 +138,17 @@
     console.log(q)
     $('[data-qty-upsell-id="'+id+'"]').val(q)
     $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
-    setTimeout(function(){$('[data-upsell-id="'+id+'"]').click()}, 100)
+    setTimeout(function(){$('[data-upsell-id="'+id+'"]').click()})
+  }
+
+  function addQuantity(object){
+    event.preventDefault(); 
+    $(object).siblings('input').val(parseInt($(object).siblings('input').val()) + 1)
+  }
+
+  function subtractQuantity(object){
+    event.preventDefault(); 
+    $(object).siblings('input').val(parseInt($(object).siblings('input').val()) - 1)
   }
 </script>
 
