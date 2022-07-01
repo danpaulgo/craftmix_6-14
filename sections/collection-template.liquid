@@ -26,9 +26,12 @@
                   <div class="QuantitySelector QuantitySelector--medium" style='margin-top: 16px; margin-right: 12px; border-color: currentColor;'>
                     {% comment %} {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%} {% endcomment %}
                     {% assign quantity = 1 %}
-                    <span class="QuantitySelector__Button Link Link--secondary" onclick="subtractQuantity(this)">{% render 'icon' with 'minus' %}</span>
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="subtractQuantity(this)" data-action="decrease-quantity">{% render 'icon' with 'minus' %}</span>
                     <input type="text" class="QuantitySelector__CurrentQuantity" data-qty-reference-id="{{ product.id }}" pattern="[0-9]*" name="quantity" value="{{quantity}}">
-                    <span class="QuantitySelector__Button Link Link--secondary" onclick="addQuantity(this)">{% render 'icon' with 'plus' %}</span>
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="addQuantity(this, {{product.id}})" data-action="increase-quantity">{% render 'icon' with 'plus' %}</span>
+                  </div>
+                  <div>
+                    
                   </div>
                 <button class="ProductForm__AddToCart atc" data-upsell-attach="{{product.id}}" onclick="addProductCP(event, '{{product.id}}')">
                     {%- if product.available -%}
@@ -88,7 +91,7 @@
   
 </section>
 
-<div style='display: none'>
+<div style=''>
   {% for product in collections['all'].products %}
     {%- capture section_settings -%}
       {
@@ -106,9 +109,9 @@
                     {%- form 'product', product, data-productid: product.id, class: 'ProductForm' -%}
                         {{ product.title }}
                         <input type="hidden" name="id" data-productid="{{ product.id }}" data-sku="{{ product.sku }}" value="{{ product.selected_or_first_available_variant.id }}">
-                          <input type="hidden" name="quantity" data-qty-upsell-id="{{product.id}}" value="1">
+                          <input type="hidden" name="quantity" data-qty-upsell-id="{{product.id}}" value="{{ quantity }}">
                         <button type="submit" class="ProductForm__AddToCart atc" data-upsell-id="{{product.id}}" {% if product.available %}data-action="add-to-cart"{% else %}disabled="disabled"{% endif %}>
-                          {%- if product.available -%}sz
+                          {%- if product.available -%}
                             <span>Add to Cart</span>
                           {%- else -%}
                             {{- 'product.form.sold_out' | t -}}
@@ -135,21 +138,38 @@
   function addProductCP(event, id) {
     event.preventDefault(); 
     let q = $('[data-qty-reference-id="'+id+'"]').val()
-    console.log(q)
-    $('[data-qty-upsell-id="'+id+'"]').val(q)
-    $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
-    setTimeout(function(){$('[data-upsell-id="'+id+'"]').click()})
+    {% comment %} console.log(q) {% endcomment %}
+    {% comment %} setTimeout(updateQuantity(q, id), 100); {% endcomment %}
+    clickToAdd(id);
   }
 
-  function addQuantity(object){
+  function addQuantity(object, id){
     event.preventDefault(); 
     $(object).siblings('input').val(parseInt($(object).siblings('input').val()) + 1)
+    {% comment %} console.log($('[data-qty-upsell-id="'+id+'"]').val()) {% endcomment %}
+    let liveQuantity = $('[data-qty-upsell-id="'+id+'"]')
+    liveQuantity.val(parseInt(liveQuantity.val()) + 1);
   }
 
   function subtractQuantity(object){
     event.preventDefault(); 
     $(object).siblings('input').val(parseInt($(object).siblings('input').val()) - 1)
+    let liveQuantity = $('[data-qty-upsell-id="'+id+'"]')
+    liveQuantity.val(parseInt(liveQuantity.val()) - 1);
   }
+
+  function updateQuantity(q, id) {
+    $('[data-qty-upsell-id="'+id+'"]').val(q)
+    $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
+    $('[data-hidden-qty-id="'+id+'"]').val(q)
+    $('[data-hidden-qty-id="'+id+'"]').attr('value', q)
+  }
+  
+  function clickToAdd(id){
+    $('[data-upsell-id="'+id+'"]').click()
+  }
+
+  
 </script>
 
 <style>
