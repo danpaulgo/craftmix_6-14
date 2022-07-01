@@ -26,7 +26,7 @@
                   <div class="QuantitySelector QuantitySelector--medium" style='margin-top: 16px; margin-right: 12px; border-color: currentColor;'>
                     {% comment %} {%- assign quantity_minus_one = line_item.quantity | minus: 1 -%} {% endcomment %}
                     {% assign quantity = 1 %}
-                    <span class="QuantitySelector__Button Link Link--secondary" onclick="subtractQuantity(this)" data-action="decrease-quantity">{% render 'icon' with 'minus' %}</span>
+                    <span class="QuantitySelector__Button Link Link--secondary" onclick="subtractQuantity(this, {{product.id}})" data-action="decrease-quantity">{% render 'icon' with 'minus' %}</span>
                     <input type="text" class="QuantitySelector__CurrentQuantity" data-qty-reference-id="{{ product.id }}" pattern="[0-9]*" name="quantity" value="{{quantity}}">
                     <span class="QuantitySelector__Button Link Link--secondary" onclick="addQuantity(this, {{product.id}})" data-action="increase-quantity">{% render 'icon' with 'plus' %}</span>
                   </div>
@@ -92,7 +92,7 @@
 </section>
 
 <div style=''>
-  {% for product in collections['all'].products %}
+  {% for product in collections['test-collection'].products %}
     {%- capture section_settings -%}
       {
       "enableHistoryState": true,
@@ -137,10 +137,11 @@
 <script>
   function addProductCP(event, id) {
     event.preventDefault(); 
-    let q = $('[data-qty-reference-id="'+id+'"]').val()
+    {% comment %} let q = $('[data-qty-reference-id="'+id+'"]').val() {% endcomment %}
     {% comment %} console.log(q) {% endcomment %}
     {% comment %} setTimeout(updateQuantity(q, id), 100); {% endcomment %}
-    clickToAdd(id);
+    $('[data-upsell-id="'+id+'"]').click()
+    {% comment %} $('[data-productid="'+id+'"]').submit() {% endcomment %}
   }
 
   function addQuantity(object, id){
@@ -151,7 +152,7 @@
     liveQuantity.val(parseInt(liveQuantity.val()) + 1);
   }
 
-  function subtractQuantity(object){
+  function subtractQuantity(object, id){
     event.preventDefault(); 
     $(object).siblings('input').val(parseInt($(object).siblings('input').val()) - 1)
     let liveQuantity = $('[data-qty-upsell-id="'+id+'"]')
@@ -163,10 +164,6 @@
     $('[data-qty-upsell-id="'+id+'"]').attr('value', q)
     $('[data-hidden-qty-id="'+id+'"]').val(q)
     $('[data-hidden-qty-id="'+id+'"]').attr('value', q)
-  }
-  
-  function clickToAdd(id){
-    $('[data-upsell-id="'+id+'"]').click()
   }
 
   
