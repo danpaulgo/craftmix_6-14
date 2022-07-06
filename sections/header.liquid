@@ -266,13 +266,13 @@ div.dropdown:hover a.dropdown-link:hover {
   <div class='header-links left'>
     {% for link in linklists[section.settings.menu].links %}
     	{% unless forloop.index0 > 0 and template == 'page.social-landing' %}
-      {% if link.title == "Shop" %}
+      {% if link.title == "Shop" and  template != 'page.social-landing' %}
         <div class="dropdown">
         {% endif %}
     	<a href='{% if forloop.index0 == 0 and template == 'page.social-landing'%}#shop{% else %}{{ link.url }}{% endif %}' {% if link.title == "Shop" %}style="padding-bottom:10px;"{% endif %}>{{ link.title }}</a>
-      {% if link.title == "Shop" %}
+      {% if link.title == "Shop" and  template != 'page.social-landing'%}
         <br>
-        <div class="dropdown-content">
+        <div class="dropdown-content" >
           <a class="dropdown-link" href="https://www.craftmix.com/collections/flavors-2020">Shop All</a>
           <a class="dropdown-link" href="https://www.craftmix.com/products/5pm-happy-hour-kit-dg">5PM Happy Hour Kit</a>
         </div>
