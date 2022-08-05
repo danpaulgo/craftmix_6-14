@@ -67,9 +67,13 @@ for size, we use it to display a size chart (if applicable)
     </div>
     {% endif %}
     	{% if template == 'page.social-landing'%}
-      <button type="submit" class="ProductForm__AddToCart atc" {% if selected_variant.available %}data-action="add-to-cart" {% if triple == 'yes'%}onclick='setTimeout(function(){ window.location = "/checkout" }, 100)'{% endif %}{% else %}disabled="disabled"{% endif %}>
+      <button type="submit" class="ProductForm__AddToCart atc" {% if selected_variant.available %}data-action="add-to-cart" onclick='setTimeout(function(){ window.location = "/checkout" }, 100)'{% else %}disabled="disabled"{% endif %}>
         {%- if selected_variant.available -%}
-          <span>Buy</span>
+          {% if page.title == "Sampler Pack Landing" %}
+            <span>Claim Offer</span>
+          {% else %}
+           <span>Buy</span>
+          {% endif %}
         {%- else -%}
           {{- 'product.form.sold_out' | t -}}
         {%- endif -%}
